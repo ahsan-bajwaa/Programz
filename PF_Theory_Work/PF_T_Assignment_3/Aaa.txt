@@ -1,0 +1,156 @@
+Task # 4:
+
+#include <iostream>
+using namespace std;
+
+int main(){
+	for(int i = 6; i > 0; i--){
+		for(int j = i; j > 0; j--){
+			cout << i << " ";
+		}
+		cout << endl;
+	}
+}
+
+Task # 5:
+
+#include <iostream>
+using namespace std;
+
+int main(){
+	for(int i = 6; i > 0; i--){
+		
+		for(int j = 6-i; j > 0; j--){
+			cout << " ";
+		}
+		for(int j = i; j > 0; j--){
+			cout << "*";
+		}
+		cout << endl;
+	}
+}
+
+Task # 6:
+
+#include <iostream>
+using namespace std;
+
+int main(){
+	for(int i = 1; i <= 6; i++){
+		for(int j = i; j > 0; j--){
+			cout << "*";
+		}
+		cout << endl;
+	}
+}
+
+Task # 7:
+
+#include <iostream>
+using namespace std;
+
+int main(){
+	int spaces = 0;
+	for(int i = 1; i < 6; i++){
+		
+		for(int j = spaces; j > 0;j--){
+			cout << " ";
+		}
+		int number = 1;
+		for(int k = 6-i; k > 0; k--){
+			
+			cout << number;
+			number++;
+		}
+		cout << endl;
+		spaces++;
+	}
+}
+
+Task # 8:
+
+#include <iostream>
+using namespace std;
+
+int main(){
+	for(int i = 1; i < 7; i++){
+		for(int j = i; j < 6; j++){
+			cout << " ";
+		}
+		for(int k = i; k > 0; k--){
+			cout << "*";
+		}
+		cout << endl;
+	}
+}
+
+Task # 9:
+
+#include <iostream>
+using namespace std;
+
+int main(){
+    int whole, max = 0, min, sum = 0, avrg;
+    
+    cout << "Enter a whole number: ";
+    cin >> whole;
+    
+    min = whole;
+
+    for(int i = 0; i <= whole; i++){
+        if(max < i){
+            max = i;
+        }
+        if(min > i){
+            min = i;
+        }
+        sum += i;
+    }
+	
+    avrg = sum / (whole + 1);
+    
+    cout << "Min: " << min << endl;
+    cout << "Max: " << max << endl;
+    cout << "Average: " << avrg << endl;
+
+}
+
+
+Task # 10:
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main(){
+    int number;
+
+    cout << "Enter a number: ";
+    cin >> number;
+
+    cout << "Armstrong numbers are:" << endl;
+
+    for (int num = 1; num <= limit; ++num) {
+        int sum = 0, temp = num, digitCount = 0;
+
+        while (temp != 0) {
+            temp /= 10;
+            ++digitCount;
+        }
+
+        temp = num;
+
+        while (temp != 0) {
+            int digit = temp % 10;
+            sum += pow(digit, digitCount);
+            temp /= 10;
+        }
+
+        if (sum == num) {
+            cout << num << " ";
+        }
+    }
+
+}
+
+

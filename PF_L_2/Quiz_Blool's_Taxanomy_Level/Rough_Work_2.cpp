@@ -1,0 +1,3595 @@
+#include <iostream>
+#include <ctime>   // For time()
+#include <string>
+
+using namespace std;
+
+const int SIZE = 3;
+const int MAX_TYPE = 6;
+const int INFO_COUNT = 7;
+const int MAX_TOPICS = 4;
+const int MAX_QUESTIONS = 6;
+string question[MAX_TOPICS][MAX_TYPE][MAX_QUESTIONS][INFO_COUNT];
+
+
+class Questions
+{
+protected:
+
+    int current_level;
+    int current_topic;
+    string type_names[MAX_TYPE] = {"Remembering", "Understanding", "Applying", "Analyzing", "Evaluating", "Creating"};
+    string topic_names[MAX_TOPICS] = {"Science", "History", "Geography", "Mathematics"};
+    string level_names[3] = {"Easy", "Medium", "Hard"};
+public:
+
+    void get_info(int level, int topic)
+    {
+        // Set the current level and topic based on user input.
+        current_level = level;
+        current_topic = topic;
+    }
+
+    void selecting_level()
+    {
+        // Selecting the desired level of questions.
+        if (current_level == 0) easy_questions();
+        else if (current_level == 1) medium_questions();
+        else if (current_level == 2) hard_questions();
+    }
+protected:
+
+    void easy_questions()
+    {
+        // Initialize easy questions, answers, options, and explanations.
+
+        // Science - Taxonomy Level 1: Remembering (Easy)
+        question[0][0][0][0] = "What is the chemical symbol for water?";
+        question[0][0][0][1] = "H2O";
+        question[0][0][0][2] = "H2O";
+        question[0][0][0][3] = "CO2";
+        question[0][0][0][4] = "O2";
+        question[0][0][0][5] = "N2";
+        question[0][0][0][6] = "Water is a compound made of hydrogen and oxygen.";
+        question[0][0][1][0] = "What is the main source of energy for Earth?";
+        question[0][0][1][1] = "The Sun";
+        question[0][0][1][2] = "The Sun";
+        question[0][0][1][3] = "The Moon";
+        question[0][0][1][4] = "Wind";
+        question[0][0][1][5] = "Water";
+        question[0][0][1][6] = "The Sun provides heat and light to Earth.";
+        question[0][0][2][0] = "What gas do humans breathe to survive?";
+        question[0][0][2][1] = "Oxygen";
+        question[0][0][2][2] = "Oxygen";
+        question[0][0][2][3] = "Carbon dioxide";
+        question[0][0][2][4] = "Nitrogen";
+        question[0][0][2][5] = "Helium";
+        question[0][0][2][6] = "Oxygen is essential for human respiration.";
+        question[0][0][3][0] = "What is the unit of force in physics?";
+        question[0][0][3][1] = "Newton";
+        question[0][0][3][2] = "Newton";
+        question[0][0][3][3] = "Joule";
+        question[0][0][3][4] = "Watt";
+        question[0][0][3][5] = "Volt";
+        question[0][0][3][6] = "Named after Sir Isaac Newton, it measures force.";
+        question[0][0][4][0] = "What is the freezing point of water in Celsius?";
+        question[0][0][4][1] = "0 degrees";
+        question[0][0][4][2] = "0 degrees";
+        question[0][0][4][3] = "100 degrees";
+        question[0][0][4][4] = "50 degrees";
+        question[0][0][4][5] = "-10 degrees";
+        question[0][0][4][6] = "Water turns to ice at this temperature.";
+        question[0][0][5][0] = "What is the name of our planet?";
+        question[0][0][5][1] = "Earth";
+        question[0][0][5][2] = "Earth";
+        question[0][0][5][3] = "Mars";
+        question[0][0][5][4] = "Jupiter";
+        question[0][0][5][5] = "Venus";
+        question[0][0][5][6] = "Our planet is the third from the Sun.";
+
+        // Science - Taxonomy Level 2: Understanding (Easy)
+        question[0][1][0][0] = "Why does ice float on water?";
+        question[0][1][0][1] = "Ice is less dense than water";
+        question[0][1][0][2] = "Ice is less dense than water";
+        question[0][1][0][3] = "Ice is heavier";
+        question[0][1][0][4] = "Ice is warmer";
+        question[0][1][0][5] = "Ice has salt";
+        question[0][1][0][6] = "Lower density makes ice buoyant.";
+        question[0][1][1][0] = "What happens to water when it boils?";
+        question[0][1][1][1] = "It turns into steam";
+        question[0][1][1][2] = "It turns into steam";
+        question[0][1][1][3] = "It freezes";
+        question[0][1][1][4] = "It shrinks";
+        question[0][1][1][5] = "It stays liquid";
+        question[0][1][1][6] = "Boiling changes water to a gas.";
+        question[0][1][2][0] = "Why do plants need sunlight?";
+        question[0][1][2][1] = "To make food through photosynthesis";
+        question[0][1][2][2] = "To make food through photosynthesis";
+        question[0][1][2][3] = "To stay warm";
+        question[0][1][2][4] = "To grow roots";
+        question[0][1][2][5] = "To attract insects";
+        question[0][1][2][6] = "Sunlight powers food production in plants.";
+        question[0][1][3][0] = "What does a thermometer measure?";
+        question[0][1][3][1] = "Temperature";
+        question[0][1][3][2] = "Temperature";
+        question[0][1][3][3] = "Weight";
+        question[0][1][3][4] = "Length";
+        question[0][1][3][5] = "Volume";
+        question[0][1][3][6] = "It shows how hot or cold something is.";
+        question[0][1][4][0] = "Why is the sky blue?";
+        question[0][1][4][1] = "Light scatters in the atmosphere";
+        question[0][1][4][2] = "Light scatters in the atmosphere";
+        question[0][1][4][3] = "The sky reflects the ocean";
+        question[0][1][4][4] = "Clouds are blue";
+        question[0][1][4][5] = "The Sun is blue";
+        question[0][1][4][6] = "Blue light scatters more than other colors.";
+        question[0][1][5][0] = "What does gravity do?";
+        question[0][1][5][1] = "Pulls objects toward each other";
+        question[0][1][5][2] = "Pulls objects toward each other";
+        question[0][1][5][3] = "Pushes objects apart";
+        question[0][1][5][4] = "Stops objects moving";
+        question[0][1][5][5] = "Heats objects up";
+        question[0][1][5][6] = "Gravity keeps us on the ground.";
+
+        // Science - Taxonomy Level 3: Applying (Easy)
+        question[0][2][0][0] = "If you mix red and blue light, what color do you get?";
+        question[0][2][0][1] = "Purple";
+        question[0][2][0][2] = "Purple";
+        question[0][2][0][3] = "Green";
+        question[0][2][0][4] = "Yellow";
+        question[0][2][0][5] = "White";
+        question[0][2][0][6] = "Light colors combine differently than paint.";
+        question[0][2][1][0] = "If a plant is kept in the dark, what happens?";
+        question[0][2][1][1] = "It stops growing";
+        question[0][2][1][2] = "It stops growing";
+        question[0][2][1][3] = "It grows faster";
+        question[0][2][1][4] = "It turns red";
+        question[0][2][1][5] = "It produces fruit";
+        question[0][2][1][6] = "Plants need light for photosynthesis.";
+        question[0][2][2][0] = "If you drop a ball, what will happen?";
+        question[0][2][2][1] = "It will fall";
+        question[0][2][2][2] = "It will fall";
+        question[0][2][2][3] = "It will float";
+        question[0][2][2][4] = "It will fly";
+        question[0][2][2][5] = "It will stop";
+        question[0][2][2][6] = "Gravity pulls objects downward.";
+        question[0][2][3][0] = "If water is heated to 100°C, what happens?";
+        question[0][2][3][1] = "It boils";
+        question[0][2][3][2] = "It boils";
+        question[0][2][3][3] = "It freezes";
+        question[0][2][3][4] = "It cools";
+        question[0][2][3][5] = "It stays the same";
+        question[0][2][3][6] = "Water turns to steam at its boiling point.";
+        question[0][2][4][0] = "If you use a magnifying glass in sunlight, what can happen?";
+        question[0][2][4][1] = "It can start a fire";
+        question[0][2][4][2] = "It can start a fire";
+        question[0][2][4][3] = "It cools objects";
+        question[0][2][4][4] = "It creates water";
+        question[0][2][4][5] = "It stops light";
+        question[0][2][4][6] = "The glass focuses sunlight to a point.";
+        question[0][2][5][0] = "If you push a toy car, what will it do?";
+        question[0][2][5][1] = "Move forward";
+        question[0][2][5][2] = "Move forward";
+        question[0][2][5][3] = "Stay still";
+        question[0][2][5][4] = "Move backward";
+        question[0][2][5][5] = "Fly upward";
+        question[0][2][5][6] = "A push applies force to the car.";
+
+        // Science - Taxonomy Level 4: Analyzing (Easy)
+        question[0][3][0][0] = "What is the difference between a solid and a liquid?";
+        question[0][3][0][1] = "Solids have a fixed shape, liquids do not";
+        question[0][3][0][2] = "Solids have a fixed shape, liquids do not";
+        question[0][3][0][3] = "Liquids are heavier";
+        question[0][3][0][4] = "Solids are invisible";
+        question[0][3][0][5] = "Liquids are solid";
+        question[0][3][0][6] = "Solids keep their shape, liquids flow.";
+        question[0][3][1][0] = "What makes day and night different?";
+        question[0][3][1][1] = "Earth’s rotation";
+        question[0][3][1][2] = "Earth’s rotation";
+        question[0][3][1][3] = "The Moon’s orbit";
+        question[0][3][1][4] = "Cloud cover";
+        question[0][3][1][5] = "Wind speed";
+        question[0][3][1][6] = "Earth turns to face or away from the Sun.";
+        question[0][3][2][0] = "How is a star different from a planet?";
+        question[0][3][2][1] = "Stars produce light, planets reflect it";
+        question[0][3][2][2] = "Stars produce light, planets reflect it";
+        question[0][3][2][3] = "Planets are hotter";
+        question[0][3][2][4] = "Stars are smaller";
+        question[0][3][2][5] = "Planets produce light";
+        question[0][3][2][6] = "Stars shine, planets do not.";
+        question[0][3][3][0] = "What is the difference between a push and a pull?";
+        question[0][3][3][1] = "Push moves away, pull moves closer";
+        question[0][3][3][2] = "Push moves away, pull moves closer";
+        question[0][3][3][3] = "Both are the same";
+        question[0][3][3][4] = "Push stops motion";
+        question[0][3][3][5] = "Pull makes things heavier";
+        question[0][3][3][6] = "Push and pull are levels of force.";
+        question[0][3][4][0] = "How is rain different from snow?";
+        question[0][3][4][1] = "Rain is liquid, snow is solid";
+        question[0][3][4][2] = "Rain is liquid, snow is solid";
+        question[0][3][4][3] = "Snow is warmer";
+        question[0][3][4][4] = "Rain is frozen";
+        question[0][3][4][5] = "Both are the same";
+        question[0][3][4][6] = "Temperature affects water’s form.";
+        question[0][3][5][0] = "What makes a shadow different from a reflection?";
+        question[0][3][5][1] = "Shadows block light, reflections bounce light";
+        question[0][3][5][2] = "Shadows block light, reflections bounce light";
+        question[0][3][5][3] = "Shadows are brighter";
+        question[0][3][5][4] = "Reflections are darker";
+        question[0][3][5][5] = "Both are the same";
+        question[0][3][5][6] = "Shadows form when light is blocked.";
+
+        // Science - Taxonomy Level 5: Evaluating (Easy)
+        question[0][4][0][0] = "Which is the best way to save water at home?";
+        question[0][4][0][1] = "Turn off the tap when brushing teeth";
+        question[0][4][0][2] = "Turn off the tap when brushing teeth";
+        question[0][4][0][3] = "Leave the tap running";
+        question[0][4][0][4] = "Fill a bucket";
+        question[0][4][0][5] = "Use more water";
+        question[0][4][0][6] = "Small actions reduce water waste.";
+        question[0][4][1][0] = "Which is the safest way to observe the Sun?";
+        question[0][4][1][1] = "Use special solar glasses";
+        question[0][4][1][2] = "Use special solar glasses";
+        question[0][4][1][3] = "Look directly at it";
+        question[0][4][1][4] = "Use a mirror";
+        question[0][4][1][5] = "Close your eyes";
+        question[0][4][1][6] = "Protect your eyes from bright sunlight.";
+        question[0][4][2][0] = "Which is the best way to keep food fresh?";
+        question[0][4][2][1] = "Store it in a refrigerator";
+        question[0][4][2][2] = "Store it in a refrigerator";
+        question[0][4][2][3] = "Leave it outside";
+        question[0][4][2][4] = "Heat it up";
+        question[0][4][2][5] = "Put it in sunlight";
+        question[0][4][2][6] = "Cold slows down food spoilage.";
+        question[0][4][3][0] = "Which is the best way to stay warm in winter?";
+        question[0][4][3][1] = "Wear layers of clothing";
+        question[0][4][3][2] = "Wear layers of clothing";
+        question[0][4][3][3] = "Wear thin clothes";
+        question[0][4][3][4] = "Stay outside longer";
+        question[0][4][3][5] = "Drink cold water";
+        question[0][4][3][6] = "Layers trap body heat.";
+        question[0][4][4][0] = "Which is the best way to clean a spill?";
+        question[0][4][4][1] = "Use a cloth or sponge";
+        question[0][4][4][2] = "Use a cloth or sponge";
+        question[0][4][4][3] = "Leave it to dry";
+        question[0][4][4][4] = "Add more liquid";
+        question[0][4][4][5] = "Ignore it";
+        question[0][4][4][6] = "A cloth absorbs the spill.";
+        question[0][4][5][0] = "Which is the best way to see in the dark?";
+        question[0][4][5][1] = "Use a flashlight";
+        question[0][4][5][2] = "Use a flashlight";
+        question[0][4][5][3] = "Close your eyes";
+        question[0][4][5][4] = "Wave your hands";
+        question[0][4][5][5] = "Shout loudly";
+        question[0][4][5][6] = "Light helps you see at night.";
+
+        // Science - Taxonomy Level 6: Creating (Easy)
+        question[0][5][0][0] = "Design a simple model of the solar system.";
+        question[0][5][0][1] = "Use balls to represent planets";
+        question[0][5][0][2] = "Use balls to represent planets";
+        question[0][5][0][3] = "Draw a square";
+        question[0][5][0][4] = "Use only paper";
+        question[0][5][0][5] = "Write a story";
+        question[0][5][0][6] = "A model shows planet positions.";
+        question[0][5][1][0] = "Create a poster about saving water.";
+        question[0][5][1][1] = "Show ways to reduce water use";
+        question[0][5][1][2] = "Show ways to reduce water use";
+        question[0][5][1][3] = "Draw a car";
+        question[0][5][1][4] = "List food recipes";
+        question[0][5][1][5] = "Write a song";
+        question[0][5][1][6] = "A poster teaches conservation.";
+        question[0][5][2][0] = "Plan a garden for a school.";
+        question[0][5][2][1] = "Choose plants that need less water";
+        question[0][5][2][2] = "Choose plants that need less water";
+        question[0][5][2][3] = "Build a fountain";
+        question[0][5][2][4] = "Add a playground";
+        question[0][5][2][5] = "Pave the area";
+        question[0][5][2][6] = "Gardens support local plants.";
+        question[0][5][3][0] = "Design a toy that uses wind power.";
+        question[0][5][3][1] = "Make a simple windmill";
+        question[0][5][3][2] = "Make a simple windmill";
+        question[0][5][3][3] = "Use batteries";
+        question[0][5][3][4] = "Add water";
+        question[0][5][3][5] = "Use glue";
+        question[0][5][3][6] = "Wind can move objects.";
+        question[0][5][4][0] = "Create a chart of animal habitats.";
+        question[0][5][4][1] = "Show animals and their homes";
+        question[0][5][4][2] = "Show animals and their homes";
+        question[0][5][4][3] = "List only colors";
+        question[0][5][4][4] = "Draw shapes";
+        question[0][5][4][5] = "Write numbers";
+        question[0][5][4][6] = "Habitats show where animals live.";
+        question[0][5][5][0] = "Plan a recycling project for home.";
+        question[0][5][5][1] = "Sort paper, plastic, and glass";
+        question[0][5][5][2] = "Sort paper, plastic, and glass";
+        question[0][5][5][3] = "Throw everything away";
+        question[0][5][5][4] = "Mix all waste";
+        question[0][5][5][5] = "Burn trash";
+        question[0][5][5][6] = "Recycling reduces waste.";
+
+        // History - Taxonomy Level 1: Remembering (Easy)
+        question[1][0][0][0] = "Who was the first president of the United States?";
+        question[1][0][0][1] = "George Washington";
+        question[1][0][0][2] = "George Washington";
+        question[1][0][0][3] = "Abraham Lincoln";
+        question[1][0][0][4] = "Thomas Jefferson";
+        question[1][0][0][5] = "John Adams";
+        question[1][0][0][6] = "He led the country from 1789 to 1797.";
+        question[1][0][1][0] = "In which year did Christopher Columbus sail to America?";
+        question[1][0][1][1] = "1492";
+        question[1][0][1][2] = "1492";
+        question[1][0][1][3] = "1776";
+        question[1][0][1][4] = "1620";
+        question[1][0][1][5] = "1812";
+        question[1][0][1][6] = "He sailed across the Atlantic Ocean.";
+        question[1][0][2][0] = "What was the name of the ship that carried the Pilgrims to America?";
+        question[1][0][2][1] = "Mayflower";
+        question[1][0][2][2] = "Mayflower";
+        question[1][0][2][3] = "Santa Maria";
+        question[1][0][2][4] = "Nina";
+        question[1][0][2][5] = "Pinta";
+        question[1][0][2][6] = "It arrived in 1620.";
+        question[1][0][3][0] = "Who built the Great Wall of China?";
+        question[1][0][3][1] = "Emperor Qin Shi Huang";
+        question[1][0][3][2] = "Emperor Qin Shi Huang";
+        question[1][0][3][3] = "Marco Polo";
+        question[1][0][3][4] = "Genghis Khan";
+        question[1][0][3][5] = "Confucius";
+        question[1][0][3][6] = "It was built to protect China.";
+        question[1][0][4][0] = "What ancient wonder was located in Egypt?";
+        question[1][0][4][1] = "Great Pyramid of Giza";
+        question[1][0][4][2] = "Great Pyramid of Giza";
+        question[1][0][4][3] = "Colosseum";
+        question[1][0][4][4] = "Hanging Gardens";
+        question[1][0][4][5] = "Statue of Zeus";
+        question[1][0][4][6] = "It is the oldest wonder still standing.";
+        question[1][0][5][0] = "Who was the famous queen of ancient Egypt?";
+        question[1][0][5][1] = "Cleopatra";
+        question[1][0][5][2] = "Cleopatra";
+        question[1][0][5][3] = "Nefertiti";
+        question[1][0][5][4] = "Hatshepsut";
+        question[1][0][5][5] = "Isis";
+        question[1][0][5][6] = "She ruled during the Ptolemaic period.";
+
+        // History - Taxonomy Level 2: Understanding (Easy)
+        question[1][1][0][0] = "Why did the Pilgrims come to America?";
+        question[1][1][0][1] = "To find religious freedom";
+        question[1][1][0][2] = "To find religious freedom";
+        question[1][1][0][3] = "To mine gold";
+        question[1][1][0][4] = "To fight wars";
+        question[1][1][0][5] = "To build ships";
+        question[1][1][0][6] = "They wanted to worship freely.";
+        question[1][1][1][0] = "What was the purpose of the Great Wall of China?";
+        question[1][1][1][1] = "To protect against invaders";
+        question[1][1][1][2] = "To protect against invaders";
+        question[1][1][1][3] = "To mark a trade route";
+        question[1][1][1][4] = "To create a city";
+        question[1][1][1][5] = "To grow crops";
+        question[1][1][1][6] = "It kept enemies out of China.";
+        question[1][1][2][0] = "Why was the Declaration of Independence written?";
+        question[1][1][2][1] = "To announce freedom from Britain";
+        question[1][1][2][2] = "To announce freedom from Britain";
+        question[1][1][2][3] = "To start a war";
+        question[1][1][2][4] = "To elect a king";
+        question[1][1][2][5] = "To build a city";
+        question[1][1][2][6] = "It was signed in 1776.";
+        question[1][1][3][0] = "What did ancient Egyptians use pyramids for?";
+        question[1][1][3][1] = "As tombs for pharaohs";
+        question[1][1][3][2] = "As tombs for pharaohs";
+        question[1][1][3][3] = "As markets";
+        question[1][1][3][4] = "As schools";
+        question[1][1][3][5] = "As forts";
+        question[1][1][3][6] = "Pyramids held royal burials.";
+        question[1][1][4][0] = "Why did people build castles in the Middle Ages?";
+        question[1][1][4][1] = "For protection and defense";
+        question[1][1][4][2] = "For protection and defense";
+        question[1][1][4][3] = "To grow food";
+        question[1][1][4][4] = "To hold markets";
+        question[1][1][4][5] = "To teach children";
+        question[1][1][4][6] = "Castles were strongholds for safety.";
+        question[1][1][5][0] = "What was the purpose of the Roman Colosseum?";
+        question[1][1][5][1] = "To host gladiator fights";
+        question[1][1][5][2] = "To host gladiator fights";
+        question[1][1][5][3] = "To store food";
+        question[1][1][5][4] = "To house people";
+        question[1][1][5][5] = "To grow plants";
+        question[1][1][5][6] = "It was a place for public entertainment.";
+
+        // History - Taxonomy Level 3: Applying (Easy)
+        question[1][2][0][0] = "If you were a Pilgrim, what would you bring to America?";
+        question[1][2][0][1] = "Clothes and tools";
+        question[1][2][0][2] = "Clothes and tools";
+        question[1][2][0][3] = "Toys and games";
+        question[1][2][0][4] = "Cars and phones";
+        question[1][2][0][5] = "Books and TVs";
+        question[1][2][0][6] = "Pilgrims needed basics to survive.";
+        question[1][2][1][0] = "If you lived in ancient Egypt, where would you bury a pharaoh?";
+        question[1][2][1][1] = "In a pyramid";
+        question[1][2][1][2] = "In a pyramid";
+        question[1][2][1][3] = "In a river";
+        question[1][2][1][4] = "In a forest";
+        question[1][2][1][5] = "In a house";
+        question[1][2][1][6] = "Pyramids were tombs for royalty.";
+        question[1][2][2][0] = "If you were building a castle, what would you include?";
+        question[1][2][2][1] = "High walls and a moat";
+        question[1][2][2][2] = "High walls and a moat";
+        question[1][2][2][3] = "Glass windows and carpets";
+        question[1][2][2][4] = "Swimming pools";
+        question[1][2][2][5] = "Flat roofs";
+        question[1][2][2][6] = "Castles needed defenses.";
+        question[1][2][3][0] = "If you were an explorer like Columbus, what would you need?";
+        question[1][2][3][1] = "A ship and a map";
+        question[1][2][3][2] = "A ship and a map";
+        question[1][2][3][3] = "A car and a phone";
+        question[1][2][3][4] = "A plane and a radio";
+        question[1][2][3][5] = "A bike and a book";
+        question[1][2][3][6] = "Explorers needed navigation tools.";
+        question[1][2][4][0] = "If you were in the Colosseum, what would you see?";
+        question[1][2][4][1] = "Gladiator fights";
+        question[1][2][4][2] = "Gladiator fights";
+        question[1][2][4][3] = "Farmers working";
+        question[1][2][4][4] = "Teachers lecturing";
+        question[1][2][4][5] = "Painters drawing";
+        question[1][2][4][6] = "The Colosseum was for entertainment.";
+        question[1][2][5][0] = "If you were a knight, what would you wear?";
+        question[1][2][5][1] = "Armor and a helmet";
+        question[1][2][5][2] = "Armor and a helmet";
+        question[1][2][5][3] = "A suit and tie";
+        question[1][2][5][4] = "A robe and sandals";
+        question[1][2][5][5] = "A hat and gloves";
+        question[1][2][5][6] = "Knights needed protection in battle.";
+
+        // History - Taxonomy Level 4: Analyzing (Easy)
+        question[1][3][0][0] = "What is the difference between a king and a president?";
+        question[1][3][0][1] = "A king is born, a president is elected";
+        question[1][3][0][2] = "A king is born, a president is elected";
+        question[1][3][0][3] = "Both are elected";
+        question[1][3][0][4] = "Both are born rulers";
+        question[1][3][0][5] = "A president rules forever";
+        question[1][3][0][6] = "Leadership roles have different origins.";
+        question[1][3][1][0] = "How is a pyramid different from a castle?";
+        question[1][3][1][1] = "Pyramids are tombs, castles are homes";
+        question[1][3][1][2] = "Pyramids are tombs, castles are homes";
+        question[1][3][1][3] = "Both are homes";
+        question[1][3][1][4] = "Both are tombs";
+        question[1][3][1][5] = "Pyramids are for defense";
+        question[1][3][1][6] = "Each served a unique purpose.";
+        question[1][3][2][0] = "What makes the Great Wall different from a city wall?";
+        question[1][3][2][1] = "The Great Wall is longer";
+        question[1][3][2][2] = "The Great Wall is longer";
+        question[1][3][2][3] = "City walls are longer";
+        question[1][3][2][4] = "Both are the same";
+        question[1][3][2][5] = "City walls are taller";
+        question[1][3][2][6] = "The Great Wall spans a country.";
+        question[1][3][3][0] = "How is a knight different from a soldier?";
+        question[1][3][3][1] = "Knights serve lords, soldiers serve countries";
+        question[1][3][3][2] = "Knights serve lords, soldiers serve countries";
+        question[1][3][3][3] = "Both are the same";
+        question[1][3][3][4] = "Soldiers ride horses";
+        question[1][3][3][5] = "Knights use guns";
+        question[1][3][3][6] = "Knights lived in the Middle Ages.";
+        question[1][3][4][0] = "What is the difference between a ship and a boat?";
+        question[1][3][4][1] = "Ships are larger than boats";
+        question[1][3][4][2] = "Ships are larger than boats";
+        question[1][3][4][3] = "Boats are larger";
+        question[1][3][4][4] = "Both are the same";
+        question[1][3][4][5] = "Ships stay on land";
+        question[1][3][4][6] = "Size defines their use.";
+        question[1][3][5][0] = "How is ancient Egypt different from ancient Rome?";
+        question[1][3][5][1] = "Egypt had pharaohs, Rome had emperors";
+        question[1][3][5][2] = "Egypt had pharaohs, Rome had emperors";
+        question[1][3][5][3] = "Both had kings";
+        question[1][3][5][4] = "Rome had pyramids";
+        question[1][3][5][5] = "Egypt had a Colosseum";
+        question[1][3][5][6] = "Each had unique rulers and buildings.";
+
+        // History - Taxonomy Level 5: Evaluating (Easy)
+        question[1][4][0][0] = "Which was the best reason for building the Great Wall?";
+        question[1][4][0][1] = "To protect China";
+        question[1][4][0][2] = "To protect China";
+        question[1][4][0][3] = "To make a road";
+        question[1][4][0][4] = "To grow food";
+        question[1][4][0][5] = "To build houses";
+        question[1][4][0][6] = "Defense was the main goal.";
+        question[1][4][1][0] = "Which was the best way to travel in ancient times?";
+        question[1][4][1][1] = "By ship";
+        question[1][4][1][2] = "By ship";
+        question[1][4][1][3] = "By car";
+        question[1][4][1][4] = "By plane";
+        question[1][4][1][5] = "By train";
+        question[1][4][1][6] = "Ships crossed oceans.";
+        question[1][4][2][0] = "Which was the best place to live in ancient Egypt?";
+        question[1][4][2][1] = "Near the Nile River";
+        question[1][4][2][2] = "Near the Nile River";
+        question[1][4][2][3] = "In the desert";
+        question[1][4][2][4] = "On a mountain";
+        question[1][4][2][5] = "In a forest";
+        question[1][4][2][6] = "The Nile provided water and food.";
+        question[1][4][3][0] = "Which was the best job in a castle?";
+        question[1][4][3][1] = "Knight";
+        question[1][4][3][2] = "Knight";
+        question[1][4][3][3] = "Farmer";
+        question[1][4][3][4] = "Merchant";
+        question[1][4][3][5] = "Sailor";
+        question[1][4][3][6] = "Knights were respected warriors.";
+        question[1][4][4][0] = "Which was the best invention of ancient Rome?";
+        question[1][4][4][1] = "Aqueducts";
+        question[1][4][4][2] = "Aqueducts";
+        question[1][4][4][3] = "Pyramids";
+        question[1][4][4][4] = "Great Wall";
+        question[1][4][4][5] = "Airplanes";
+        question[1][4][4][6] = "Aqueducts brought water to cities.";
+        question[1][4][5][0] = "Which was the best reason to explore new lands?";
+        question[1][4][5][1] = "To find resources";
+        question[1][4][5][2] = "To find resources";
+        question[1][4][5][3] = "To stay home";
+        question[1][4][5][4] = "To avoid trade";
+        question[1][4][5][5] = "To build walls";
+        question[1][4][5][6] = "Explorers sought wealth.";
+
+        // History - Taxonomy Level 6: Creating (Easy)
+        question[1][5][0][0] = "Design a flag for ancient Egypt.";
+        question[1][5][0][1] = "Use symbols like the ankh or pyramid";
+        question[1][5][0][2] = "Use symbols like the ankh or pyramid";
+        question[1][5][0][3] = "Draw a car";
+        question[1][5][0][4] = "Use only dots";
+        question[1][5][0][5] = "Write numbers";
+        question[1][5][0][6] = "Symbols represent culture.";
+        question[1][5][1][0] = "Create a model of a castle.";
+        question[1][5][1][1] = "Include walls and towers";
+        question[1][5][1][2] = "Include walls and towers";
+        question[1][5][1][3] = "Make a flat square";
+        question[1][5][1][4] = "Use only paper";
+        question[1][5][1][5] = "Draw a circle";
+        question[1][5][1][6] = "Castles had defensive features.";
+        question[1][5][2][0] = "Plan a festival for ancient Rome.";
+        question[1][5][2][1] = "Include games and food";
+        question[1][5][2][2] = "Include games and food";
+        question[1][5][2][3] = "Build a wall";
+        question[1][5][2][4] = "Grow crops";
+        question[1][5][2][5] = "Make tools";
+        question[1][5][2][6] = "Festivals were for fun.";
+        question[1][5][3][0] = "Design a map of a new colony.";
+        question[1][5][3][1] = "Show houses and a river";
+        question[1][5][3][2] = "Show houses and a river";
+        question[1][5][3][3] = "Draw only trees";
+        question[1][5][3][4] = "Write a story";
+        question[1][5][3][5] = "Use one color";
+        question[1][5][3][6] = "Maps help plan settlements.";
+        question[1][5][4][0] = "Create a story about a knight.";
+        question[1][5][4][1] = "Describe his adventures";
+        question[1][5][4][2] = "Describe his adventures";
+        question[1][5][4][3] = "List numbers";
+        question[1][5][4][4] = "Draw shapes";
+        question[1][5][4][5] = "Write a poem";
+        question[1][5][4][6] = "Stories bring history to life.";
+        question[1][5][5][0] = "Plan a museum exhibit on explorers.";
+        question[1][5][5][1] = "Show maps and ships";
+        question[1][5][5][2] = "Show maps and ships";
+        question[1][5][5][3] = "Display only rocks";
+        question[1][5][5][4] = "Grow plants";
+        question[1][5][5][5] = "Build a wall";
+        question[1][5][5][6] = "Exhibits teach about exploration.";
+
+        // Geography - Taxonomy Level 1: Remembering (Easy)
+        question[2][0][0][0] = "What is the capital of France?";
+        question[2][0][0][1] = "Paris";
+        question[2][0][0][2] = "Paris";
+        question[2][0][0][3] = "London";
+        question[2][0][0][4] = "Berlin";
+        question[2][0][0][5] = "Madrid";
+        question[2][0][0][6] = "Capital city of France due to its famous landmarks like the Eiffel Tower.";
+        question[2][0][1][0] = "What is the largest continent?";
+        question[2][0][1][1] = "Asia";
+        question[2][0][1][2] = "Asia";
+        question[2][0][1][3] = "Africa";
+        question[2][0][1][4] = "Australia";
+        question[2][0][1][5] = "Europe";
+        question[2][0][1][6] = "It is home to many countries.";
+        question[2][0][2][0] = "What is the tallest mountain in the world?";
+        question[2][0][2][1] = "Mount Everest";
+        question[2][0][2][2] = "Mount Everest";
+        question[2][0][2][3] = "Mount Kilimanjaro";
+        question[2][0][2][4] = "K2";
+        question[2][0][2][5] = "Mount Fuji";
+        question[2][0][2][6] = "It is located in the Himalayas.";
+        question[2][0][3][0] = "What is the largest ocean?";
+        question[2][0][3][1] = "Pacific Ocean";
+        question[2][0][3][2] = "Pacific Ocean";
+        question[2][0][3][3] = "Atlantic Ocean";
+        question[2][0][3][4] = "Indian Ocean";
+        question[2][0][3][5] = "Arctic Ocean";
+        question[2][0][3][6] = "It is the biggest body of water.";
+        question[2][0][4][0] = "What is the longest river in the world?";
+        question[2][0][4][1] = "Nile River";
+        question[2][0][4][2] = "Nile River";
+        question[2][0][4][3] = "Amazon River";
+        question[2][0][4][4] = "Mississippi River";
+        question[2][0][4][5] = "Yangtze River";
+        question[2][0][4][6] = "It flows through Africa.";
+        question[2][0][5][0] = "What is the name of the hottest desert?";
+        question[2][0][5][1] = "Sahara Desert";
+        question[2][0][5][2] = "Sahara Desert";
+        question[2][0][5][3] = "Gobi Desert";
+        question[2][0][5][4] = "Kalahari Desert";
+        question[2][0][5][5] = "Mojave Desert";
+        question[2][0][5][6] = "It is in northern Africa.";
+
+        // Geography - Taxonomy Level 2: Understanding (Easy)
+        question[2][1][0][0] = "Why is the equator hot?";
+        question[2][1][0][1] = "It gets direct sunlight";
+        question[2][1][0][2] = "It gets direct sunlight";
+        question[2][1][0][3] = "It is near the ocean";
+        question[2][1][0][4] = "It has no mountains";
+        question[2][1][0][5] = "It is always cloudy";
+        question[2][1][0][6] = "Sunlight hits the equator straight on.";
+        question[2][1][1][0] = "What causes rain in a rainforest?";
+        question[2][1][1][1] = "Warm air holds moisture";
+        question[2][1][1][2] = "Warm air holds moisture";
+        question[2][1][1][3] = "Cold air stops rain";
+        question[2][1][1][4] = "Dry air creates clouds";
+        question[2][1][1][5] = "No air movement";
+        question[2][1][1][6] = "Heat makes water evaporate.";
+        question[2][1][2][0] = "Why do mountains have snow on top?";
+        question[2][1][2][1] = "Higher areas are colder";
+        question[2][1][2][2] = "Higher areas are colder";
+        question[2][1][2][3] = "They get more rain";
+        question[2][1][2][4] = "They are near the Sun";
+        question[2][1][2][5] = "They have less wind";
+        question[2][1][2][6] = "Cold air at high altitudes freezes water.";
+        question[2][1][3][0] = "What makes a desert dry?";
+        question[2][1][3][1] = "Little rainfall";
+        question[2][1][3][2] = "Little rainfall";
+        question[2][1][3][3] = "Too much water";
+        question[2][1][3][4] = "Cold temperatures";
+        question[2][1][3][5] = "Many trees";
+        question[2][1][3][6] = "Deserts get very little water.";
+        question[2][1][4][0] = "Why do rivers flow to the sea?";
+        question[2][1][4][1] = "Gravity pulls water downhill";
+        question[2][1][4][2] = "Gravity pulls water downhill";
+        question[2][1][4][3] = "The sea pushes water";
+        question[2][1][4][4] = "Rivers are flat";
+        question[2][1][4][5] = "Wind moves water";
+        question[2][1][4][6] = "Water flows to lower areas.";
+        question[2][1][5][0] = "What causes waves in the ocean?";
+        question[2][1][5][1] = "Wind blows over water";
+        question[2][1][5][2] = "Wind blows over water";
+        question[2][1][5][3] = "The Moon pulls water";
+        question[2][1][5][4] = "Fish swim fast";
+        question[2][1][5][5] = "Rocks fall in";
+        question[2][1][5][6] = "Wind creates ripples on water.";
+
+        // Geography - Taxonomy Level 3: Applying (Easy)
+        question[2][2][0][0] = "If you are in Paris, what country are you in?";
+        question[2][2][0][1] = "France";
+        question[2][2][0][2] = "France";
+        question[2][2][0][3] = "Italy";
+        question[2][2][0][4] = "Spain";
+        question[2][2][0][5] = "Germany";
+        question[2][2][0][6] = "Paris is the capital of France.";
+        question[2][2][1][0] = "If you see Mount Everest, what continent are you on?";
+        question[2][2][1][1] = "Asia";
+        question[2][2][1][2] = "Asia";
+        question[2][2][1][3] = "Africa";
+        question[2][2][1][4] = "South America";
+        question[2][2][1][5] = "Australia";
+        question[2][2][1][6] = "Mount Everest is in the Himalayas.";
+        question[2][2][2][0] = "If you are sailing in the Pacific, what are you crossing?";
+        question[2][2][2][1] = "An ocean";
+        question[2][2][2][2] = "An ocean";
+        question[2][2][2][3] = "A river";
+        question[2][2][2][4] = "A desert";
+        question[2][2][2][5] = "A mountain";
+        question[2][2][2][6] = "The Pacific is the largest ocean.";
+        question[2][2][3][0] = "If you are in the Sahara, what are you crossing?";
+        question[2][2][3][1] = "A desert";
+        question[2][2][3][2] = "A desert";
+        question[2][2][3][3] = "A forest";
+        question[2][2][3][4] = "A river";
+        question[2][2][3][5] = "A city";
+        question[2][2][3][6] = "The Sahara is very dry.";
+        question[2][2][4][0] = "If you follow the Nile, where will you end up?";
+        question[2][2][4][1] = "Mediterranean Sea";
+        question[2][2][4][2] = "Mediterranean Sea";
+        question[2][2][4][3] = "Pacific Ocean";
+        question[2][2][4][4] = "Red Sea";
+        question[2][2][4][5] = "Atlantic Ocean";
+        question[2][2][4][6] = "The Nile flows north.";
+        question[2][2][5][0] = "If you are on a rainforest trail, what continent might you be on?";
+        question[2][2][5][1] = "South America";
+        question[2][2][5][2] = "South America";
+        question[2][2][5][3] = "Antarctica";
+        question[2][2][5][4] = "Europe";
+        question[2][2][5][5] = "Australia";
+        question[2][2][5][6] = "The Amazon is in South America.";
+
+        // Geography - Taxonomy Level 4: Analyzing (Easy)
+        question[2][3][0][0] = "What is the difference between a river and a lake?";
+        question[2][3][0][1] = "Rivers flow, lakes are still";
+        question[2][3][0][2] = "Rivers flow, lakes are still";
+        question[2][3][0][3] = "Lakes flow, rivers are still";
+        question[2][3][0][4] = "Both are the same";
+        question[2][3][0][5] = "Rivers are deeper";
+        question[2][3][0][6] = "Rivers move water, lakes hold it.";
+        question[2][3][1][0] = "How is a desert different from a forest?";
+        question[2][3][1][1] = "Deserts are dry, forests are green";
+        question[2][3][1][2] = "Deserts are dry, forests are green";
+        question[2][3][1][3] = "Forests are dry";
+        question[2][3][1][4] = "Both are the same";
+        question[2][3][1][5] = "Deserts have more trees";
+        question[2][3][1][6] = "Water makes forests lush.";
+        question[2][3][2][0] = "What makes a mountain different from a hill?";
+        question[2][3][2][1] = "Mountains are taller";
+        question[2][3][2][2] = "Mountains are taller";
+        question[2][3][2][3] = "Hills are taller";
+        question[2][3][2][4] = "Both are the same";
+        question[2][3][2][5] = "Hills are steeper";
+        question[2][3][2][6] = "Height defines mountains.";
+        question[2][3][3][0] = "How is an ocean different from a sea?";
+        question[2][3][3][1] = "Oceans are larger";
+        question[2][3][3][2] = "Oceans are larger";
+        question[2][3][3][3] = "Seas are larger";
+        question[2][3][3][4] = "Both are the same";
+        question[2][3][3][5] = "Seas are deeper";
+        question[2][3][3][6] = "Oceans cover more area.";
+        question[2][3][4][0] = "What is the difference between the equator and the poles?";
+        question[2][3][4][1] = "Equator is hot, poles are cold";
+        question[2][3][4][2] = "Equator is hot, poles are cold";
+        question[2][3][4][3] = "Poles are hot";
+        question[2][3][4][4] = "Both are the same";
+        question[2][3][4][5] = "Equator is cold";
+        question[2][3][4][6] = "Temperature varies by location.";
+        question[2][3][5][0] = "How is a city different from a village?";
+        question[2][3][5][1] = "Cities are larger";
+        question[2][3][5][2] = "Cities are larger";
+        question[2][3][5][3] = "Villages are larger";
+        question[2][3][5][4] = "Both are the same";
+        question[2][3][5][5] = "Villages have more buildings";
+        question[2][3][5][6] = "Size and population differ.";
+
+        // Geography - Taxonomy Level 5: Evaluating (Easy)
+        question[2][4][0][0] = "Which is the best place to grow crops?";
+        question[2][4][0][1] = "Near a river";
+        question[2][4][0][2] = "Near a river";
+        question[2][4][0][3] = "In a desert";
+        question[2][4][0][4] = "On a mountain";
+        question[2][4][0][5] = "In the ocean";
+        question[2][4][0][6] = "Rivers provide water for crops.";
+        question[2][4][1][0] = "Which is the best way to travel across an ocean?";
+        question[2][4][1][1] = "By ship";
+        question[2][4][1][2] = "By ship";
+        question[2][4][1][3] = "By car";
+        question[2][4][1][4] = "By bike";
+        question[2][4][1][5] = "By walking";
+        question[2][4][1][6] = "Ships are built for ocean travel.";
+        question[2][4][2][0] = "Which is the best place to build a city?";
+        question[2][4][2][1] = "Near a water source";
+        question[2][4][2][2] = "Near a water source";
+        question[2][4][2][3] = "In a desert";
+        question[2][4][2][4] = "On a cliff";
+        question[2][4][2][5] = "In a forest";
+        question[2][4][2][6] = "Water supports city life.";
+        question[2][4][3][0] = "Which is the best way to stay cool in a desert?";
+        question[2][4][3][1] = "Wear light clothing";
+        question[2][4][3][2] = "Wear light clothing";
+        question[2][4][3][3] = "Wear heavy coats";
+        question[2][4][3][4] = "Stay in the Sun";
+        question[2][4][3][5] = "Avoid water";
+        question[2][4][3][6] = "Light clothes reflect heat.";
+        question[2][4][4][0] = "Which is the best way to find north?";
+        question[2][4][4][1] = "Use a compass";
+        question[2][4][4][2] = "Use a compass";
+        question[2][4][4][3] = "Look at the ground";
+        question[2][4][4][4] = "Follow the wind";
+        question[2][4][4][5] = "Guess randomly";
+        question[2][4][4][6] = "A compass points to north.";
+        question[2][4][5][0] = "Which is the best place to see animals?";
+        question[2][4][5][1] = "In a rainforest";
+        question[2][4][5][2] = "In a rainforest";
+        question[2][4][5][3] = "In a city";
+        question[2][4][5][4] = "In the ocean";
+        question[2][4][5][5] = "On a mountain";
+        question[2][4][5][6] = "Rainforests have many species.";
+
+        // Geography - Taxonomy Level 6: Creating (Easy)
+        question[2][5][0][0] = "Design a map of a small island.";
+        question[2][5][0][1] = "Show a beach and trees";
+        question[2][5][0][2] = "Show a beach and trees";
+        question[2][5][0][3] = "Draw only rocks";
+        question[2][5][0][4] = "Write a story";
+        question[2][5][0][5] = "Use one color";
+        question[2][5][0][6] = "Maps show land features.";
+        question[2][5][1][0] = "Create a poster about the Nile River.";
+        question[2][5][1][1] = "Show its path and animals";
+        question[2][5][1][2] = "Show its path and animals";
+        question[2][5][1][3] = "Draw a city";
+        question[2][5][1][4] = "List numbers";
+        question[2][5][1][5] = "Write a song";
+        question[2][5][1][6] = "Posters teach about geography.";
+        question[2][5][2][0] = "Plan a park for a city.";
+        question[2][5][2][1] = "Include trees and a pond";
+        question[2][5][2][2] = "Include trees and a pond";
+        question[2][5][2][3] = "Build a factory";
+        question[2][5][2][4] = "Pave the area";
+        question[2][5][2][5] = "Add a desert";
+        question[2][5][2][6] = "Parks provide green spaces.";
+        question[2][5][3][0] = "Design a flag for a new country.";
+        question[2][5][3][1] = "Use colors and symbols";
+        question[2][5][3][2] = "Use colors and symbols";
+        question[2][5][3][3] = "Draw a square";
+        question[2][5][3][4] = "Write numbers";
+        question[2][5][3][5] = "Use only lines";
+        question[2][5][3][6] = "Flags represent a country.";
+        question[2][5][4][0] = "Create a model of a mountain.";
+        question[2][5][4][1] = "Use clay or paper";
+        question[2][5][4][2] = "Use clay or paper";
+        question[2][5][4][3] = "Draw a flat line";
+        question[2][5][4][4] = "Write a story";
+        question[2][5][4][5] = "Use water";
+        question[2][5][4][6] = "Models show land shapes.";
+        question[2][5][5][0] = "Plan a trip across a continent.";
+        question[2][5][5][1] = "Choose cities and routes";
+        question[2][5][5][2] = "Choose cities and routes";
+        question[2][5][5][3] = "Stay in one place";
+        question[2][5][5][4] = "Draw a circle";
+        question[2][5][5][5] = "Write a poem";
+        question[2][5][5][6] = "Trips explore new places.";
+
+        // Mathematics - Taxonomy Level 1: Remembering (Easy)
+        question[3][0][0][0] = "What is 2 + 2?";
+        question[3][0][0][1] = "4";
+        question[3][0][0][2] = "4";
+        question[3][0][0][3] = "3";
+        question[3][0][0][4] = "5";
+        question[3][0][0][5] = "6";
+        question[3][0][0][6] = "Addition combines numbers.";
+        question[3][0][1][0] = "What is 5 - 3?";
+        question[3][0][1][1] = "2";
+        question[3][0][1][2] = "2";
+        question[3][0][1][3] = "1";
+        question[3][0][1][4] = "4";
+        question[3][0][1][5] = "8";
+        question[3][0][1][6] = "Subtraction takes one number away.";
+        question[3][0][2][0] = "What is 3 × 2?";
+        question[3][0][2][1] = "6";
+        question[3][0][2][2] = "6";
+        question[3][0][2][3] = "5";
+        question[3][0][2][4] = "8";
+        question[3][0][2][5] = "9";
+        question[3][0][2][6] = "Multiplication repeats addition.";
+        question[3][0][3][0] = "What is 8 ÷ 2?";
+        question[3][0][3][1] = "4";
+        question[3][0][3][2] = "4";
+        question[3][0][3][3] = "3";
+        question[3][0][3][4] = "6";
+        question[3][0][3][5] = "2";
+        question[3][0][3][6] = "Division splits numbers.";
+        question[3][0][4][0] = "What is the shape with 4 equal sides?";
+        question[3][0][4][1] = "Square";
+        question[3][0][4][2] = "Square";
+        question[3][0][4][3] = "Circle";
+        question[3][0][4][4] = "Triangle";
+        question[3][0][4][5] = "Rectangle";
+        question[3][0][4][6] = "A square has equal sides.";
+        question[3][0][5][0] = "What is the number after 9?";
+        question[3][0][5][1] = "10";
+        question[3][0][5][2] = "10";
+        question[3][0][5][3] = "8";
+        question[3][0][5][4] = "11";
+        question[3][0][5][5] = "7";
+        question[3][0][5][6] = "Counting goes up by one.";
+
+        // Mathematics - Taxonomy Level 2: Understanding (Easy)
+        question[3][1][0][0] = "Why is 4 + 3 the same as 3 + 4?";
+        question[3][1][0][1] = "Addition is commutative";
+        question[3][1][0][2] = "Addition is commutative";
+        question[3][1][0][3] = "Numbers are different";
+        question[3][1][0][4] = "It is subtraction";
+        question[3][1][0][5] = "Order changes the answer";
+        question[3][1][0][6] = "Order does not affect addition.";
+        question[3][1][1][0] = "What does a circle look like?";
+        question[3][1][1][1] = "A round shape";
+        question[3][1][1][2] = "A round shape";
+        question[3][1][1][3] = "A square shape";
+        question[3][1][1][4] = "A straight line";
+        question[3][1][1][5] = "A triangle";
+        question[3][1][1][6] = "Circles have no corners.";
+        question[3][1][2][0] = "Why is 10 - 5 different from 5 - 10?";
+        question[3][1][2][1] = "Subtraction is not commutative";
+        question[3][1][2][2] = "Subtraction is not commutative";
+        question[3][1][2][3] = "Both are the same";
+        question[3][1][2][4] = "It is addition";
+        question[3][1][2][5] = "Order does not matter";
+        question[3][1][2][6] = "Order matters in subtraction.";
+        question[3][1][3][0] = "What does 2 × 3 mean?";
+        question[3][1][3][1] = "Two groups of three";
+        question[3][1][3][2] = "Two groups of three";
+        question[3][1][3][3] = "Three groups of one";
+        question[3][1][3][4] = "Two plus three";
+        question[3][1][3][5] = "Three minus two";
+        question[3][1][3][6] = "Multiplication shows groups.";
+        question[3][1][4][0] = "Why is a square a level of rectangle?";
+        question[3][1][4][1] = "It has four right angles";
+        question[3][1][4][2] = "It has four right angles";
+        question[3][1][4][3] = "It has no angles";
+        question[3][1][4][4] = "It is round";
+        question[3][1][4][5] = "It has three sides";
+        question[3][1][4][6] = "Rectangles include squares.";
+        question[3][1][5][0] = "What does a number line show?";
+        question[3][1][5][1] = "Order of numbers";
+        question[3][1][5][2] = "Order of numbers";
+        question[3][1][5][3] = "Shapes";
+        question[3][1][5][4] = "Colors";
+        question[3][1][5][5] = "Letters";
+        question[3][1][5][6] = "Numbers are placed in sequence.";
+
+        // Mathematics - Taxonomy Level 3: Applying (Easy)
+        question[3][2][0][0] = "If you have 3 apples and add 2 more, how many do you have?";
+        question[3][2][0][1] = "5";
+        question[3][2][0][2] = "5";
+        question[3][2][0][3] = "4";
+        question[3][2][0][4] = "6";
+        question[3][2][0][5] = "3";
+        question[3][2][0][6] = "Add the numbers together.";
+        question[3][2][1][0] = "If you have 6 cookies and eat 2, how many are left?";
+        question[3][2][1][1] = "4";
+        question[3][2][1][2] = "4";
+        question[3][2][1][3] = "5";
+        question[3][2][1][4] = "8";
+        question[3][2][1][5] = "2";
+        question[3][2][1][6] = "Subtract what you ate.";
+        question[3][2][2][0] = "If you buy 2 packs of 3 pens, how many pens do you have?";
+        question[3][2][2][1] = "6";
+        question[3][2][2][2] = "6";
+        question[3][2][2][3] = "5";
+        question[3][2][2][4] = "8";
+        question[3][2][2][5] = "4";
+        question[3][2][2][6] = "Multiply packs by pens.";
+        question[3][2][3][0] = "If you share 10 candies among 2 friends, how many does each get?";
+        question[3][2][3][1] = "5";
+        question[3][2][3][2] = "5";
+        question[3][2][3][3] = "4";
+        question[3][2][3][4] = "6";
+        question[3][2][3][5] = "2";
+        question[3][2][3][6] = "Divide equally.";
+        question[3][2][4][0] = "If a square has a side of 3, what is its perimeter?";
+        question[3][2][4][1] = "12";
+        question[3][2][4][2] = "12";
+        question[3][2][4][3] = "9";
+        question[3][2][4][4] = "6";
+        question[3][2][4][5] = "15";
+        question[3][2][4][6] = "Add all four sides.";
+        question[3][2][5][0] = "If you count by 2s, what is the 3rd number?";
+        question[3][2][5][1] = "6";
+        question[3][2][5][2] = "6";
+        question[3][2][5][3] = "4";
+        question[3][2][5][4] = "8";
+        question[3][2][5][5] = "2";
+        question[3][2][5][6] = "Skip count by twos.";
+
+        // Mathematics - Taxonomy Level 4: Analyzing (Easy)
+        question[3][3][1][0] = "How is a square different from a triangle?";
+        question[3][3][1][1] = "Square has 4 sides, triangle has 3";
+        question[3][3][1][2] = "Square has 4 sides, triangle has 3";
+        question[3][3][1][3] = "Both have 3 sides";
+        question[3][3][1][4] = "Both have 4 sides";
+        question[3][3][1][5] = "Square has 3 sides";
+        question[3][3][1][6] = "Side count defines them.";
+        question[3][3][2][0] = "What is the difference between even and odd numbers?";
+        question[3][3][2][1] = "Even is divisible by 2, odd is not";
+        question[3][3][2][2] = "Even is divisible by 2, odd is not";
+        question[3][3][2][3] = "Odd is divisible by 2";
+        question[3][3][2][4] = "Both are the same";
+        question[3][3][2][5] = "Even is not divisible by 2";
+        question[3][3][2][6] = "Divisibility determines level.";
+        question[3][3][3][0] = "How does counting differ from measuring?";
+        question[3][3][3][1] = "Counting uses whole numbers, measuring uses units";
+        question[3][3][3][2] = "Counting uses whole numbers, measuring uses units";
+        question[3][3][3][3] = "Measuring uses whole numbers";
+        question[3][3][3][4] = "Both are the same";
+        question[3][3][3][5] = "Counting uses units";
+        question[3][3][3][6] = "Purpose differs.";
+        question[3][3][4][0] = "What distinguishes a circle from a square?";
+        question[3][3][4][1] = "Circle is round, square has straight sides";
+        question[3][3][4][2] = "Circle is round, square has straight sides";
+        question[3][3][4][3] = "Square is round";
+        question[3][3][4][4] = "Both are the same";
+        question[3][3][4][5] = "Circle has straight sides";
+        question[3][3][4][6] = "Shape defines them.";
+        question[3][3][5][0] = "How does a whole number differ from a fraction?";
+        question[3][3][5][1] = "Whole number is complete, fraction is part";
+        question[3][3][5][2] = "Whole number is complete, fraction is part";
+        question[3][3][5][3] = "Fraction is complete";
+        question[3][3][5][4] = "Both are the same";
+        question[3][3][5][5] = "Whole number is part";
+        question[3][3][5][6] = "Fractions show parts.";
+
+        // Mathematics - Taxonomy Level 5: Evaluating (Easy)
+        question[3][4][0][0] = "Which is the best way to count objects quickly?";
+        question[3][4][0][1] = "Group by tens";
+        question[3][4][0][2] = "Group by tens";
+        question[3][4][0][3] = "Count one by one";
+        question[3][4][0][4] = "Guess the number";
+        question[3][4][0][5] = "Use a ruler";
+        question[3][4][0][6] = "Grouping saves time.";
+        question[3][4][1][0] = "Which is the most accurate way to measure length?";
+        question[3][4][1][1] = "Use a ruler";
+        question[3][4][1][2] = "Use a ruler";
+        question[3][4][1][3] = "Count steps";
+        question[3][4][1][4] = "Guess the length";
+        question[3][4][1][5] = "Use fingers";
+        question[3][4][1][6] = "Tools give precision.";
+        question[3][4][2][0] = "Which is the best way to learn addition?";
+        question[3][4][2][1] = "Use objects like blocks";
+        question[3][4][2][2] = "Use objects like blocks";
+        question[3][4][2][3] = "Memorize only";
+        question[3][4][2][4] = "Avoid practice";
+        question[3][4][2][5] = "Use subtraction";
+        question[3][4][2][6] = "Visuals aid learning.";
+        question[3][4][3][0] = "Which is the most effective way to identify shapes?";
+        question[3][4][3][1] = "Count sides and corners";
+        question[3][4][3][2] = "Count sides and corners";
+        question[3][4][3][3] = "Guess the shape";
+        question[3][4][3][4] = "Measure area";
+        question[3][4][3][5] = "Use colors";
+        question[3][4][3][6] = "Properties define shapes.";
+        question[3][4][4][0] = "Which is the best way to check if a number is even?";
+        question[3][4][4][1] = "Divide by 2";
+        question[3][4][4][2] = "Divide by 2";
+        question[3][4][4][3] = "Add 1";
+        question[3][4][4][4] = "Subtract 2";
+        question[3][4][4][5] = "Guess";
+        question[3][4][4][6] = "No remainder means even.";
+        question[3][4][5][0] = "Which is the most reliable way to compare sizes?";
+        question[3][4][5][1] = "Measure with a tool";
+        question[3][4][5][2] = "Measure with a tool";
+        question[3][4][5][3] = "Look only";
+        question[3][4][5][4] = "Count objects";
+        question[3][4][5][5] = "Use hands";
+        question[3][4][5][6] = "Tools ensure accuracy.";
+
+        // Mathematics - Taxonomy Level 6: Creating (Easy)
+        question[3][5][0][0] = "Design a game to practice counting.";
+        question[3][5][0][1] = "Use cards with numbers";
+        question[3][5][0][2] = "Use cards with numbers";
+        question[3][5][0][3] = "Draw shapes";
+        question[3][5][0][4] = "List colors";
+        question[3][5][0][5] = "Use letters";
+        question[3][5][0][6] = "Games make learning fun.";
+        question[3][5][1][0] = "Create a chart to show shapes.";
+        question[3][5][1][1] = "Draw shapes and name them";
+        question[3][5][1][2] = "Draw shapes and name them";
+        question[3][5][1][3] = "List numbers";
+        question[3][5][1][4] = "Show colors";
+        question[3][5][1][5] = "Write words";
+        question[3][5][1][6] = "Charts organize information.";
+        question[3][5][2][0] = "Plan a lesson to teach addition.";
+        question[3][5][2][1] = "Use objects and pictures";
+        question[3][5][2][2] = "Use objects and pictures";
+        question[3][5][2][3] = "List numbers only";
+        question[3][5][2][4] = "Use subtraction";
+        question[3][5][2][5] = "Avoid visuals";
+        question[3][5][2][6] = "Visuals help understanding.";
+        question[3][5][3][0] = "Design a model to show even numbers.";
+        question[3][5][3][1] = "Use pairs of objects";
+        question[3][5][3][2] = "Use pairs of objects";
+        question[3][5][3][3] = "Show odd numbers";
+        question[3][5][3][4] = "List all numbers";
+        question[3][5][3][5] = "Use shapes";
+        question[3][5][3][6] = "Pairs show divisibility.";
+        question[3][5][4][0] = "Create a tool to measure length.";
+        question[3][5][4][1] = "Make a paper ruler";
+        question[3][5][4][2] = "Make a paper ruler";
+        question[3][5][4][3] = "Use hands only";
+        question[3][5][4][4] = "Guess length";
+        question[3][5][4][5] = "Draw lines";
+        question[3][5][4][6] = "Rulers give precision.";
+        question[3][5][5][0] = "Propose a way to teach shapes.";
+        question[3][5][5][1] = "Use real objects and drawings";
+        question[3][5][5][2] = "Use real objects and drawings";
+        question[3][5][5][3] = "List names only";
+        question[3][5][5][4] = "Show colors";
+        question[3][5][5][5] = "Use numbers";
+        question[3][5][5][6] = "Objects make shapes clear.";
+    }
+
+    void medium_questions()
+    {
+        // Initialize easy questions, answers, options, and explanations.
+
+        // Science - Taxonomy Level 1: Remembering (Medium)
+        question[0][0][0][0] = "What is the chemical symbol for gold?";
+        question[0][0][0][1] = "Au";
+        question[0][0][0][2] = "Au";
+        question[0][0][0][3] = "Ag";
+        question[0][0][0][4] = "Fe";
+        question[0][0][0][5] = "Cu";
+        question[0][0][0][6] = "Gold is a precious metal on the periodic table.";
+        question[0][0][1][0] = "Which planet is known as the Red Planet?";
+        question[0][0][1][1] = "Mars";
+        question[0][0][1][2] = "Mars";
+        question[0][0][1][3] = "Jupiter";
+        question[0][0][1][4] = "Venus";
+        question[0][0][1][5] = "Mercury";
+        question[0][0][1][6] = "Its reddish color comes from iron oxide.";
+        question[0][0][2][0] = "What is the primary gas in Earth’s atmosphere?";
+        question[0][0][2][1] = "Nitrogen";
+        question[0][0][2][2] = "Nitrogen";
+        question[0][0][2][3] = "Oxygen";
+        question[0][0][2][4] = "Carbon dioxide";
+        question[0][0][2][5] = "Helium";
+        question[0][0][2][6] = "It makes up about 78% of the atmosphere.";
+        question[0][0][3][0] = "What is the unit of electric current?";
+        question[0][0][3][1] = "Ampere";
+        question[0][0][3][2] = "Ampere";
+        question[0][0][3][3] = "Volt";
+        question[0][0][3][4] = "Watt";
+        question[0][0][3][5] = "Ohm";
+        question[0][0][3][6] = "It measures the flow of electricity.";
+        question[0][0][4][0] = "What is the boiling point of water at standard pressure?";
+        question[0][0][4][1] = "100 degrees Celsius";
+        question[0][0][4][2] = "100 degrees Celsius";
+        question[0][0][4][3] = "0 degrees Celsius";
+        question[0][0][4][4] = "50 degrees Celsius";
+        question[0][0][4][5] = "200 degrees Celsius";
+        question[0][0][4][6] = "Water turns to steam at this temperature.";
+        question[0][0][5][0] = "What is the name of the closest star to Earth?";
+        question[0][0][5][1] = "Sun";
+        question[0][0][5][2] = "Sun";
+        question[0][0][5][3] = "Proxima Centauri";
+        question[0][0][5][4] = "Sirius";
+        question[0][0][5][5] = "Alpha Centauri";
+        question[0][0][5][6] = "It is the center of our solar system.";
+
+        // Science - Taxonomy Level 2: Understanding (Medium)
+        question[0][1][0][0] = "Why does a balloon filled with helium float?";
+        question[0][1][0][1] = "Helium is lighter than air";
+        question[0][1][0][2] = "Helium is lighter than air";
+        question[0][1][0][3] = "Helium is heavier than air";
+        question[0][1][0][4] = "Helium is a liquid";
+        question[0][1][0][5] = "Helium is magnetic";
+        question[0][1][0][6] = "Lighter gases rise in the atmosphere.";
+        question[0][1][1][0] = "What causes the seasons on Earth?";
+        question[0][1][1][1] = "Earth’s tilt on its axis";
+        question[0][1][1][2] = "Earth’s tilt on its axis";
+        question[0][1][1][3] = "Earth’s distance from the Sun";
+        question[0][1][1][4] = "Earth’s rotation speed";
+        question[0][1][1][5] = "Earth’s magnetic field";
+        question[0][1][1][6] = "The tilt changes sunlight angles.";
+        question[0][1][2][0] = "Why do metals conduct electricity?";
+        question[0][1][2][1] = "They have free electrons";
+        question[0][1][2][2] = "They have free electrons";
+        question[0][1][2][3] = "They are insulators";
+        question[0][1][2][4] = "They lack electrons";
+        question[0][1][2][5] = "They are magnetic";
+        question[0][1][2][6] = "Electrons move easily in metals.";
+        question[0][1][3][0] = "What does the pH scale measure?";
+        question[0][1][3][1] = "Acidity or alkalinity";
+        question[0][1][3][2] = "Acidity or alkalinity";
+        question[0][1][3][3] = "Temperature";
+        question[0][1][3][4] = "Density";
+        question[0][1][3][5] = "Volume";
+        question[0][1][3][6] = "It ranges from 0 to 14.";
+        question[0][1][4][0] = "Why do leaves change color in autumn?";
+        question[0][1][4][1] = "Less chlorophyll is produced";
+        question[0][1][4][2] = "Less chlorophyll is produced";
+        question[0][1][4][3] = "More sunlight is absorbed";
+        question[0][1][4][4] = "Leaves grow larger";
+        question[0][1][4][5] = "Leaves become denser";
+        question[0][1][4][6] = "Chlorophyll gives leaves their green color.";
+        question[0][1][5][0] = "What causes a rainbow?";
+        question[0][1][5][1] = "Refraction of light in water droplets";
+        question[0][1][5][2] = "Refraction of light in water droplets";
+        question[0][1][5][3] = "Reflection of clouds";
+        question[0][1][5][4] = "Absorption of sunlight";
+        question[0][1][5][5] = "Scattering of dust";
+        question[0][1][5][6] = "Light splits into colors in rain.";
+
+        // Science - Taxonomy Level 3: Applying (Medium)
+        question[0][2][0][0] = "If a plant lacks sunlight, what will happen to its growth?";
+        question[0][2][0][1] = "It will slow or stop";
+        question[0][2][0][2] = "It will slow or stop";
+        question[0][2][0][3] = "It will grow faster";
+        question[0][2][0][4] = "It will turn red";
+        question[0][2][0][5] = "It will produce fruit";
+        question[0][2][0][6] = "Sunlight is needed for photosynthesis.";
+        question[0][2][1][0] = "If you mix equal amounts of red and blue light, what color results?";
+        question[0][2][1][1] = "Magenta";
+        question[0][2][1][2] = "Magenta";
+        question[0][2][1][3] = "Green";
+        question[0][2][1][4] = "Yellow";
+        question[0][2][1][5] = "White";
+        question[0][2][1][6] = "Light mixing follows additive color rules.";
+        question[0][2][2][0] = "If a circuit has a 12-volt battery and 4 ohms resistance, what is the current?";
+        question[0][2][2][1] = "3 amperes";
+        question[0][2][2][2] = "3 amperes";
+        question[0][2][2][3] = "6 amperes";
+        question[0][2][2][4] = "2 amperes";
+        question[0][2][2][5] = "12 amperes";
+        question[0][2][2][6] = "Use Ohm’s Law: Current = Voltage ÷ Resistance.";
+        question[0][2][3][0] = "If a substance has a pH of 3, how would you classify it?";
+        question[0][2][3][1] = "Acidic";
+        question[0][2][3][2] = "Acidic";
+        question[0][2][3][3] = "Neutral";
+        question[0][2][3][4] = "Basic";
+        question[0][2][3][5] = "Alkaline";
+        question[0][2][3][6] = "A pH below 7 is acidic.";
+        question[0][2][4][0] = "If an object is dropped from a height, what force acts on it?";
+        question[0][2][4][1] = "Gravity";
+        question[0][2][4][2] = "Gravity";
+        question[0][2][4][3] = "Magnetism";
+        question[0][2][4][4] = "Friction";
+        question[0][2][4][5] = "Electricity";
+        question[0][2][4][6] = "Gravity pulls objects toward Earth.";
+        question[0][2][5][0] = "If you heat water to 150°C at standard pressure, what state is it in?";
+        question[0][2][5][1] = "Gas";
+        question[0][2][5][2] = "Gas";
+        question[0][2][5][3] = "Liquid";
+        question[0][2][5][4] = "Solid";
+        question[0][2][5][5] = "Plasma";
+        question[0][2][5][6] = "Water boils at 100°C.";
+
+        // Science - Taxonomy Level 4: Analyzing (Medium)
+        question[0][3][0][0] = "What is the key difference between a physical and chemical change?";
+        question[0][3][0][1] = "Chemical changes form new substances";
+        question[0][3][0][2] = "Chemical changes form new substances";
+        question[0][3][0][3] = "Physical changes form new substances";
+        question[0][3][0][4] = "Both are the same";
+        question[0][3][0][5] = "Physical changes are permanent";
+        question[0][3][0][6] = "Chemical changes alter molecular structure.";
+        question[0][3][1][0] = "How do planets differ from stars in our solar system?";
+        question[0][3][1][1] = "Planets orbit stars, stars produce light";
+        question[0][3][1][2] = "Planets orbit stars, stars produce light";
+        question[0][3][1][3] = "Stars orbit planets";
+        question[0][3][1][4] = "Both produce light";
+        question[0][3][1][5] = "Planets are brighter";
+        question[0][3][1][6] = "Stars generate energy, planets do not.";
+        question[0][3][2][0] = "What distinguishes conductors from insulators?";
+        question[0][3][2][1] = "Conductors allow electricity, insulators resist it";
+        question[0][3][2][2] = "Conductors allow electricity, insulators resist it";
+        question[0][3][2][3] = "Insulators conduct electricity";
+        question[0][3][2][4] = "Both are the same";
+        question[0][3][2][5] = "Conductors resist electricity";
+        question[0][3][2][6] = "Materials differ in electron flow.";
+        question[0][3][3][0] = "How is evaporation different from condensation?";
+        question[0][3][3][1] = "Evaporation turns liquid to gas, condensation turns gas to liquid";
+        question[0][3][3][2] = "Evaporation turns liquid to gas, condensation turns gas to liquid";
+        question[0][3][3][3] = "Both turn liquid to gas";
+        question[0][3][3][4] = "Both are the same";
+        question[0][3][3][5] = "Condensation turns liquid to solid";
+        question[0][3][3][6] = "They are opposite processes in the water cycle.";
+        question[0][3][4][0] = "What makes a mammal different from a reptile?";
+        question[0][3][4][1] = "Mammals have fur, reptiles have scales";
+        question[0][3][4][2] = "Mammals have fur, reptiles have scales";
+        question[0][3][4][3] = "Reptiles have fur";
+        question[0][3][4][4] = "Both have scales";
+        question[0][3][4][5] = "Mammals have scales";
+        question[0][3][4][6] = "Body coverings differ between them.";
+        question[0][3][5][0] = "How is kinetic energy different from potential energy?";
+        question[0][3][5][1] = "Kinetic is motion, potential is stored";
+        question[0][3][5][2] = "Kinetic is motion, potential is stored";
+        question[0][3][5][3] = "Both are stored";
+        question[0][3][5][4] = "Both are motion";
+        question[0][3][5][5] = "Kinetic is stored, potential is motion";
+        question[0][3][5][6] = "Energy levels depend on state.";
+
+        // Science - Taxonomy Level 5: Evaluating (Medium)
+        question[0][4][0][0] = "Which is the most effective way to conserve energy at home?";
+        question[0][4][0][1] = "Use energy-efficient bulbs";
+        question[0][4][0][2] = "Use energy-efficient bulbs";
+        question[0][4][0][3] = "Keep lights on";
+        question[0][4][0][4] = "Use more heaters";
+        question[0][4][0][5] = "Open windows in winter";
+        question[0][4][0][6] = "Efficient bulbs reduce energy use.";
+        question[0][4][1][0] = "Which is the best method to test water purity?";
+        question[0][4][1][1] = "Use a water testing kit";
+        question[0][4][1][2] = "Use a water testing kit";
+        question[0][4][1][3] = "Taste the water";
+        question[0][4][1][4] = "Check its color";
+        question[0][4][1][5] = "Smell the water";
+        question[0][4][1][6] = "Kits detect contaminants accurately.";
+        question[0][4][2][0] = "Which renewable energy source is best for a windy area?";
+        question[0][4][2][1] = "Wind power";
+        question[0][4][2][2] = "Wind power";
+        question[0][4][2][3] = "Solar power";
+        question[0][4][2][4] = "Hydropower";
+        question[0][4][2][5] = "Geothermal energy";
+        question[0][4][2][6] = "Wind turbines use wind effectively.";
+        question[0][4][3][0] = "Which is the best way to protect endangered species?";
+        question[0][4][3][1] = "Create wildlife reserves";
+        question[0][4][3][2] = "Create wildlife reserves";
+        question[0][4][3][3] = "Build roads through habitats";
+        question[0][4][3][4] = "Hunt more animals";
+        question[0][4][3][5] = "Cut down forests";
+        question[0][4][3][6] = "Reserves protect animal habitats.";
+        question[0][4][4][0] = "Which is the best way to measure temperature?";
+        question[0][4][4][1] = "Use a thermometer";
+        question[0][4][4][2] = "Use a thermometer";
+        question[0][4][4][3] = "Feel the air";
+        question[0][4][4][4] = "Look at the sky";
+        question[0][4][4][5] = "Count clouds";
+        question[0][4][4][6] = "Thermometers give accurate readings.";
+        question[0][4][5][0] = "Which is the best material for conducting electricity?";
+        question[0][4][5][1] = "Copper";
+        question[0][4][5][2] = "Copper";
+        question[0][4][5][3] = "Wood";
+        question[0][4][5][4] = "Plastic";
+        question[0][4][5][5] = "Rubber";
+        question[0][4][5][6] = "Copper is a good conductor.";
+
+        // Science - Taxonomy Level 6: Creating (Medium)
+        question[0][5][0][0] = "Design an experiment to test plant growth with different lights.";
+        question[0][5][0][1] = "Use red, blue, and white lights on plants";
+        question[0][5][0][2] = "Use red, blue, and white lights on plants";
+        question[0][5][0][3] = "Water plants differently";
+        question[0][5][0][4] = "Use different soils";
+        question[0][5][0][5] = "Change plant levels";
+        question[0][5][0][6] = "Control light to study growth effects.";
+        question[0][5][1][0] = "Propose a plan to reduce air pollution in a city.";
+        question[0][5][1][1] = "Promote electric vehicles";
+        question[0][5][1][2] = "Promote electric vehicles";
+        question[0][5][1][3] = "Increase car use";
+        question[0][5][1][4] = "Build more factories";
+        question[0][5][1][5] = "Cut down trees";
+        question[0][5][1][6] = "Electric vehicles reduce emissions.";
+        question[0][5][2][0] = "Create a model to show the water cycle.";
+        question[0][5][2][1] = "Include evaporation and condensation";
+        question[0][5][2][2] = "Include evaporation and condensation";
+        question[0][5][2][3] = "Show only clouds";
+        question[0][5][2][4] = "Draw animals";
+        question[0][5][2][5] = "List temperatures";
+        question[0][5][2][6] = "The water cycle shows water movement.";
+        question[0][5][3][0] = "Design a simple solar-powered device.";
+        question[0][5][3][1] = "Use a solar panel to power a fan";
+        question[0][5][3][2] = "Use a solar panel to power a fan";
+        question[0][5][3][3] = "Use batteries";
+        question[0][5][3][4] = "Use wind power";
+        question[0][5][3][5] = "Use water power";
+        question[0][5][3][6] = "Solar panels capture sunlight.";
+        question[0][5][4][0] = "Plan a campaign to promote recycling.";
+        question[0][5][4][1] = "Educate about sorting waste";
+        question[0][5][4][2] = "Educate about sorting waste";
+        question[0][5][4][3] = "Encourage more waste";
+        question[0][5][4][4] = "Ban recycling bins";
+        question[0][5][4][5] = "Mix all trash";
+        question[0][5][4][6] = "Recycling reduces landfill use.";
+        question[0][5][5][0] = "Create a chart of planet distances from the Sun.";
+        question[0][5][5][1] = "List planets and their distances";
+        question[0][5][5][2] = "List planets and their distances";
+        question[0][5][5][3] = "Show only colors";
+        question[0][5][5][4] = "Draw shapes";
+        question[0][5][5][5] = "Write a story";
+        question[0][5][5][6] = "Charts organize solar system data.";
+
+        // History - Taxonomy Level 1: Remembering (Medium)
+        question[1][0][0][0] = "In which year did World War I begin?";
+        question[1][0][0][1] = "1914";
+        question[1][0][0][2] = "1914";
+        question[1][0][0][3] = "1939";
+        question[1][0][0][4] = "1900";
+        question[1][0][0][5] = "1920";
+        question[1][0][0][6] = "It was triggered by an assassination.";
+        question[1][0][1][0] = "Who was the first woman to fly solo across the Atlantic?";
+        question[1][0][1][1] = "Amelia Earhart";
+        question[1][0][1][2] = "Amelia Earhart";
+        question[1][0][1][3] = "Bessie Coleman";
+        question[1][0][1][4] = "Harriet Quimby";
+        question[1][0][1][5] = "Eleanor Roosevelt";
+        question[1][0][1][6] = "She flew in 1932.";
+        question[1][0][2][0] = "What was the name of the treaty ending World War I?";
+        question[1][0][2][1] = "Treaty of Versailles";
+        question[1][0][2][2] = "Treaty of Versailles";
+        question[1][0][2][3] = "Treaty of Paris";
+        question[1][0][2][4] = "Treaty of Lisbon";
+        question[1][0][2][5] = "Treaty of Tordesillas";
+        question[1][0][2][6] = "It was signed in 1919.";
+        question[1][0][3][0] = "Who was the leader of the American Civil Rights Movement?";
+        question[1][0][3][1] = "Martin Luther King Jr.";
+        question[1][0][3][2] = "Martin Luther King Jr.";
+        question[1][0][3][3] = "Abraham Lincoln";
+        question[1][0][3][4] = "Malcolm X";
+        question[1][0][3][5] = "Rosa Parks";
+        question[1][0][3][6] = "He gave the 'I Have a Dream' speech.";
+        question[1][0][4][0] = "What ancient civilization built Machu Picchu?";
+        question[1][0][4][1] = "Inca";
+        question[1][0][4][2] = "Inca";
+        question[1][0][4][3] = "Maya";
+        question[1][0][4][4] = "Aztec";
+        question[1][0][4][5] = "Olmec";
+        question[1][0][4][6] = "It is in Peru.";
+        question[1][0][5][0] = "Who discovered penicillin?";
+        question[1][0][5][1] = "Alexander Fleming";
+        question[1][0][5][2] = "Alexander Fleming";
+        question[1][0][5][3] = "Louis Pasteur";
+        question[1][0][5][4] = "Marie Curie";
+        question[1][0][5][5] = "Thomas Edison";
+        question[1][0][5][6] = "He found it in 1928.";
+
+        // History - Taxonomy Level 2: Understanding (Medium)
+        question[1][1][0][0] = "Why did the Industrial Revolution begin in Britain?";
+        question[1][1][0][1] = "Abundant coal and iron resources";
+        question[1][1][0][2] = "Abundant coal and iron resources";
+        question[1][1][0][3] = "Lack of population";
+        question[1][1][0][4] = "Fewer colonies";
+        question[1][1][0][5] = "Weak government";
+        question[1][1][0][6] = "Resources fueled factories.";
+        question[1][1][1][0] = "What was the main purpose of the Magna Carta?";
+        question[1][1][1][1] = "Limit the king’s power";
+        question[1][1][1][2] = "Limit the king’s power";
+        question[1][1][1][3] = "Start a war";
+        question[1][1][1][4] = "Increase taxes";
+        question[1][1][1][5] = "Build castles";
+        question[1][1][1][6] = "It was signed in 1215.";
+        question[1][1][2][0] = "Why was the Silk Road important?";
+        question[1][1][2][1] = "It connected trade between Asia and Europe";
+        question[1][1][2][2] = "It connected trade between Asia and Europe";
+        question[1][1][2][3] = "It was for war";
+        question[1][1][2][4] = "It was for farming";
+        question[1][1][2][5] = "It was for education";
+        question[1][1][2][6] = "Trade spread goods and ideas.";
+        question[1][1][3][0] = "What caused the French Revolution?";
+        question[1][1][3][1] = "Social inequality and economic hardship";
+        question[1][1][3][2] = "Social inequality and economic hardship";
+        question[1][1][3][3] = "Foreign invasion";
+        question[1][1][3][4] = "New technology";
+        question[1][1][3][5] = "Natural disasters";
+        question[1][1][3][6] = "It began in 1789.";
+        question[1][1][4][0] = "Why was the printing press significant?";
+        question[1][1][4][1] = "It spread knowledge widely";
+        question[1][1][4][2] = "It spread knowledge widely";
+        question[1][1][4][3] = "It stopped wars";
+        question[1][1][4][4] = "It built roads";
+        question[1][1][4][5] = "It grew food";
+        question[1][1][4][6] = "Books became more accessible.";
+        question[1][1][5][0] = "What was the purpose of the Underground Railroad?";
+        question[1][1][5][1] = "To help enslaved people escape";
+        question[1][1][5][2] = "To help enslaved people escape";
+        question[1][1][5][3] = "To build trains";
+        question[1][1][5][4] = "To mine gold";
+        question[1][1][5][5] = "To trade goods";
+        question[1][1][5][6] = "It aided freedom seekers.";
+
+        // History - Taxonomy Level 3: Applying (Medium)
+        question[1][2][0][0] = "If you were a merchant on the Silk Road, what would you trade?";
+        question[1][2][0][1] = "Silk and spices";
+        question[1][2][0][2] = "Silk and spices";
+        question[1][2][0][3] = "Computers and phones";
+        question[1][2][0][4] = "Cars and bikes";
+        question[1][2][0][5] = "Books and pens";
+        question[1][2][0][6] = "Goods were traded across continents.";
+        question[1][2][1][0] = "If you lived during the French Revolution, what might you protest?";
+        question[1][2][1][1] = "High taxes";
+        question[1][2][1][2] = "High taxes";
+        question[1][2][1][3] = "New technology";
+        question[1][2][1][4] = "Better roads";
+        question[1][2][1][5] = "More schools";
+        question[1][2][1][6] = "Taxes caused unrest.";
+        question[1][2][2][0] = "If you were in the Industrial Revolution, what would you use to power a factory?";
+        question[1][2][2][1] = "Steam engine";
+        question[1][2][2][2] = "Steam engine";
+        question[1][2][2][3] = "Solar panels";
+        question[1][2][2][4] = "Wind turbines";
+        question[1][2][2][5] = "Batteries";
+        question[1][2][2][6] = "Steam powered early machines.";
+        question[1][2][3][0] = "If you were part of the Underground Railroad, what would you do?";
+        question[1][2][3][1] = "Hide escaping slaves";
+        question[1][2][3][2] = "Hide escaping slaves";
+        question[1][2][3][3] = "Build trains";
+        question[1][2][3][4] = "Sell crops";
+        question[1][2][3][5] = "Write laws";
+        question[1][2][3][6] = "It was a secret network.";
+        question[1][2][4][0] = "If you were an Inca, where would you build Machu Picchu?";
+        question[1][2][4][1] = "On a mountain";
+        question[1][2][4][2] = "On a mountain";
+        question[1][2][4][3] = "In a desert";
+        question[1][2][4][4] = "By a river";
+        question[1][2][4][5] = "In a forest";
+        question[1][2][4][6] = "Mountains provided safety.";
+        question[1][2][5][0] = "If you used a printing press, what would you print?";
+        question[1][2][5][1] = "Books and pamphlets";
+        question[1][2][5][2] = "Books and pamphlets";
+        question[1][2][5][3] = "Clothes";
+        question[1][2][5][4] = "Food";
+        question[1][2][5][5] = "Tools";
+        question[1][2][5][6] = "Printing spread ideas.";
+
+        // History - Taxonomy Level 4: Analyzing (Medium)
+        question[1][3][0][0] = "What was the main difference between the American and French Revolutions?";
+        question[1][3][0][1] = "American sought independence, French sought reform";
+        question[1][3][0][2] = "American sought independence, French sought reform";
+        question[1][3][0][3] = "Both sought independence";
+        question[1][3][0][4] = "French sought independence";
+        question[1][3][0][5] = "Both were the same";
+        question[1][3][0][6] = "Goals shaped their outcomes.";
+        question[1][3][1][0] = "How did the printing press differ from handwritten books?";
+        question[1][3][1][1] = "Printing was faster and cheaper";
+        question[1][3][1][2] = "Printing was faster and cheaper";
+        question[1][3][1][3] = "Handwriting was faster";
+        question[1][3][1][4] = "Both were the same";
+        question[1][3][1][5] = "Printing was slower";
+        question[1][3][1][6] = "Printing revolutionized knowledge.";
+        question[1][3][2][0] = "What distinguished the Silk Road from sea trade routes?";
+        question[1][3][2][1] = "Silk Road was over land, sea routes were over water";
+        question[1][3][2][2] = "Silk Road was over land, sea routes were over water";
+        question[1][3][2][3] = "Both were over land";
+        question[1][3][2][4] = "Both were the same";
+        question[1][3][2][5] = "Sea routes were on land";
+        question[1][3][2][6] = "Routes affected trade speed.";
+        question[1][3][3][0] = "How was the Industrial Revolution different from the Renaissance?";
+        question[1][3][3][1] = "Industrial focused on machines, Renaissance on art";
+        question[1][3][3][2] = "Industrial focused on machines, Renaissance on art";
+        question[1][3][3][3] = "Both focused on art";
+        question[1][3][3][4] = "Both were the same";
+        question[1][3][3][5] = "Renaissance focused on machines";
+        question[1][3][3][6] = "Eras had different focuses.";
+        question[1][3][4][0] = "What made the Underground Railroad different from other escape routes?";
+        question[1][3][4][1] = "It was a secret network";
+        question[1][3][4][2] = "It was a secret network";
+        question[1][3][4][3] = "It was a public road";
+        question[1][3][4][4] = "It used trains";
+        question[1][3][4][5] = "It was for trade";
+        question[1][3][4][6] = "Secrecy protected escapees.";
+        question[1][3][5][0] = "How did World War I differ from World War II?";
+        question[1][3][5][1] = "World War I had trench warfare, World War II had more mobility";
+        question[1][3][5][2] = "World War I had trench warfare, World War II had more mobility";
+        question[1][3][5][3] = "Both were the same";
+        question[1][3][5][4] = "World War II had trenches";
+        question[1][3][5][5] = "World War I was global";
+        question[1][3][5][6] = "War tactics evolved.";
+
+        // History - Taxonomy Level 5: Evaluating (Medium)
+        question[1][4][0][0] = "Which was the most significant invention of the Industrial Revolution?";
+        question[1][4][0][1] = "Steam engine";
+        question[1][4][0][2] = "Steam engine";
+        question[1][4][0][3] = "Printing press";
+        question[1][4][0][4] = "Compass";
+        question[1][4][0][5] = "Wheel";
+        question[1][4][0][6] = "It powered factories and trains.";
+        question[1][4][1][0] = "Which event had the greatest impact on civil rights?";
+        question[1][4][1][1] = "March on Washington";
+        question[1][4][1][2] = "March on Washington";
+        question[1][4][1][3] = "World War I";
+        question[1][4][1][4] = "French Revolution";
+        question[1][4][1][5] = "Industrial Revolution";
+        question[1][4][1][6] = "It featured a famous speech.";
+        question[1][4][2][0] = "Which was the best strategy for the Underground Railroad?";
+        question[1][4][2][1] = "Using secret safe houses";
+        question[1][4][2][2] = "Using secret safe houses";
+        question[1][4][2][3] = "Traveling openly";
+        question[1][4][2][4] = "Using trains";
+        question[1][4][2][5] = "Building roads";
+        question[1][4][2][6] = "Safe houses protected escapees.";
+        question[1][4][3][0] = "Which was the most effective outcome of the Magna Carta?";
+        question[1][4][3][1] = "Establishing rule of law";
+        question[1][4][3][2] = "Establishing rule of law";
+        question[1][4][3][3] = "Starting a war";
+        question[1][4][3][4] = "Building castles";
+        question[1][4][3][5] = "Increasing taxes";
+        question[1][4][3][6] = "It influenced modern democracy.";
+        question[1][4][4][0] = "Which was the best contribution of the Inca civilization?";
+        question[1][4][4][1] = "Advanced road systems";
+        question[1][4][4][2] = "Advanced road systems";
+        question[1][4][4][3] = "Pyramids";
+        question[1][4][4][4] = "Writing system";
+        question[1][4][4][5] = "Sailing ships";
+        question[1][4][4][6] = "Roads connected their empire.";
+        question[1][4][5][0] = "Which was the most important effect of the printing press?";
+        question[1][4][5][1] = "Increased literacy";
+        question[1][4][5][2] = "Increased literacy";
+        question[1][4][5][3] = "More wars";
+        question[1][4][5][4] = "Fewer books";
+        question[1][4][5][5] = "Slower communication";
+        question[1][4][5][6] = "Books became widely available.";
+
+        // History - Taxonomy Level 6: Creating (Medium)
+        question[1][5][0][0] = "Design a timeline of the Industrial Revolution.";
+        question[1][5][0][1] = "Include key inventions and dates";
+        question[1][5][0][2] = "Include key inventions and dates";
+        question[1][5][0][3] = "List only wars";
+        question[1][5][0][4] = "Draw a map";
+        question[1][5][0][5] = "Write a story";
+        question[1][5][0][6] = "Timelines show historical progress.";
+        question[1][5][1][0] = "Plan a museum exhibit on the French Revolution.";
+        question[1][5][1][1] = "Show key events and artifacts";
+        question[1][5][1][2] = "Show key events and artifacts";
+        question[1][5][1][3] = "Display only weapons";
+        question[1][5][1][4] = "Focus on food";
+        question[1][5][1][5] = "Show modern art";
+        question[1][5][1][6] = "Exhibits educate about history.";
+        question[1][5][2][0] = "Create a map of the Silk Road.";
+        question[1][5][2][1] = "Mark major trade cities";
+        question[1][5][2][2] = "Mark major trade cities";
+        question[1][5][2][3] = "Draw only rivers";
+        question[1][5][2][4] = "List animals";
+        question[1][5][2][5] = "Show one city";
+        question[1][5][2][6] = "Maps show trade routes.";
+        question[1][5][3][0] = "Propose a law inspired by the Magna Carta.";
+        question[1][5][3][1] = "Ensure fair trials";
+        question[1][5][3][2] = "Ensure fair trials";
+        question[1][5][3][3] = "Increase taxes";
+        question[1][5][3][4] = "Ban education";
+        question[1][5][3][5] = "Limit trade";
+        question[1][5][3][6] = "Laws protect rights.";
+        question[1][5][4][0] = "Design a monument for civil rights.";
+        question[1][5][4][1] = "Include symbols of equality";
+        question[1][5][4][2] = "Include symbols of equality";
+        question[1][5][4][3] = "Show only buildings";
+        question[1][5][4][4] = "Draw animals";
+        question[1][5][4][5] = "Write numbers";
+        question[1][5][4][6] = "Monuments honor history.";
+        question[1][5][5][0] = "Create a story about the Underground Railroad.";
+        question[1][5][5][1] = "Describe a journey to freedom";
+        question[1][5][5][2] = "Describe a journey to freedom";
+        question[1][5][5][3] = "List dates";
+        question[1][5][5][4] = "Draw shapes";
+        question[1][5][5][5] = "Write a song";
+        question[1][5][5][6] = "Stories bring history to life.";
+
+        // Geography - Taxonomy Level 1: Remembering (Medium)
+        question[2][0][0][0] = "What is the capital of Brazil?";
+        question[2][0][0][1] = "Brasilia";
+        question[2][0][0][2] = "Brasilia";
+        question[2][0][0][3] = "Rio de Janeiro";
+        question[2][0][0][4] = "Sao Paulo";
+        question[2][0][0][5] = "Salvador";
+        question[2][0][0][6] = "It is a planned city in Brazil.";
+        question[2][0][1][0] = "Which continent is home to the Amazon Rainforest?";
+        question[2][0][1][1] = "South America";
+        question[2][0][1][2] = "South America";
+        question[2][0][1][3] = "Africa";
+        question[2][0][1][4] = "Asia";
+        question[2][0][1][5] = "Australia";
+        question[2][0][1][6] = "It is the largest rainforest.";
+        question[2][0][2][0] = "What is the longest river in South America?";
+        question[2][0][2][1] = "Amazon River";
+        question[2][0][2][2] = "Amazon River";
+        question[2][0][2][3] = "Parana River";
+        question[2][0][2][4] = "Orinoco River";
+        question[2][0][2][5] = "Sao Francisco River";
+        question[2][0][2][6] = "It flows through the rainforest.";
+        question[2][0][3][0] = "Which mountain range runs along South America’s west coast?";
+        question[2][0][3][1] = "Andes";
+        question[2][0][3][2] = "Andes";
+        question[2][0][3][3] = "Rockies";
+        question[2][0][3][4] = "Himalayas";
+        question[2][0][3][5] = "Alps";
+        question[2][0][3][6] = "It is the longest mountain range.";
+        question[2][0][4][0] = "What is the largest desert in Asia?";
+        question[2][0][4][1] = "Gobi Desert";
+        question[2][0][4][2] = "Gobi Desert";
+        question[2][0][4][3] = "Sahara Desert";
+        question[2][0][4][4] = "Kalahari Desert";
+        question[2][0][4][5] = "Thar Desert";
+        question[2][0][4][6] = "It spans China and Mongolia.";
+        question[2][0][5][0] = "Which ocean lies between Africa and Australia?";
+        question[2][0][5][1] = "Indian Ocean";
+        question[2][0][5][2] = "Indian Ocean";
+        question[2][0][5][3] = "Pacific Ocean";
+        question[2][0][5][4] = "Atlantic Ocean";
+        question[2][0][5][5] = "Arctic Ocean";
+        question[2][0][5][6] = "It is south of Asia.";
+
+        // Geography - Taxonomy Level 2: Understanding (Medium)
+        question[2][1][0][0] = "Why do coastal areas have milder climates?";
+        question[2][1][0][1] = "Oceans moderate temperatures";
+        question[2][1][0][2] = "Oceans moderate temperatures";
+        question[2][1][0][3] = "More rainfall";
+        question[2][1][0][4] = "Higher altitudes";
+        question[2][1][0][5] = "Less sunlight";
+        question[2][1][0][6] = "Water retains heat longer.";
+        question[2][1][1][0] = "What causes earthquakes?";
+        question[2][1][1][1] = "Movement of tectonic plates";
+        question[2][1][1][2] = "Movement of tectonic plates";
+        question[2][1][1][3] = "Heavy rainfall";
+        question[2][1][1][4] = "Strong winds";
+        question[2][1][1][5] = "Ocean waves";
+        question[2][1][1][6] = "Plates shift along faults.";
+        question[2][1][2][0] = "Why are rainforests biodiverse?";
+        question[2][1][2][1] = "Warm climate and abundant rain";
+        question[2][1][2][2] = "Warm climate and abundant rain";
+        question[2][1][2][3] = "Cold climate";
+        question[2][1][2][4] = "Dry conditions";
+        question[2][1][2][5] = "High altitude";
+        question[2][1][2][6] = "Rainforests support many species.";
+        question[2][1][3][0] = "What causes tides in the ocean?";
+        question[2][1][3][1] = "Moon’s gravitational pull";
+        question[2][1][3][2] = "Moon’s gravitational pull";
+        question[2][1][3][3] = "Sun’s heat";
+        question[2][1][3][4] = "Wind speed";
+        question[2][1][3][5] = "Earth’s rotation";
+        question[2][1][3][6] = "The Moon affects water levels.";
+        question[2][1][4][0] = "Why do deserts have extreme temperatures?";
+        question[2][1][4][1] = "Lack of water and vegetation";
+        question[2][1][4][2] = "Lack of water and vegetation";
+        question[2][1][4][3] = "Too much water";
+        question[2][1][4][4] = "Dense forests";
+        question[2][1][4][5] = "High clouds";
+        question[2][1][4][6] = "No water means no cooling.";
+        question[2][1][5][0] = "What causes volcanic eruptions?";
+        question[2][1][5][1] = "Pressure from molten rock";
+        question[2][1][5][2] = "Pressure from molten rock";
+        question[2][1][5][3] = "Heavy rain";
+        question[2][1][5][4] = "Strong winds";
+        question[2][1][5][5] = "Cold temperatures";
+        question[2][1][5][6] = "Magma builds up underground.";
+
+        // Geography - Taxonomy Level 3: Applying (Medium)
+        question[2][2][0][0] = "If a city is at 35°N, 139°E, what city is it?";
+        question[2][2][0][1] = "Tokyo";
+        question[2][2][0][2] = "Tokyo";
+        question[2][2][0][3] = "Paris";
+        question[2][2][0][4] = "New York";
+        question[2][2][0][5] = "Sydney";
+        question[2][2][0][6] = "Coordinates pinpoint locations.";
+        question[2][2][1][0] = "If you are in the Andes, what continent are you on?";
+        question[2][2][1][1] = "South America";
+        question[2][2][1][2] = "South America";
+        question[2][2][1][3] = "North America";
+        question[2][2][1][4] = "Asia";
+        question[2][2][1][5] = "Africa";
+        question[2][2][1][6] = "The Andes run along South America.";
+        question[2][2][2][0] = "If a river flows into the Indian Ocean, what continent might it be on?";
+        question[2][2][2][1] = "Africa";
+        question[2][2][2][2] = "Africa";
+        question[2][2][2][3] = "Europe";
+        question[2][2][2][4] = "South America";
+        question[2][2][2][5] = "Antarctica";
+        question[2][2][2][6] = "The Indian Ocean borders Africa.";
+        question[2][2][3][0] = "If you are in the Gobi Desert, what countries might you be in?";
+        question[2][2][3][1] = "China and Mongolia";
+        question[2][2][3][2] = "China and Mongolia";
+        question[2][2][3][3] = "India and Pakistan";
+        question[2][2][3][4] = "Brazil and Peru";
+        question[2][2][3][5] = "Egypt and Libya";
+        question[2][2][3][6] = "The Gobi is in Asia.";
+        question[2][2][4][0] = "If you follow the Amazon River, where will you end up?";
+        question[2][2][4][1] = "Atlantic Ocean";
+        question[2][2][4][2] = "Atlantic Ocean";
+        question[2][2][4][3] = "Pacific Ocean";
+        question[2][2][4][4] = "Indian Ocean";
+        question[2][2][4][5] = "Arctic Ocean";
+        question[2][2][4][6] = "The Amazon flows east.";
+        question[2][2][5][0] = "If you are in a rainforest, what climate would you expect?";
+        question[2][2][5][1] = "Hot and humid";
+        question[2][2][5][2] = "Hot and humid";
+        question[2][2][5][3] = "Cold and dry";
+        question[2][2][5][4] = "Cool and windy";
+        question[2][2][5][5] = "Cold and snowy";
+        question[2][2][5][6] = "Rainforests have heavy rain.";
+
+        // Geography - Taxonomy Level 4: Analyzing (Medium)
+        question[2][3][0][0] = "What is the main difference between a tundra and a desert?";
+        question[2][3][0][1] = "Tundra is cold, desert is hot";
+        question[2][3][0][2] = "Tundra is cold, desert is hot";
+        question[2][3][0][3] = "Both are hot";
+        question[2][3][0][4] = "Tundra is hot";
+        question[2][3][0][5] = "Both are cold";
+        question[2][3][0][6] = "Climate defines these biomes.";
+        question[2][3][1][0] = "How does a peninsula differ from an island?";
+        question[2][3][1][1] = "Peninsula is connected to land, island is surrounded by water";
+        question[2][3][1][2] = "Peninsula is connected to land, island is surrounded by water";
+        question[2][3][1][3] = "Both are surrounded by water";
+        question[2][3][1][4] = "Both are connected to land";
+        question[2][3][1][5] = "Peninsula is larger";
+        question[2][3][1][6] = "Land connection defines a peninsula.";
+        question[2][3][2][0] = "What distinguishes a plateau from a mountain?";
+        question[2][3][2][1] = "Plateau is flat, mountain is peaked";
+        question[2][3][2][2] = "Plateau is flat, mountain is peaked";
+        question[2][3][2][3] = "Both are flat";
+        question[2][3][2][4] = "Plateau is higher";
+        question[2][3][2][5] = "Both are peaked";
+        question[2][3][2][6] = "Shape defines their features.";
+        question[2][3][3][0] = "How is a tropical climate different from a polar climate?";
+        question[2][3][3][1] = "Tropical is warm, polar is cold";
+        question[2][3][3][2] = "Tropical is warm, polar is cold";
+        question[2][3][3][3] = "Both are warm";
+        question[2][3][3][4] = "Both are cold";
+        question[2][3][3][5] = "Tropical is cold";
+        question[2][3][3][6] = "Temperature defines climate zones.";
+        question[2][3][4][0] = "What makes a delta different from a valley?";
+        question[2][3][4][1] = "Delta is at a river’s mouth, valley is between mountains";
+        question[2][3][4][2] = "Delta is at a river’s mouth, valley is between mountains";
+        question[2][3][4][3] = "Both are at river mouths";
+        question[2][3][4][4] = "Both are between mountains";
+        question[2][3][4][5] = "Delta is higher";
+        question[2][3][4][6] = "Deltas form from sediment.";
+        question[2][3][5][0] = "How does a monsoon climate differ from a temperate climate?";
+        question[2][3][5][1] = "Monsoon has heavy seasonal rain, temperate is moderate";
+        question[2][3][5][2] = "Monsoon has heavy seasonal rain, temperate is moderate";
+        question[2][3][5][3] = "Both have heavy rain";
+        question[2][3][5][4] = "Both are moderate";
+        question[2][3][5][5] = "Monsoon is dry";
+        question[2][3][5][6] = "Rainfall patterns differ.";
+
+        // Geography - Taxonomy Level 5: Evaluating (Medium)
+        question[2][4][0][0] = "Which is the best method to prevent soil erosion?";
+        question[2][4][0][1] = "Planting trees";
+        question[2][4][0][2] = "Planting trees";
+        question[2][4][0][3] = "Removing plants";
+        question[2][4][0][4] = "Paving the land";
+        question[2][4][0][5] = "Building roads";
+        question[2][4][0][6] = "Tree roots hold soil in place.";
+        question[2][4][1][0] = "Which is the best location for a port city?";
+        question[2][4][1][1] = "Near a deep harbor";
+        question[2][4][1][2] = "Near a deep harbor";
+        question[2][4][1][3] = "In a desert";
+        question[2][4][1][4] = "On a mountain";
+        question[2][4][1][5] = "In a forest";
+        question[2][4][1][6] = "Harbors support ship docking.";
+        question[2][4][2][0] = "Which is the best way to conserve water in a dry region?";
+        question[2][4][2][1] = "Use drip irrigation";
+        question[2][4][2][2] = "Use drip irrigation";
+        question[2][4][2][3] = "Flood fields";
+        question[2][4][2][4] = "Remove plants";
+        question[2][4][2][5] = "Build pools";
+        question[2][4][2][6] = "Drip irrigation saves water.";
+        question[2][4][3][0] = "Which is the best renewable resource for a sunny region?";
+        question[2][4][3][1] = "Solar energy";
+        question[2][4][3][2] = "Solar energy";
+        question[2][4][3][3] = "Wind energy";
+        question[2][4][3][4] = "Hydropower";
+        question[2][4][3][5] = "Coal";
+        question[2][4][3][6] = "Sunlight is abundant in sunny areas.";
+        question[2][4][4][0] = "Which is the best way to navigate a desert?";
+        question[2][4][4][1] = "Use a GPS and map";
+        question[2][4][4][2] = "Use a GPS and map";
+        question[2][4][4][3] = "Follow animals";
+        question[2][4][4][4] = "Walk randomly";
+        question[2][4][4][5] = "Look at the sky";
+        question[2][4][4][6] = "GPS provides accurate directions.";
+        question[2][4][5][0] = "Which is the best way to protect a rainforest?";
+        question[2][4][5][1] = "Create protected areas";
+        question[2][4][5][2] = "Create protected areas";
+        question[2][4][5][3] = "Cut down trees";
+        question[2][4][5][4] = "Build roads";
+        question[2][4][5][5] = "Increase farming";
+        question[2][4][5][6] = "Protected areas save wildlife.";
+
+        // Geography - Taxonomy Level 6: Creating (Medium)
+        question[2][5][0][0] = "Design a plan to reduce flooding in a coastal city.";
+        question[2][5][0][1] = "Build sea walls and drainage systems";
+        question[2][5][0][2] = "Build sea walls and drainage systems";
+        question[2][5][0][3] = "Remove all plants";
+        question[2][5][0][4] = "Pave the city";
+        question[2][5][0][5] = "Build taller buildings";
+        question[2][5][0][6] = "Walls and drains manage water.";
+        question[2][5][1][0] = "Create a map of the Andes Mountains.";
+        question[2][5][1][1] = "Show peaks and rivers";
+        question[2][5][1][2] = "Show peaks and rivers";
+        question[2][5][1][3] = "Draw only cities";
+        question[2][5][1][4] = "List animals";
+        question[2][5][1][5] = "Use one color";
+        question[2][5][1][6] = "Maps show geographic features.";
+        question[2][5][2][0] = "Plan a sustainable farm in a dry region.";
+        question[2][5][2][1] = "Use drought-resistant crops";
+        question[2][5][2][2] = "Use drought-resistant crops";
+        question[2][5][2][3] = "Flood the fields";
+        question[2][5][2][4] = "Remove soil";
+        question[2][5][2][5] = "Build houses";
+        question[2][5][2][6] = "Sustainable crops save water.";
+        question[2][5][3][0] = "Design a poster about the Amazon Rainforest.";
+        question[2][5][3][1] = "Show biodiversity and rivers";
+        question[2][5][3][2] = "Show biodiversity and rivers";
+        question[2][5][3][3] = "Draw only deserts";
+        question[2][5][3][4] = "List cities";
+        question[2][5][3][5] = "Write a story";
+        question[2][5][3][6] = "Posters educate about ecosystems.";
+        question[2][5][4][0] = "Propose a tourism plan for a mountain region.";
+        question[2][5][4][1] = "Offer guided hikes and eco-lodges";
+        question[2][5][4][2] = "Offer guided hikes and eco-lodges";
+        question[2][5][4][3] = "Build large resorts";
+        question[2][5][4][4] = "Cut down trees";
+        question[2][5][4][5] = "Pave trails";
+        question[2][5][4][6] = "Eco-tourism protects nature.";
+        question[2][5][5][0] = "Create a model of a volcanic island.";
+        question[2][5][5][1] = "Show the volcano and coast";
+        question[2][5][5][2] = "Show the volcano and coast";
+        question[2][5][5][3] = "Draw only flat land";
+        question[2][5][5][4] = "List animals";
+        question[2][5][5][5] = "Write numbers";
+        question[2][5][5][6] = "Models show land features.";
+
+        // Mathematics - Taxonomy Level 1: Remembering (Medium)
+        question[3][0][0][0] = "What is the formula for the area of a triangle?";
+        question[3][0][0][1] = "1/2 × base × height";
+        question[3][0][0][2] = "1/2 × base × height";
+        question[3][0][0][3] = "Base × height";
+        question[3][0][0][4] = "Base + height";
+        question[3][0][0][5] = "1/2 × base";
+        question[3][0][0][6] = "It measures a triangle’s space.";
+        question[3][0][1][0] = "What is 12 × 3?";
+        question[3][0][1][1] = "36";
+        question[3][0][1][2] = "36";
+        question[3][0][1][3] = "15";
+        question[3][0][1][4] = "24";
+        question[3][0][1][5] = "9";
+        question[3][0][1][6] = "Multiplication gives the total.";
+        question[3][0][2][0] = "What is the value of π to two decimal places?";
+        question[3][0][2][1] = "3.14";
+        question[3][0][2][2] = "3.14";
+        question[3][0][2][3] = "3.16";
+        question[3][0][2][4] = "2.14";
+        question[3][0][2][5] = "3.00";
+        question[3][0][2][6] = "Pi is used for circles.";
+        question[3][0][3][0] = "What is the formula for the perimeter of a rectangle?";
+        question[3][0][3][1] = "2 × (length + width)";
+        question[3][0][3][2] = "2 × (length + width)";
+        question[3][0][3][3] = "Length × width";
+        question[3][0][3][4] = "Length + width";
+        question[3][0][3][5] = "2 × length";
+        question[3][0][3][6] = "It measures the boundary.";
+        question[3][0][4][0] = "What is 20 ÷ 4?";
+        question[3][0][4][1] = "5";
+        question[3][0][4][2] = "5";
+        question[3][0][4][3] = "4";
+        question[3][0][4][4] = "6";
+        question[3][0][4][5] = "10";
+        question[3][0][4][6] = "Division splits evenly.";
+        question[3][0][5][0] = "What is the shape with 5 sides?";
+        question[3][0][5][1] = "Pentagon";
+        question[3][0][5][2] = "Pentagon";
+        question[3][0][5][3] = "Hexagon";
+        question[3][0][5][4] = "Triangle";
+        question[3][0][5][5] = "Square";
+        question[3][0][5][6] = "It has five equal sides.";
+
+        // Mathematics - Taxonomy Level 2: Understanding (Medium)
+        question[3][1][0][0] = "Why does multiplying by zero always give zero?";
+        question[3][1][0][1] = "Zero means no groups";
+        question[3][1][0][2] = "Zero means no groups";
+        question[3][1][0][3] = "Zero adds numbers";
+        question[3][1][0][4] = "Zero divides numbers";
+        question[3][1][0][5] = "Zero subtracts numbers";
+        question[3][1][0][6] = "No groups yield nothing.";
+        question[3][1][1][0] = "What does the slope of a line represent?";
+        question[3][1][1][1] = "Rate of change";
+        question[3][1][1][2] = "Rate of change";
+        question[3][1][1][3] = "Length of the line";
+        question[3][1][1][4] = "Area under the line";
+        question[3][1][1][5] = "Distance from origin";
+        question[3][1][1][6] = "Slope shows steepness.";
+        question[3][1][2][0] = "Why is the area of a circle πr²?";
+        question[3][1][2][1] = "It measures the space inside";
+        question[3][1][2][2] = "It measures the space inside";
+        question[3][1][2][3] = "It measures the edge";
+        question[3][1][2][4] = "It measures height";
+        question[3][1][2][5] = "It measures angles";
+        question[3][1][2][6] = "Pi relates to the radius.";
+        question[3][1][3][0] = "What does a fraction represent?";
+        question[3][1][3][1] = "Part of a whole";
+        question[3][1][3][2] = "Part of a whole";
+        question[3][1][3][3] = "A whole number";
+        question[3][1][3][4] = "A negative number";
+        question[3][1][3][5] = "A decimal";
+        question[3][1][3][6] = "Fractions show division.";
+        question[3][1][4][0] = "Why are parallel lines important in geometry?";
+        question[3][1][4][1] = "They never intersect";
+        question[3][1][4][2] = "They never intersect";
+        question[3][1][4][3] = "They always intersect";
+        question[3][1][4][4] = "They form curves";
+        question[3][1][4][5] = "They are perpendicular";
+        question[3][1][4][6] = "Parallel lines have equal slopes.";
+        question[3][1][5][0] = "What does the Pythagorean theorem calculate?";
+        question[3][1][5][1] = "Hypotenuse of a right triangle";
+        question[3][1][5][2] = "Hypotenuse of a right triangle";
+        question[3][1][5][3] = "Area of a triangle";
+        question[3][1][5][4] = "Perimeter of a circle";
+        question[3][1][5][5] = "Volume of a cube";
+        question[3][1][5][6] = "It uses side lengths.";
+
+        // Mathematics - Taxonomy Level 3: Applying (Medium)
+        question[3][2][0][0] = "If a triangle has a base of 6 and height of 4, what is its area?";
+        question[3][2][0][1] = "12 square units";
+        question[3][2][0][2] = "12 square units";
+        question[3][2][0][3] = "24 square units";
+        question[3][2][0][4] = "10 square units";
+        question[3][2][0][5] = "18 square units";
+        question[3][2][0][6] = "Use the formula: 1/2 × base × height.";
+        question[3][2][1][0] = "If you have 15 apples and divide them into 3 groups, how many in each?";
+        question[3][2][1][1] = "5";
+        question[3][2][1][2] = "5";
+        question[3][2][1][3] = "3";
+        question[3][2][1][4] = "6";
+        question[3][2][1][5] = "4";
+        question[3][2][1][6] = "Divide equally among groups.";
+        question[3][2][2][0] = "If a rectangle’s length is 8 and width is 5, what is its perimeter?";
+        question[3][2][2][1] = "26 units";
+        question[3][2][2][2] = "26 units";
+        question[3][2][2][3] = "40 units";
+        question[3][2][2][4] = "13 units";
+        question[3][2][2][5] = "20 units";
+        question[3][2][2][6] = "Use: 2 × (length + width).";
+        question[3][2][3][0] = "If a circle has a radius of 3, what is its area?";
+        question[3][2][3][1] = "28.26 square units";
+        question[3][2][3][2] = "28.26 square units";
+        question[3][2][3][3] = "18.84 square units";
+        question[3][2][3][4] = "9 square units";
+        question[3][2][3][5] = "37.68 square units";
+        question[3][2][3][6] = "Use: π × radius².";
+        question[3][2][4][0] = "If 2x + 6 = 12, what is x?";
+        question[3][2][4][1] = "3";
+        question[3][2][4][2] = "3";
+        question[3][2][4][3] = "6";
+        question[3][2][4][4] = "2";
+        question[3][2][4][5] = "9";
+        question[3][2][4][6] = "Solve by isolating x.";
+        question[3][2][5][0] = "If a right triangle has legs of 3 and 4, what is the hypotenuse?";
+        question[3][2][5][1] = "5";
+        question[3][2][5][2] = "5";
+        question[3][2][5][3] = "7";
+        question[3][2][5][4] = "6";
+        question[3][2][5][5] = "8";
+        question[3][2][5][6] = "Use: a² + b² = c².";
+
+        // Mathematics - Taxonomy Level 4: Analyzing (Medium)
+        question[3][3][1][0] = "How does a fraction differ from a decimal?";
+        question[3][3][1][1] = "Fraction is a ratio, decimal is a number";
+        question[3][3][1][2] = "Fraction is a ratio, decimal is a number";
+        question[3][3][1][3] = "Both are the same";
+        question[3][3][1][4] = "Decimal is a ratio";
+        question[3][3][1][5] = "Fraction is a number";
+        question[3][3][1][6] = "Representation differs.";
+        question[3][3][2][0] = "What distinguishes mean from median?";
+        question[3][3][2][1] = "Mean is average, median is middle value";
+        question[3][3][2][2] = "Mean is average, median is middle value";
+        question[3][3][2][3] = "Median is average";
+        question[3][3][2][4] = "Both are the same";
+        question[3][3][2][5] = "Mean is middle value";
+        question[3][3][2][6] = "They measure central tendency.";
+        question[3][3][3][0] = "How does a linear equation differ from a quadratic equation?";
+        question[3][3][3][1] = "Linear is degree 1, quadratic is degree 2";
+        question[3][3][3][2] = "Linear is degree 1, quadratic is degree 2";
+        question[3][3][3][3] = "Quadratic is degree 1";
+        question[3][3][3][4] = "Both are the same";
+        question[3][3][3][5] = "Linear is degree 2";
+        question[3][3][3][6] = "Degree affects graph shape.";
+        question[3][3][4][0] = "What is the difference between a radius and a diameter?";
+        question[3][3][4][1] = "Radius is half, diameter is full length";
+        question[3][3][4][2] = "Radius is half, diameter is full length";
+        question[3][3][4][3] = "Diameter is half";
+        question[3][3][4][4] = "Both are the same";
+        question[3][3][4][5] = "Radius is longer";
+        question[3][3][4][6] = "They measure circle size.";
+        question[3][3][5][0] = "How does area differ from perimeter?";
+        question[3][3][5][1] = "Area measures surface, perimeter measures boundary";
+        question[3][3][5][2] = "Area measures surface, perimeter measures boundary";
+        question[3][3][5][3] = "Perimeter measures surface";
+        question[3][3][5][4] = "Both are the same";
+        question[3][3][5][5] = "Area measures boundary";
+        question[3][3][5][6] = "Units differ for each.";
+
+        // Mathematics - Taxonomy Level 5: Evaluating (Medium)
+        question[3][4][0][0] = "Which is the best method to solve a quadratic equation?";
+        question[3][4][0][1] = "Quadratic formula";
+        question[3][4][0][2] = "Quadratic formula";
+        question[3][4][0][3] = "Guess and check";
+        question[3][4][0][4] = "Only graphing";
+        question[3][4][0][5] = "No method";
+        question[3][4][0][6] = "It works for all cases.";
+        question[3][4][1][0] = "Which is the most efficient way to find the area of a triangle?";
+        question[3][4][1][1] = "Base times height divided by 2";
+        question[3][4][1][2] = "Base times height divided by 2";
+        question[3][4][1][3] = "Add all sides";
+        question[3][4][1][4] = "Use a protractor";
+        question[3][4][1][5] = "Count squares";
+        question[3][4][1][6] = "Formula is precise.";
+        question[3][4][2][0] = "Which is the best way to compare data sets?";
+        question[3][4][2][1] = "Use mean and standard deviation";
+        question[3][4][2][2] = "Use mean and standard deviation";
+        question[3][4][2][3] = "Only count values";
+        question[3][4][2][4] = "List all numbers";
+        question[3][4][2][5] = "Pick one value";
+        question[3][4][2][6] = "Statistics summarize data.";
+        question[3][4][3][0] = "Which is the most reliable way to measure angles?";
+        question[3][4][3][1] = "Use a protractor";
+        question[3][4][3][2] = "Use a protractor";
+        question[3][4][3][3] = "Estimate visually";
+        question[3][4][3][4] = "Use a ruler";
+        question[3][4][3][5] = "Count sides";
+        question[3][4][3][6] = "Tools ensure accuracy.";
+        question[3][4][4][0] = "Which is the best method to find the volume of a cube?";
+        question[3][4][4][1] = "Side length cubed";
+        question[3][4][4][2] = "Side length cubed";
+        question[3][4][4][3] = "Add all sides";
+        question[3][4][4][4] = "Measure height only";
+        question[3][4][4][5] = "Use area";
+        question[3][4][4][6] = "Formula is simple.";
+        question[3][4][5][0] = "Which is the most effective way to teach fractions?";
+        question[3][4][5][1] = "Use visual aids like pie charts";
+        question[3][4][5][2] = "Use visual aids like pie charts";
+        question[3][4][5][3] = "Memorize decimals";
+        question[3][4][5][4] = "Avoid examples";
+        question[3][4][5][5] = "Use only numbers";
+        question[3][4][5][6] = "Visuals clarify ratios.";
+
+        // Mathematics - Taxonomy Level 6: Creating (Medium)
+        question[3][5][0][0] = "Design a model to teach the Pythagorean theorem.";
+        question[3][5][0][1] = "Use right triangles and squares";
+        question[3][5][0][2] = "Use right triangles and squares";
+        question[3][5][0][3] = "Use circles";
+        question[3][5][0][4] = "List numbers";
+        question[3][5][0][5] = "Draw lines";
+        question[3][5][0][6] = "Show a² + b² = c² visually.";
+        question[3][5][1][0] = "Create a game to practice fractions.";
+        question[3][5][1][1] = "Match fraction cards to visuals";
+        question[3][5][1][2] = "Match fraction cards to visuals";
+        question[3][5][1][3] = "Roll dice only";
+        question[3][5][1][4] = "Use decimals";
+        question[3][5][1][5] = "List numbers";
+        question[3][5][1][6] = "Games reinforce concepts.";
+        question[3][5][2][0] = "Plan a lesson on solving linear equations.";
+        question[3][5][2][1] = "Use real-world examples and steps";
+        question[3][5][2][2] = "Use real-world examples and steps";
+        question[3][5][2][3] = "List formulas only";
+        question[3][5][2][4] = "Avoid examples";
+        question[3][5][2][5] = "Use graphs only";
+        question[3][5][2][6] = "Context aids understanding.";
+        question[3][5][3][0] = "Design a chart to compare shapes.";
+        question[3][5][3][1] = "Show sides, angles, and properties";
+        question[3][5][3][2] = "Show sides, angles, and properties";
+        question[3][5][3][3] = "List names only";
+        question[3][5][3][4] = "Draw one shape";
+        question[3][5][3][5] = "Use colors only";
+        question[3][5][3][6] = "Charts organize features.";
+        question[3][5][4][0] = "Create a method to estimate pi.";
+        question[3][5][4][1] = "Use polygon areas in a circle";
+        question[3][5][4][2] = "Use polygon areas in a circle";
+        question[3][5][4][3] = "Measure one line";
+        question[3][5][4][4] = "Guess a number";
+        question[3][5][4][5] = "Use a square";
+        question[3][5][4][6] = "Approximation improves accuracy.";
+        question[3][5][5][0] = "Propose a system to track student progress in math.";
+        question[3][5][5][1] = "Use tests and visual graphs";
+        question[3][5][5][2] = "Use tests and visual graphs";
+        question[3][5][5][3] = "Record one score";
+        question[3][5][5][4] = "Avoid data";
+        question[3][5][5][5] = "Use words only";
+        question[3][5][5][6] = "Data shows trends.";
+    }
+
+    void hard_questions()
+    {
+        // Initialize easy questions, answers, options, and explanations.
+
+        // Science - Taxonomy Level 1: Remembering (Hard)
+        question[0][0][0][0] = "What is the primary source of energy for Earth’s climate system?";
+        question[0][0][0][1] = "Solar radiation";
+        question[0][0][0][2] = "Solar radiation";
+        question[0][0][0][3] = "Geothermal heat";
+        question[0][0][0][4] = "Tidal energy";
+        question[0][0][0][5] = "Nuclear fusion";
+        question[0][0][0][6] = "It drives global weather patterns.";
+        question[0][0][1][0] = "Which subatomic particle has no electric charge?";
+        question[0][0][1][1] = "Neutron";
+        question[0][0][1][2] = "Neutron";
+        question[0][0][1][3] = "Proton";
+        question[0][0][1][4] = "Electron";
+        question[0][0][1][5] = "Positron";
+        question[0][0][1][6] = "It resides in the nucleus.";
+        question[0][0][2][0] = "What gas, discovered on the sun before Earth, is the second most abundant element in the universe?";
+        question[0][0][2][1] = "Helium";
+        question[0][0][2][2] = "Helium";
+        question[0][0][2][3] = "Hydrogen";
+        question[0][0][2][4] = "Oxygen";
+        question[0][0][2][5] = "Nitrogen";
+        question[0][0][2][6] = "It was found via spectroscopy.";
+        question[0][0][3][0] = "What is the name of the process by which plants convert carbon dioxide and water into glucose?";
+        question[0][0][3][1] = "Photosynthesis";
+        question[0][0][3][2] = "Photosynthesis";
+        question[0][0][3][3] = "Respiration";
+        question[0][0][3][4] = "Transpiration";
+        question[0][0][3][5] = "Fermentation";
+        question[0][0][3][6] = "It uses sunlight as energy.";
+        question[0][0][4][0] = "What is the SI unit for measuring thermodynamic temperature?";
+        question[0][0][4][1] = "Kelvin";
+        question[0][0][4][2] = "Kelvin";
+        question[0][0][4][3] = "Celsius";
+        question[0][0][4][4] = "Fahrenheit";
+        question[0][0][4][5] = "Rankine";
+        question[0][0][4][6] = "It starts at absolute zero.";
+        question[0][0][5][0] = "Which level of electromagnetic radiation has the shortest wavelength?";
+        question[0][0][5][1] = "Gamma rays";
+        question[0][0][5][2] = "Gamma rays";
+        question[0][0][5][3] = "X-rays";
+        question[0][0][5][4] = "Ultraviolet";
+        question[0][0][5][5] = "Microwaves";
+        question[0][0][5][6] = "Wavelengths decrease with energy.";
+
+        // Science - Taxonomy Level 2: Understanding (Hard)
+        question[0][1][0][0] = "Why does the greenhouse effect warm the Earth?";
+        question[0][1][0][1] = "Gases trap infrared radiation";
+        question[0][1][0][2] = "Gases trap infrared radiation";
+        question[0][1][0][3] = "Gases reflect sunlight";
+        question[0][1][0][4] = "Gases block ultraviolet rays";
+        question[0][1][0][5] = "Gases increase air pressure";
+        question[0][1][0][6] = "Carbon dioxide plays a key role.";
+        question[0][1][1][0] = "What causes the Coriolis effect?";
+        question[0][1][1][1] = "Earth’s rotation";
+        question[0][1][1][2] = "Earth’s rotation";
+        question[0][1][1][3] = "Earth’s tilt";
+        question[0][1][1][4] = "Solar radiation";
+        question[0][1][1][5] = "Ocean currents";
+        question[0][1][1][6] = "It deflects moving objects.";
+        question[0][1][2][0] = "Why do noble gases rarely form compounds?";
+        question[0][1][2][1] = "They have full electron shells";
+        question[0][1][2][2] = "They have full electron shells";
+        question[0][1][2][3] = "They lack electrons";
+        question[0][1][2][4] = "They are highly reactive";
+        question[0][1][2][5] = "They form ionic bonds";
+        question[0][1][2][6] = "Stable electron configurations resist bonding.";
+        question[0][1][3][0] = "What explains the Doppler effect in sound waves?";
+        question[0][1][3][1] = "Change in frequency due to relative motion";
+        question[0][1][3][2] = "Change in frequency due to relative motion";
+        question[0][1][3][3] = "Change in amplitude";
+        question[0][1][3][4] = "Change in medium density";
+        question[0][1][3][5] = "Change in wave speed";
+        question[0][1][3][6] = "It affects pitch of moving sources.";
+        question[0][1][4][0] = "Why do some stars appear brighter than others?";
+        question[0][1][4][1] = "They are closer or more luminous";
+        question[0][1][4][2] = "They are closer or more luminous";
+        question[0][1][4][3] = "They are smaller";
+        question[0][1][4][4] = "They are colder";
+        question[0][1][4][5] = "They are denser";
+        question[0][1][4][6] = "Brightness depends on distance and energy.";
+        question[0][1][5][0] = "What causes superconductivity at low temperatures?";
+        question[0][1][5][1] = "Electrons form pairs with zero resistance";
+        question[0][1][5][2] = "Electrons form pairs with zero resistance";
+        question[0][1][5][3] = "Electrons gain mass";
+        question[0][1][5][4] = "Protons stop moving";
+        question[0][1][5][5] = "Atoms vibrate faster";
+        question[0][1][5][6] = "It occurs in certain materials.";
+
+        // Science - Taxonomy Level 3: Applying (Hard)
+        question[0][2][0][0] = "If a star’s light is redshifted, what can you infer about its motion?";
+        question[0][2][0][1] = "It is moving away";
+        question[0][2][0][2] = "It is moving away";
+        question[0][2][0][3] = "It is moving closer";
+        question[0][2][0][4] = "It is stationary";
+        question[0][2][0][5] = "It is rotating";
+        question[0][2][0][6] = "Redshift indicates increasing distance.";
+        question[0][2][1][0] = "If a circuit has a 24V battery, 6Ω resistor, and 2A current, what is the total resistance?";
+        question[0][2][1][1] = "12Ω";
+        question[0][2][1][2] = "12Ω";
+        question[0][2][1][3] = "6Ω";
+        question[0][2][1][4] = "8Ω";
+        question[0][2][1][5] = "24Ω";
+        question[0][2][1][6] = "Use Ohm’s Law: V = IR.";
+        question[0][2][2][0] = "If a gas is compressed at constant temperature, what happens to its pressure?";
+        question[0][2][2][1] = "It increases";
+        question[0][2][2][2] = "It increases";
+        question[0][2][2][3] = "It decreases";
+        question[0][2][2][4] = "It stays the same";
+        question[0][2][2][5] = "It becomes zero";
+        question[0][2][2][6] = "Boyle’s Law applies here.";
+        question[0][2][3][0] = "If a plant is exposed to only green light, what will happen to its growth?";
+        question[0][2][3][1] = "It will grow poorly";
+        question[0][2][3][2] = "It will grow poorly";
+        question[0][2][3][3] = "It will grow normally";
+        question[0][2][3][4] = "It will grow faster";
+        question[0][2][3][5] = "It will stop growing";
+        question[0][2][3][6] = "Plants absorb red and blue light best.";
+        question[0][2][4][0] = "If an object’s velocity is 10 m/s and it accelerates at 2 m/s² for 5 seconds, what is its final velocity?";
+        question[0][2][4][1] = "20 m/s";
+        question[0][2][4][2] = "20 m/s";
+        question[0][2][4][3] = "15 m/s";
+        question[0][2][4][4] = "25 m/s";
+        question[0][2][4][5] = "10 m/s";
+        question[0][2][4][6] = "Use: v = u + at.";
+        question[0][2][5][0] = "If a solution has a pH of 2, what is its hydrogen ion concentration?";
+        question[0][2][5][1] = "0.01 mol/L";
+        question[0][2][5][2] = "0.01 mol/L";
+        question[0][2][5][3] = "0.1 mol/L";
+        question[0][2][5][4] = "0.001 mol/L";
+        question[0][2][5][5] = "1 mol/L";
+        question[0][2][5][6] = "pH = -log[H⁺].";
+
+        // Science - Taxonomy Level 4: Analyzing (Hard)
+        question[0][3][0][0] = "What distinguishes a covalent bond from an ionic bond?";
+        question[0][3][0][1] = "Covalent shares electrons, ionic transfers them";
+        question[0][3][0][2] = "Covalent shares electrons, ionic transfers them";
+        question[0][3][0][3] = "Ionic shares electrons";
+        question[0][3][0][4] = "Both transfer electrons";
+        question[0][3][0][5] = "Both are the same";
+        question[0][3][0][6] = "Bond level depends on electron behavior.";
+        question[0][3][1][0] = "How does nuclear fusion differ from nuclear fission?";
+        question[0][3][1][1] = "Fusion combines nuclei, fission splits them";
+        question[0][3][1][2] = "Fusion combines nuclei, fission splits them";
+        question[0][3][1][3] = "Fission combines nuclei";
+        question[0][3][1][4] = "Both split nuclei";
+        question[0][3][1][5] = "Both are the same";
+        question[0][3][1][6] = "Fusion powers stars.";
+        question[0][3][2][0] = "What is the key difference between prokaryotic and eukaryotic cells?";
+        question[0][3][2][1] = "Eukaryotes have a nucleus, prokaryotes do not";
+        question[0][3][2][2] = "Eukaryotes have a nucleus, prokaryotes do not";
+        question[0][3][2][3] = "Prokaryotes have a nucleus";
+        question[0][3][2][4] = "Both lack a nucleus";
+        question[0][3][2][5] = "Both are the same";
+        question[0][3][2][6] = "Nucleus stores DNA.";
+        question[0][3][3][0] = "How does convection differ from conduction in heat transfer?";
+        question[0][3][3][1] = "Convection involves fluid motion, conduction does not";
+        question[0][3][3][2] = "Convection involves fluid motion, conduction does not";
+        question[0][3][3][3] = "Conduction involves fluid motion";
+        question[0][3][3][4] = "Both involve fluid motion";
+        question[0][3][3][5] = "Both are the same";
+        question[0][3][3][6] = "Fluids carry heat in convection.";
+        question[0][3][4][0] = "What distinguishes a supernova from a neutron star?";
+        question[0][3][4][1] = "Supernova is an explosion, neutron star is a remnant";
+        question[0][3][4][2] = "Supernova is an explosion, neutron star is a remnant";
+        question[0][3][4][3] = "Neutron star is an explosion";
+        question[0][3][4][4] = "Both are explosions";
+        question[0][3][4][5] = "Both are the same";
+        question[0][3][4][6] = "Supernovae create neutron stars.";
+        question[0][3][5][0] = "How does an exothermic reaction differ from an endothermic reaction?";
+        question[0][3][5][1] = "Exothermic releases heat, endothermic absorbs it";
+        question[0][3][5][2] = "Exothermic releases heat, endothermic absorbs it";
+        question[0][3][5][3] = "Endothermic releases heat";
+        question[0][3][5][4] = "Both absorb heat";
+        question[0][3][5][5] = "Both are the same";
+        question[0][3][5][6] = "Heat flow defines reaction level.";
+
+        // Science - Taxonomy Level 5: Evaluating (Hard)
+        question[0][4][0][0] = "Which is the most effective method to reduce greenhouse gas emissions?";
+        question[0][4][0][1] = "Transition to renewable energy";
+        question[0][4][0][2] = "Transition to renewable energy";
+        question[0][4][0][3] = "Increase fossil fuel use";
+        question[0][4][0][4] = "Reduce forest cover";
+        question[0][4][0][5] = "Ignore emissions";
+        question[0][4][0][6] = "Renewables produce less CO₂.";
+        question[0][4][1][0] = "Which is the best way to measure the age of a fossil?";
+        question[0][4][1][1] = "Carbon-14 dating";
+        question[0][4][1][2] = "Carbon-14 dating";
+        question[0][4][1][3] = "Tree ring counting";
+        question[0][4][1][4] = "Rock layer analysis";
+        question[0][4][1][5] = "Visual estimation";
+        question[0][4][1][6] = "Carbon-14 decays predictably.";
+        question[0][4][2][0] = "Which is the most reliable way to predict volcanic eruptions?";
+        question[0][4][2][1] = "Monitor seismic activity";
+        question[0][4][2][2] = "Monitor seismic activity";
+        question[0][4][2][3] = "Measure air temperature";
+        question[0][4][2][4] = "Observe cloud patterns";
+        question[0][4][2][5] = "Check ocean levels";
+        question[0][4][2][6] = "Earthquakes signal magma movement.";
+        question[0][4][3][0] = "Which is the best method to prevent antibiotic resistance?";
+        question[0][4][3][1] = "Limit antibiotic overuse";
+        question[0][4][3][2] = "Limit antibiotic overuse";
+        question[0][4][3][3] = "Increase antibiotic use";
+        question[0][4][3][4] = "Avoid vaccinations";
+        question[0][4][3][5] = "Use expired drugs";
+        question[0][4][3][6] = "Overuse strengthens bacteria.";
+        question[0][4][4][0] = "Which is the most effective way to study distant galaxies?";
+        question[0][4][4][1] = "Use radio telescopes";
+        question[0][4][4][2] = "Use radio telescopes";
+        question[0][4][4][3] = "Use microscopes";
+        question[0][4][4][4] = "Use binoculars";
+        question[0][4][4][5] = "Use cameras";
+        question[0][4][4][6] = "Radio waves reveal cosmic structures.";
+        question[0][4][5][0] = "Which is the best way to purify contaminated water?";
+        question[0][4][5][1] = "Reverse osmosis";
+        question[0][4][5][2] = "Reverse osmosis";
+        question[0][4][5][3] = "Boiling alone";
+        question[0][4][5][4] = "Adding sugar";
+        question[0][4][5][5] = "Freezing";
+        question[0][4][5][6] = "Membranes remove impurities.";
+
+        // Science - Taxonomy Level 6: Creating (Hard)
+        question[0][5][0][0] = "Design an experiment to test the effect of pH on enzyme activity.";
+        question[0][5][0][1] = "Vary pH levels and measure reaction rates";
+        question[0][5][0][2] = "Vary pH levels and measure reaction rates";
+        question[0][5][0][3] = "Change temperature only";
+        question[0][5][0][4] = "Use different enzymes";
+        question[0][5][0][5] = "Ignore pH levels";
+        question[0][5][0][6] = "Enzymes have optimal pH ranges.";
+        question[0][5][1][0] = "Propose a system to harness tidal energy.";
+        question[0][5][1][1] = "Use underwater turbines";
+        question[0][5][1][2] = "Use underwater turbines";
+        question[0][5][1][3] = "Use solar panels";
+        question[0][5][1][4] = "Use windmills";
+        question[0][5][1][5] = "Use coal plants";
+        question[0][5][1][6] = "Tides provide consistent energy.";
+        question[0][5][2][0] = "Create a model to predict climate change impacts.";
+        question[0][5][2][1] = "Include temperature and sea level data";
+        question[0][5][2][2] = "Include temperature and sea level data";
+        question[0][5][2][3] = "Focus on animal behavior";
+        question[0][5][2][4] = "Use only wind data";
+        question[0][5][2][5] = "Ignore measurements";
+        question[0][5][2][6] = "Models use multiple variables.";
+        question[0][5][3][0] = "Design a device to measure atmospheric CO₂ levels.";
+        question[0][5][3][1] = "Use infrared gas analyzers";
+        question[0][5][3][2] = "Use infrared gas analyzers";
+        question[0][5][3][3] = "Use thermometers";
+        question[0][5][3][4] = "Use barometers";
+        question[0][5][3][5] = "Use hydrometers";
+        question[0][5][3][6] = "CO₂ absorbs infrared light.";
+        question[0][5][4][0] = "Plan a campaign to promote biodiversity.";
+        question[0][5][4][1] = "Protect habitats and educate communities";
+        question[0][5][4][2] = "Protect habitats and educate communities";
+        question[0][5][4][3] = "Increase urban development";
+        question[0][5][4][4] = "Cut down forests";
+        question[0][5][4][5] = "Promote monoculture";
+        question[0][5][4][6] = "Biodiversity supports ecosystems.";
+        question[0][5][5][0] = "Create a diagram of the carbon cycle.";
+        question[0][5][5][1] = "Show carbon movement through ecosystems";
+        question[0][5][5][2] = "Show carbon movement through ecosystems";
+        question[0][5][5][3] = "Draw only plants";
+        question[0][5][5][4] = "List temperatures";
+        question[0][5][5][5] = "Show one process";
+        question[0][5][5][6] = "Carbon cycles through air, land, and sea.";
+
+        // History - Taxonomy Level 1: Remembering (Hard)
+        question[1][0][0][0] = "In which year was the Treaty of Tordesillas signed?";
+        question[1][0][0][1] = "1494";
+        question[1][0][0][2] = "1494";
+        question[1][0][0][3] = "1519";
+        question[1][0][0][4] = "1453";
+        question[1][0][0][5] = "1600";
+        question[1][0][0][6] = "It divided the New World.";
+        question[1][0][1][0] = "Who led the Haitian Revolution?";
+        question[1][0][1][1] = "Toussaint Louverture";
+        question[1][0][1][2] = "Toussaint Louverture";
+        question[1][0][1][3] = "Simon Bolivar";
+        question[1][0][1][4] = "Napoleon Bonaparte";
+        question[1][0][1][5] = "George Washington";
+        question[1][0][1][6] = "It led to Haiti’s independence.";
+        question[1][0][2][0] = "What was the name of the code of laws created by Napoleon?";
+        question[1][0][2][1] = "Napoleonic Code";
+        question[1][0][2][2] = "Napoleonic Code";
+        question[1][0][2][3] = "Code of Hammurabi";
+        question[1][0][2][4] = "Magna Carta";
+        question[1][0][2][5] = "Justinian Code";
+        question[1][0][2][6] = "It influenced modern legal systems.";
+        question[1][0][3][0] = "Which empire built the Great Wall of China?";
+        question[1][0][3][1] = "Ming Dynasty";
+        question[1][0][3][2] = "Ming Dynasty";
+        question[1][0][3][3] = "Qing Dynasty";
+        question[1][0][3][4] = "Han Dynasty";
+        question[1][0][3][5] = "Tang Dynasty";
+        question[1][0][3][6] = "It was built for defense.";
+        question[1][0][4][0] = "Who was the first woman to win a Nobel Peace Prize?";
+        question[1][0][4][1] = "Bertha von Suttner";
+        question[1][0][4][2] = "Bertha von Suttner";
+        question[1][0][4][3] = "Marie Curie";
+        question[1][0][4][4] = "Jane Addams";
+        question[1][0][4][5] = "Mother Teresa";
+        question[1][0][4][6] = "She won in 1905.";
+        question[1][0][5][0] = "What was the name of the ship that carried the Pilgrims to America in 1620?";
+        question[1][0][5][1] = "Mayflower";
+        question[1][0][5][2] = "Mayflower";
+        question[1][0][5][3] = "Santa Maria";
+        question[1][0][5][4] = "Nina";
+        question[1][0][5][5] = "Pinta";
+        question[1][0][5][6] = "It landed at Plymouth.";
+
+        // History - Taxonomy Level 2: Understanding (Hard)
+        question[1][1][0][0] = "Why did the Treaty of Tordesillas cause disputes?";
+        question[1][1][0][1] = "It divided land without clear boundaries";
+        question[1][1][0][2] = "It divided land without clear boundaries";
+        question[1][1][0][3] = "It banned exploration";
+        question[1][1][0][4] = "It united empires";
+        question[1][1][0][5] = "It ended trade";
+        question[1][1][0][6] = "Spain and Portugal disagreed.";
+        question[1][1][1][0] = "What was the main goal of the Haitian Revolution?";
+        question[1][1][1][1] = "End slavery and gain independence";
+        question[1][1][1][2] = "End slavery and gain independence";
+        question[1][1][1][3] = "Expand French control";
+        question[1][1][1][4] = "Increase trade";
+        question[1][1][1][5] = "Build cities";
+        question[1][1][1][6] = "It was a slave revolt.";
+        question[1][1][2][0] = "Why was the Napoleonic Code significant?";
+        question[1][1][2][1] = "It standardized laws across Europe";
+        question[1][1][2][2] = "It standardized laws across Europe";
+        question[1][1][2][3] = "It banned trade";
+        question[1][1][2][4] = "It ended wars";
+        question[1][1][2][5] = "It limited rights";
+        question[1][1][2][6] = "It influenced legal systems.";
+        question[1][1][3][0] = "What was the purpose of the Great Wall during the Ming Dynasty?";
+        question[1][1][3][1] = "Protect against invasions";
+        question[1][1][3][2] = "Protect against invasions";
+        question[1][1][3][3] = "Promote trade";
+        question[1][1][3][4] = "Mark borders";
+        question[1][1][3][5] = "Build cities";
+        question[1][1][3][6] = "It defended against Mongols.";
+        question[1][1][4][0] = "Why was the Berlin Conference of 1884–1885 important?";
+        question[1][1][4][1] = "It divided Africa among European powers";
+        question[1][1][4][2] = "It divided Africa among European powers";
+        question[1][1][4][3] = "It ended colonialism";
+        question[1][1][4][4] = "It promoted African unity";
+        question[1][1][4][5] = "It banned trade";
+        question[1][1][4][6] = "It led to colonial borders.";
+        question[1][1][5][0] = "What caused the fall of the Roman Empire?";
+        question[1][1][5][1] = "Economic decline and invasions";
+        question[1][1][5][2] = "Economic decline and invasions";
+        question[1][1][5][3] = "Technological advances";
+        question[1][1][5][4] = "Strong leadership";
+        question[1][1][5][5] = "Increased trade";
+        question[1][1][5][6] = "Multiple factors weakened it.";
+
+        // History - Taxonomy Level 3: Applying (Hard)
+        question[1][2][0][0] = "If you were a diplomat in 1494, how would you enforce the Treaty of Tordesillas?";
+        question[1][2][0][1] = "Use maps and naval patrols";
+        question[1][2][0][2] = "Use maps and naval patrols";
+        question[1][2][0][3] = "Ban all exploration";
+        question[1][2][0][4] = "Build walls";
+        question[1][2][0][5] = "Ignore boundaries";
+        question[1][2][0][6] = "Clear borders were needed.";
+        question[1][2][1][0] = "If you were in the Haitian Revolution, what would you do to support it?";
+        question[1][2][1][1] = "Organize resistance groups";
+        question[1][2][1][2] = "Organize resistance groups";
+        question[1][2][1][3] = "Support French rule";
+        question[1][2][1][4] = "Increase taxes";
+        question[1][2][1][5] = "Build plantations";
+        question[1][2][1][6] = "Resistance fought for freedom.";
+        question[1][2][2][0] = "If you were a lawyer using the Napoleonic Code, what would you focus on?";
+        question[1][2][2][1] = "Equal property rights";
+        question[1][2][2][2] = "Equal property rights";
+        question[1][2][2][3] = "Royal privileges";
+        question[1][2][2][4] = "Military laws";
+        question[1][2][2][5] = "Religious rules";
+        question[1][2][2][6] = "It emphasized legal equality.";
+        question[1][2][3][0] = "If you were defending the Great Wall, what strategy would you use?";
+        question[1][2][3][1] = "Station troops at key points";
+        question[1][2][3][2] = "Station troops at key points";
+        question[1][2][3][3] = "Open all gates";
+        question[1][2][3][4] = "Abandon the wall";
+        question[1][2][3][5] = "Build more walls";
+        question[1][2][3][6] = "Strategic points were fortified.";
+        question[1][2][4][0] = "If you were at the Berlin Conference, what would you propose?";
+        question[1][2][4][1] = "Negotiate fair boundaries";
+        question[1][2][4][2] = "Negotiate fair boundaries";
+        question[1][2][4][3] = "Divide randomly";
+        question[1][2][4][4] = "Ban colonization";
+        question[1][2][4][5] = "Ignore Africa";
+        question[1][2][4][6] = "Borders caused conflicts.";
+        question[1][2][5][0] = "If you lived in the Roman Empire, how would you address its decline?";
+        question[1][2][5][1] = "Strengthen economy and defenses";
+        question[1][2][5][2] = "Strengthen economy and defenses";
+        question[1][2][5][3] = "Increase taxes";
+        question[1][2][5][4] = "Expand rapidly";
+        question[1][2][5][5] = "Ignore invasions";
+        question[1][2][5][6] = "Multiple issues needed addressing.";
+
+        // History - Taxonomy Level 4: Analyzing (Hard)
+        question[1][3][0][0] = "What was the key difference between the Haitian and American Revolutions?";
+        question[1][3][0][1] = "Haitian focused on slavery, American on independence";
+        question[1][3][0][2] = "Haitian focused on slavery, American on independence";
+        question[1][3][0][3] = "Both focused on slavery";
+        question[1][3][0][4] = "Both were identical";
+        question[1][3][0][5] = "American focused on slavery";
+        question[1][3][0][6] = "Social issues shaped outcomes.";
+        question[1][3][1][0] = "How did the Napoleonic Code differ from feudal laws?";
+        question[1][3][1][1] = "It abolished privileges, feudal laws upheld them";
+        question[1][3][1][2] = "It abolished privileges, feudal laws upheld them";
+        question[1][3][1][3] = "Feudal laws abolished privileges";
+        question[1][3][1][4] = "Both were identical";
+        question[1][3][1][5] = "Code upheld privileges";
+        question[1][3][1][6] = "Equality was a key change.";
+        question[1][3][2][0] = "What distinguished the Ming Dynasty’s Great Wall from earlier walls?";
+        question[1][3][2][1] = "Ming used brick and stone, earlier used earth";
+        question[1][3][2][2] = "Ming used brick and stone, earlier used earth";
+        question[1][3][2][3] = "Earlier used brick";
+        question[1][3][2][4] = "Both were identical";
+        question[1][3][2][5] = "Ming used earth";
+        question[1][3][2][6] = "Materials improved durability.";
+        question[1][3][3][0] = "How did the Berlin Conference differ from earlier colonial agreements?";
+        question[1][3][3][1] = "It formalized Africa’s division, others were regional";
+        question[1][3][3][2] = "It formalized Africa’s division, others were regional";
+        question[1][3][3][3] = "Others divided Africa";
+        question[1][3][3][4] = "Both were identical";
+        question[1][3][3][5] = "Conference was regional";
+        question[1][3][3][6] = "It involved multiple powers.";
+        question[1][3][4][0] = "What was the main difference between the Roman and Byzantine Empires?";
+        question[1][3][4][1] = "Byzantine was Eastern, Roman was unified";
+        question[1][3][4][2] = "Byzantine was Eastern, Roman was unified";
+        question[1][3][4][3] = "Roman was Eastern";
+        question[1][3][4][4] = "Both were identical";
+        question[1][3][4][5] = "Byzantine was unified";
+        question[1][3][4][6] = "Byzantine continued Roman legacy.";
+        question[1][3][5][0] = "How did World War I’s causes differ from World War II’s?";
+        question[1][3][5][1] = "World War I was alliances, World War II was ideology";
+        question[1][3][5][2] = "World War I was alliances, World War II was ideology";
+        question[1][3][5][3] = "Both were alliances";
+        question[1][3][5][4] = "Both were identical";
+        question[1][3][5][5] = "World War II was alliances";
+        question[1][3][5][6] = "Causes shaped global impact.";
+
+        // History - Taxonomy Level 5: Evaluating (Hard)
+        question[1][4][0][0] = "Which was the most significant outcome of the Haitian Revolution?";
+        question[1][4][0][1] = "First Black-led republic";
+        question[1][4][0][2] = "First Black-led republic";
+        question[1][4][0][3] = "Increased French control";
+        question[1][4][0][4] = "More plantations";
+        question[1][4][0][5] = "Stronger slavery";
+        question[1][4][0][6] = "It inspired other revolts.";
+        question[1][4][1][0] = "Which was the most impactful effect of the Napoleonic Code?";
+        question[1][4][1][1] = "Spread of legal equality";
+        question[1][4][1][2] = "Spread of legal equality";
+        question[1][4][1][3] = "Increased monarchy power";
+        question[1][4][1][4] = "More wars";
+        question[1][4][1][5] = "Less trade";
+        question[1][4][1][6] = "It shaped modern laws.";
+        question[1][4][2][0] = "Which was the best defense strategy for the Great Wall?";
+        question[1][4][2][1] = "Garrisons with signal towers";
+        question[1][4][2][2] = "Garrisons with signal towers";
+        question[1][4][2][3] = "Open gates";
+        question[1][4][2][4] = "No troops";
+        question[1][4][2][5] = "Single outpost";
+        question[1][4][2][6] = "Towers enabled quick response.";
+        question[1][4][3][0] = "Which was the most significant impact of the Berlin Conference?";
+        question[1][4][3][1] = "Colonial borders in Africa";
+        question[1][4][3][2] = "Colonial borders in Africa";
+        question[1][4][3][3] = "African independence";
+        question[1][4][3][4] = "Global trade bans";
+        question[1][4][3][5] = "European unity";
+        question[1][4][3][6] = "Borders caused long-term conflicts.";
+        question[1][4][4][0] = "Which was the most effective reform of the Progressive Era?";
+        question[1][4][4][1] = "Women’s suffrage";
+        question[1][4][4][2] = "Women’s suffrage";
+        question[1][4][4][3] = "Increased taxes";
+        question[1][4][4][4] = "Banned unions";
+        question[1][4][4][5] = "Child labor expansion";
+        question[1][4][4][6] = "It expanded voting rights.";
+        question[1][4][5][0] = "Which was the most important cause of the Roman Empire’s fall?";
+        question[1][4][5][1] = "Economic instability";
+        question[1][4][5][2] = "Economic instability";
+        question[1][4][5][3] = "Strong leadership";
+        question[1][4][5][4] = "More trade";
+        question[1][4][5][5] = "New technology";
+        question[1][4][5][6] = "It weakened the empire.";
+
+        // History - Taxonomy Level 6: Creating (Hard)
+        question[1][5][0][0] = "Design a museum exhibit on the Haitian Revolution.";
+        question[1][5][0][1] = "Show leader artifacts and battle maps";
+        question[1][5][0][2] = "Show leader artifacts and battle maps";
+        question[1][5][0][3] = "Display only weapons";
+        question[1][5][0][4] = "Focus on trade";
+        question[1][5][0][5] = "Show modern art";
+        question[1][5][0][6] = "Exhibits highlight key figures.";
+        question[1][5][1][0] = "Create a timeline of the Napoleonic Wars.";
+        question[1][5][1][1] = "Include major battles and treaties";
+        question[1][5][1][2] = "Include major battles and treaties";
+        question[1][5][1][3] = "List only dates";
+        question[1][5][1][4] = "Draw landscapes";
+        question[1][5][1][5] = "Show one event";
+        question[1][5][1][6] = "Timelines organize conflicts.";
+        question[1][5][2][0] = "Propose a policy inspired by the Ming Dynasty.";
+        question[1][5][2][1] = "Strengthen border defenses";
+        question[1][5][2][2] = "Strengthen border defenses";
+        question[1][5][2][3] = "Ban trade";
+        question[1][5][2][4] = "Reduce taxes";
+        question[1][5][2][5] = "Expand cities";
+        question[1][5][2][6] = "Defense was a priority.";
+        question[1][5][3][0] = "Design a monument for the Berlin Conference.";
+        question[1][5][3][1] = "Show colonial impacts and African resistance";
+        question[1][5][3][2] = "Show colonial impacts and African resistance";
+        question[1][5][3][3] = "Display only flags";
+        question[1][5][3][4] = "Focus on trade";
+        question[1][5][3][5] = "Show modern cities";
+        question[1][5][3][6] = "Monuments reflect history.";
+        question[1][5][4][0] = "Create a documentary on the Roman Empire’s fall.";
+        question[1][5][4][1] = "Highlight economic and military causes";
+        question[1][5][4][2] = "Highlight economic and military causes";
+        question[1][5][4][3] = "Focus on one event";
+        question[1][5][4][4] = "Show only art";
+        question[1][5][4][5] = "List dates";
+        question[1][5][4][6] = "Documentaries explain complex events.";
+        question[1][5][5][0] = "Plan a campaign to teach about the Progressive Era.";
+        question[1][5][5][1] = "Focus on reforms and social change";
+        question[1][5][5][2] = "Focus on reforms and social change";
+        question[1][5][5][3] = "Show only wars";
+        question[1][5][5][4] = "List inventions";
+        question[1][5][5][5] = "Ignore reforms";
+        question[1][5][5][6] = "Reforms shaped society.";
+
+        // Geography - Taxonomy Level 1: Remembering (Hard)
+        question[2][0][0][0] = "What is the deepest point in the Pacific Ocean?";
+        question[2][0][0][1] = "Mariana Trench";
+        question[2][0][0][2] = "Mariana Trench";
+        question[2][0][0][3] = "Tonga Trench";
+        question[2][0][0][4] = "Kermadec Trench";
+        question[2][0][0][5] = "Philippine Trench";
+        question[2][0][0][6] = "It reaches over 10,000 meters.";
+        question[2][0][1][0] = "Which African country has the most active volcanoes?";
+        question[2][0][1][1] = "Democratic Republic of Congo";
+        question[2][0][1][2] = "Democratic Republic of Congo";
+        question[2][0][1][3] = "Ethiopia";
+        question[2][0][1][4] = "Kenya";
+        question[2][0][1][5] = "South Africa";
+        question[2][0][1][6] = "It lies in the Rift Valley.";
+        question[2][0][2][0] = "What is the largest coral reef system in the world?";
+        question[2][0][2][1] = "Great Barrier Reef";
+        question[2][0][2][2] = "Great Barrier Reef";
+        question[2][0][2][3] = "Belize Barrier Reef";
+        question[2][0][2][4] = "Red Sea Coral Reef";
+        question[2][0][2][5] = "Mesoamerican Reef";
+        question[2][0][2][6] = "It is off Australia’s coast.";
+        question[2][0][3][0] = "Which desert spans parts of Mongolia and China?";
+        question[2][0][3][1] = "Gobi Desert";
+        question[2][0][3][2] = "Gobi Desert";
+        question[2][0][3][3] = "Taklamakan Desert";
+        question[2][0][3][4] = "Kyzylkum Desert";
+        question[2][0][3][5] = "Karakum Desert";
+        question[2][0][3][6] = "It is in northern Asia.";
+        question[2][0][4][0] = "What is the highest peak in South America?";
+        question[2][0][4][1] = "Aconcagua";
+        question[2][0][4][2] = "Aconcagua";
+        question[2][0][4][3] = "Huascaran";
+        question[2][0][4][4] = "Chimborazo";
+        question[2][0][4][5] = "Ojos del Salado";
+        question[2][0][4][6] = "It is in the Andes.";
+        question[2][0][5][0] = "Which river is the second longest in Africa?";
+        question[2][0][5][1] = "Congo River";
+        question[2][0][5][2] = "Congo River";
+        question[2][0][5][3] = "Nile River";
+        question[2][0][5][4] = "Zambezi River";
+        question[2][0][5][5] = "Niger River";
+        question[2][0][5][6] = "It flows through central Africa.";
+
+        // Geography - Taxonomy Level 2: Understanding (Hard)
+        question[2][1][0][0] = "Why does the Mariana Trench have such high pressure?";
+        question[2][1][0][1] = "Depth increases water weight";
+        question[2][1][0][2] = "Depth increases water weight";
+        question[2][1][0][3] = "Warm water increases pressure";
+        question[2][1][0][4] = "Low salinity reduces pressure";
+        question[2][1][0][5] = "Currents reduce pressure";
+        question[2][1][0][6] = "Pressure rises with depth.";
+        question[2][1][1][0] = "What causes the high volcanic activity in the Democratic Republic of Congo?";
+        question[2][1][1][1] = "Tectonic plate divergence";
+        question[2][1][1][2] = "Tectonic plate divergence";
+        question[2][1][1][3] = "Plate convergence";
+        question[2][1][1][4] = "Stable plates";
+        question[2][1][1][5] = "Ocean currents";
+        question[2][1][1][6] = "Rift Valley causes activity.";
+        question[2][1][2][0] = "Why is the Great Barrier Reef vulnerable to climate change?";
+        question[2][1][2][1] = "Rising sea temperatures cause coral bleaching";
+        question[2][1][2][2] = "Rising sea temperatures cause coral bleaching";
+        question[2][1][2][3] = "Lower temperatures help corals";
+        question[2][1][2][4] = "More rainfall strengthens reefs";
+        question[2][1][2][5] = "Stable pH protects corals";
+        question[2][1][2][6] = "Heat stresses coral ecosystems.";
+        question[2][1][3][0] = "What makes the Gobi Desert’s climate so extreme?";
+        question[2][1][3][1] = "High altitude and low moisture";
+        question[2][1][3][2] = "High altitude and low moisture";
+        question[2][1][3][3] = "Low altitude and high rain";
+        question[2][1][3][4] = "Stable temperatures";
+        question[2][1][3][5] = "Dense vegetation";
+        question[2][1][3][6] = "Aridity amplifies temperature swings.";
+        question[2][1][4][0] = "Why is Aconcagua’s summit so challenging to climb?";
+        question[2][1][4][1] = "High altitude and low oxygen";
+        question[2][1][4][2] = "High altitude and low oxygen";
+        question[2][1][4][3] = "Low altitude and heat";
+        question[2][1][4][4] = "Flat terrain";
+        question[2][1][4][5] = "Dense forests";
+        question[2][1][4][6] = "Thin air affects breathing.";
+        question[2][1][5][0] = "What causes the Congo River’s high biodiversity?";
+        question[2][1][5][1] = "Dense rainforest and stable climate";
+        question[2][1][5][2] = "Dense rainforest and stable climate";
+        question[2][1][5][3] = "Desert surroundings";
+        question[2][1][5][4] = "Cold temperatures";
+        question[2][1][5][5] = "Low water flow";
+        question[2][1][5][6] = "Rainforests support diverse life.";
+
+        // Geography - Taxonomy Level 3: Applying (Hard)
+        question[2][2][0][0] = "If a submarine is at 11,000 meters in the Mariana Trench, what pressure would it face?";
+        question[2][2][0][1] = "About 1100 atmospheres";
+        question[2][2][0][2] = "About 1100 atmospheres";
+        question[2][2][0][3] = "100 atmospheres";
+        question[2][2][0][4] = "500 atmospheres";
+        question[2][2][0][5] = "2000 atmospheres";
+        question[2][2][0][6] = "Pressure increases 1 atm per 10m.";
+        question[2][2][1][0] = "If you are studying volcanoes in the Democratic Republic of Congo, what region would you visit?";
+        question[2][2][1][1] = "Virunga Mountains";
+        question[2][2][1][2] = "Virunga Mountains";
+        question[2][2][1][3] = "Sahara Desert";
+        question[2][2][1][4] = "Kalahari Basin";
+        question[2][2][1][5] = "Nile Delta";
+        question[2][2][1][6] = "It is in the Rift Valley.";
+        question[2][2][2][0] = "If you want to protect the Great Barrier Reef, what would you monitor?";
+        question[2][2][2][1] = "Sea temperature and pH";
+        question[2][2][2][2] = "Sea temperature and pH";
+        question[2][2][2][3] = "Air pressure";
+        question[2][2][2][4] = "Wind speed";
+        question[2][2][2][5] = "Soil quality";
+        question[2][2][2][6] = "Corals are sensitive to heat and acid.";
+        question[2][2][3][0] = "If you are crossing the Gobi Desert, what would you prepare for?";
+        question[2][2][3][1] = "Extreme temperature swings";
+        question[2][2][3][2] = "Extreme temperature swings";
+        question[2][2][3][3] = "Heavy rainfall";
+        question[2][2][3][4] = "Dense forests";
+        question[2][2][3][5] = "Stable weather";
+        question[2][2][3][6] = "Deserts have hot days, cold nights.";
+        question[2][2][4][0] = "If you climb Aconcagua, what equipment would you need?";
+        question[2][2][4][1] = "Oxygen tanks and warm clothing";
+        question[2][2][4][2] = "Oxygen tanks and warm clothing";
+        question[2][2][4][3] = "Swimming gear";
+        question[2][2][4][4] = "Light clothing";
+        question[2][2][4][5] = "No equipment";
+        question[2][2][4][6] = "High altitude requires preparation.";
+        question[2][2][5][0] = "If you study fish in the Congo River, what would you expect?";
+        question[2][2][5][1] = "High species diversity";
+        question[2][2][5][2] = "High species diversity";
+        question[2][2][5][3] = "Few species";
+        question[2][2][5][4] = "No fish";
+        question[2][2][5][5] = "Only large fish";
+        question[2][2][5][6] = "Rainforests boost river diversity.";
+
+        // Geography - Taxonomy Level 4: Analyzing (Hard)
+        question[2][3][0][0] = "What distinguishes the Mariana Trench from other ocean trenches?";
+        question[2][3][0][1] = "It is the deepest";
+        question[2][3][0][2] = "It is the deepest";
+        question[2][3][0][3] = "It is the shallowest";
+        question[2][3][0][4] = "It is the widest";
+        question[2][3][0][5] = "It is the same";
+        question[2][3][0][6] = "Depth sets it apart.";
+        question[2][3][1][0] = "How does the Great Barrier Reef differ from other coral reefs?";
+        question[2][3][1][1] = "It is the largest and most biodiverse";
+        question[2][3][1][2] = "It is the largest and most biodiverse";
+        question[2][3][1][3] = "It is the smallest";
+        question[2][3][1][4] = "It is less diverse";
+        question[2][3][1][5] = "It is the same";
+        question[2][3][1][6] = "Size and species variety define it.";
+        question[2][3][2][0] = "What makes the Gobi Desert different from the Sahara?";
+        question[2][3][2][1] = "Gobi is colder, Sahara is hotter";
+        question[2][3][2][2] = "Gobi is colder, Sahara is hotter";
+        question[2][3][2][3] = "Sahara is colder";
+        question[2][3][2][4] = "Both are the same";
+        question[2][3][2][5] = "Gobi is hotter";
+        question[2][3][2][6] = "Climate shapes desert levels.";
+        question[2][3][3][0] = "How does Aconcagua differ from Mount Everest?";
+        question[2][3][3][1] = "Aconcagua is shorter and in South America";
+        question[2][3][3][2] = "Aconcagua is shorter and in South America";
+        question[2][3][3][3] = "Everest is shorter";
+        question[2][3][3][4] = "Both are the same";
+        question[2][3][3][5] = "Aconcagua is taller";
+        question[2][3][3][6] = "Location and height differ.";
+        question[2][3][4][0] = "What distinguishes the Congo River from the Nile?";
+        question[2][3][4][1] = "Congo is shorter but has more volume";
+        question[2][3][4][2] = "Congo is shorter but has more volume";
+        question[2][3][4][3] = "Nile has more volume";
+        question[2][3][4][4] = "Both are the same";
+        question[2][3][4][5] = "Congo is longer";
+        question[2][3][4][6] = "Water flow sets them apart.";
+        question[2][3][5][0] = "How does a volcanic island differ from a continental island?";
+        question[2][3][5][1] = "Volcanic forms from eruptions, continental from land separation";
+        question[2][3][5][2] = "Volcanic forms from eruptions, continental from land separation";
+        question[2][3][5][3] = "Both form from eruptions";
+        question[2][3][5][4] = "Both are the same";
+        question[2][3][5][5] = "Continental forms from eruptions";
+        question[2][3][5][6] = "Formation processes differ.";
+
+        // Geography - Taxonomy Level 5: Evaluating (Hard)
+        question[2][4][0][0] = "Which is the most effective way to protect the Great Barrier Reef?";
+        question[2][4][0][1] = "Reduce carbon emissions globally";
+        question[2][4][0][2] = "Reduce carbon emissions globally";
+        question[2][4][0][3] = "Increase fishing";
+        question[2][4][0][4] = "Build artificial reefs";
+        question[2][4][0][5] = "Ignore bleaching";
+        question[2][4][0][6] = "Emissions drive coral bleaching.";
+        question[2][4][1][0] = "Which is the best method to monitor volcanic activity in the Congo?";
+        question[2][4][1][1] = "Use satellite and seismic sensors";
+        question[2][4][1][2] = "Use satellite and seismic sensors";
+        question[2][4][1][3] = "Observe animals";
+        question[2][4][1][4] = "Check rainfall";
+        question[2][4][1][5] = "Measure air pressure";
+        question[2][4][1][6] = "Sensors detect ground movement.";
+        question[2][4][2][0] = "Which is the most sustainable way to farm in the Gobi Desert?";
+        question[2][4][2][1] = "Use hydroponics with solar power";
+        question[2][4][2][2] = "Use hydroponics with solar power";
+        question[2][4][2][3] = "Flood irrigation";
+        question[2][4][2][4] = "Clear vegetation";
+        question[2][4][2][5] = "Use heavy machinery";
+        question[2][4][2][6] = "Water scarcity requires efficiency.";
+        question[2][4][3][0] = "Which is the best way to climb Aconcagua safely?";
+        question[2][4][3][1] = "Acclimatize and use oxygen";
+        question[2][4][3][2] = "Acclimatize and use oxygen";
+        question[2][4][3][3] = "Climb quickly";
+        question[2][4][3][4] = "Avoid gear";
+        question[2][4][3][5] = "Ignore weather";
+        question[2][4][3][6] = "Altitude sickness is a risk.";
+        question[2][4][4][0] = "Which is the most effective way to conserve the Congo River’s ecosystem?";
+        question[2][4][4][1] = "Protect rainforests and regulate fishing";
+        question[2][4][4][2] = "Protect rainforests and regulate fishing";
+        question[2][4][4][3] = "Increase logging";
+        question[2][4][4][4] = "Build dams";
+        question[2][4][4][5] = "Allow pollution";
+        question[2][4][4][6] = "Rainforests support river life.";
+        question[2][4][5][0] = "Which is the best way to explore the Mariana Trench?";
+        question[2][4][5][1] = "Use deep-sea submersibles";
+        question[2][4][5][2] = "Use deep-sea submersibles";
+        question[2][4][5][3] = "Use scuba gear";
+        question[2][4][5][4] = "Use satellites";
+        question[2][4][5][5] = "Use fishing boats";
+        question[2][4][5][6] = "Submersibles handle high pressure.";
+
+        // Geography - Taxonomy Level 6: Creating (Hard)
+        question[2][5][0][0] = "Design a plan to restore the Great Barrier Reef.";
+        question[2][5][0][1] = "Reduce emissions and replant corals";
+        question[2][5][0][2] = "Reduce emissions and replant corals";
+        question[2][5][0][3] = "Increase tourism";
+        question[2][5][0][4] = "Build artificial islands";
+        question[2][5][0][5] = "Ignore bleaching";
+        question[2][5][0][6] = "Coral health depends on climate.";
+        question[2][5][1][0] = "Create a monitoring system for Congo volcanoes.";
+        question[2][5][1][1] = "Use seismic sensors and drones";
+        question[2][5][1][2] = "Use seismic sensors and drones";
+        question[2][5][1][3] = "Rely on visual checks";
+        question[2][5][1][4] = "Use weather stations";
+        question[2][5][1][5] = "Ignore data";
+        question[2][5][1][6] = "Sensors predict eruptions.";
+        question[2][5][2][0] = "Propose a sustainable city in the Gobi Desert.";
+        question[2][5][2][1] = "Use solar power and water recycling";
+        question[2][5][2][2] = "Use solar power and water recycling";
+        question[2][5][2][3] = "Rely on fossil fuels";
+        question[2][5][2][4] = "Use river water";
+        question[2][5][2][5] = "Build skyscrapers";
+        question[2][5][2][6] = "Sustainability is key in deserts.";
+        question[2][5][3][0] = "Design a map of the Congo River basin.";
+        question[2][5][3][1] = "Show tributaries and rainforests";
+        question[2][5][3][2] = "Show tributaries and rainforests";
+        question[2][5][3][3] = "Draw only cities";
+        question[2][5][3][4] = "Show deserts";
+        question[2][5][3][5] = "List animals";
+        question[2][5][3][6] = "Maps show ecosystem connections.";
+        question[2][5][4][0] = "Plan a climbing expedition to Aconcagua.";
+        question[2][5][4][1] = "Include acclimatization and safety protocols";
+        question[2][5][4][2] = "Include acclimatization and safety protocols";
+        question[2][5][4][3] = "Climb without gear";
+        question[2][5][4][4] = "Ignore weather";
+        question[2][5][4][5] = "Rush the climb";
+        question[2][5][4][6] = "Planning prevents risks.";
+        question[2][5][5][0] = "Create a model of the Mariana Trench.";
+        question[2][5][5][1] = "Show depth and tectonic features";
+        question[2][5][5][2] = "Show depth and tectonic features";
+        question[2][5][5][3] = "Draw flat land";
+        question[2][5][5][4] = "List fish species";
+        question[2][5][5][5] = "Show surface only";
+        question[2][5][5][6] = "Models show ocean floor.";
+
+        // Mathematics - Taxonomy Level 1: Remembering (Hard)
+        question[3][0][0][0] = "What is the formula for the volume of a sphere?";
+        question[3][0][0][1] = "(4/3)πr³";
+        question[3][0][0][2] = "(4/3)πr³";
+        question[3][0][0][3] = "πr²";
+        question[3][0][0][4] = "4πr²";
+        question[3][0][0][5] = "(1/3)πr³";
+        question[3][0][0][6] = "It measures 3D space.";
+        question[3][0][1][0] = "What is the value of sin(60°) in a right triangle?";
+        question[3][0][1][1] = "√3/2";
+        question[3][0][1][2] = "√3/2";
+        question[3][0][1][3] = "1/2";
+        question[3][0][1][4] = "√2/2";
+        question[3][0][1][5] = "1";
+        question[3][0][1][6] = "Use a 30-60-90 triangle.";
+        question[3][0][2][0] = "What is the quadratic formula?";
+        question[3][0][2][1] = "x = [-b ± √(b²-4ac)]/(2a)";
+        question[3][0][2][2] = "x = [-b ± √(b²-4ac)]/(2a)";
+        question[3][0][2][3] = "x = [-b ± √(b²+4ac)]/(2a)";
+        question[3][0][2][4] = "x = [b ± √(b²-4ac)]/(2a)";
+        question[3][0][2][5] = "x = [-b ± √(b²-4ac)]/a";
+        question[3][0][2][6] = "It solves ax² + bx + c = 0.";
+        question[3][0][3][0] = "What is the derivative of x³?";
+        question[3][0][3][1] = "3x²";
+        question[3][0][3][2] = "3x²";
+        question[3][0][3][3] = "x²";
+        question[3][0][3][4] = "3x";
+        question[3][0][3][5] = "x³";
+        question[3][0][3][6] = "Use the power rule.";
+        question[3][0][4][0] = "What is the sum of angles in a hexagon?";
+        question[3][0][4][1] = "720°";
+        question[3][0][4][2] = "720°";
+        question[3][0][4][3] = "540°";
+        question[3][0][4][4] = "360°";
+        question[3][0][4][5] = "900°";
+        question[3][0][4][6] = "Use (n-2)×180°.";
+        question[3][0][5][0] = "What is the formula for compound interest?";
+        question[3][0][5][1] = "A = P(1 + r/n)^(nt)";
+        question[3][0][5][2] = "A = P(1 + r/n)^(nt)";
+        question[3][0][5][3] = "A = P(1 + r)^t";
+        question[3][0][5][4] = "A = Prt";
+        question[3][0][5][5] = "A = P + rt";
+        question[3][0][5][6] = "It accounts for compounding.";
+
+        // Mathematics - Taxonomy Level 2: Understanding (Hard)
+        question[3][1][0][0] = "Why does the quadratic formula work?";
+        question[3][1][0][1] = "It solves for roots by completing the square";
+        question[3][1][0][2] = "It solves for roots by completing the square";
+        question[3][1][0][3] = "It finds the vertex";
+        question[3][1][0][4] = "It calculates area";
+        question[3][1][0][5] = "It measures slope";
+        question[3][1][0][6] = "It derives from ax² + bx + c = 0.";
+        question[3][1][1][0] = "What does the derivative of a function represent?";
+        question[3][1][1][1] = "Rate of change";
+        question[3][1][1][2] = "Rate of change";
+        question[3][1][1][3] = "Total area";
+        question[3][1][1][4] = "Initial value";
+        question[3][1][1][5] = "Constant term";
+        question[3][1][1][6] = "It shows how y changes with x.";
+        question[3][1][2][0] = "Why is the Pythagorean theorem limited to right triangles?";
+        question[3][1][2][1] = "Right angles create unique side relationships";
+        question[3][1][2][2] = "Right angles create unique side relationships";
+        question[3][1][2][3] = "It applies to all triangles";
+        question[3][1][2][4] = "It measures area";
+        question[3][1][2][5] = "It finds angles";
+        question[3][1][2][6] = "It relies on 90° angles.";
+        question[3][1][3][0] = "What does the sine function represent in a unit circle?";
+        question[3][1][3][1] = "Y-coordinate of a point";
+        question[3][1][3][2] = "Y-coordinate of a point";
+        question[3][1][3][3] = "X-coordinate of a point";
+        question[3][1][3][4] = "Radius length";
+        question[3][1][3][5] = "Circle area";
+        question[3][1][3][6] = "Sine relates to angles.";
+        question[3][1][4][0] = "Why does compound interest grow faster than simple interest?";
+        question[3][1][4][1] = "It earns interest on interest";
+        question[3][1][4][2] = "It earns interest on interest";
+        question[3][1][4][3] = "It has a fixed rate";
+        question[3][1][4][4] = "It grows linearly";
+        question[3][1][4][5] = "It uses a lower rate";
+        question[3][1][4][6] = "Compounding accelerates growth.";
+        question[3][1][5][0] = "What does the volume of a sphere measure?";
+        question[3][1][5][1] = "Space inside a 3D sphere";
+        question[3][1][5][2] = "Space inside a 3D sphere";
+        question[3][1][5][3] = "Surface area";
+        question[3][1][5][4] = "Circumference";
+        question[3][1][5][5] = "Radius length";
+        question[3][1][5][6] = "It uses the radius.";
+
+        // Mathematics - Taxonomy Level 3: Applying (Hard)
+        question[3][2][3][3] = "2x² + 3";
+        question[3][2][3][4] = "6x²";
+        question[3][2][3][5] = "2x³";
+        question[3][2][3][6] = "Use the power rule.";
+        question[3][2][4][0] = "If a hexagon has a side length of 5 cm, what is its perimeter?";
+        question[3][2][4][1] = "30 cm";
+        question[3][2][4][2] = "30 cm";
+        question[3][2][4][3] = "25 cm";
+        question[3][2][4][4] = "20 cm";
+        question[3][2][4][5] = "35 cm";
+        question[3][2][4][6] = "Multiply side by 6.";
+        question[3][2][5][0] = "If $1000 is invested at 5% compound interest annually for 3 years, what is the amount?";
+        question[3][2][5][1] = "$1157.63";
+        question[3][2][5][2] = "$1157.63";
+        question[3][2][5][3] = "$1150.00";
+        question[3][2][5][4] = "$1200.00";
+        question[3][2][5][5] = "$1100.00";
+        question[3][2][5][6] = "Use A = P(1 + r)^t.";
+
+        // Mathematics - Taxonomy Level 4: Analyzing (Hard)
+        question[3][3][0][0] = "What distinguishes a quadratic equation from a cubic equation?";
+        question[3][3][0][1] = "Quadratic is degree 2, cubic is degree 3";
+        question[3][3][0][2] = "Quadratic is degree 2, cubic is degree 3";
+        question[3][3][0][3] = "Cubic is degree 2";
+        question[3][3][0][4] = "Both are the same";
+        question[3][3][0][5] = "Quadratic is degree 3";
+        question[3][3][0][6] = "Degree determines roots.";
+        question[3][3][1][0] = "How does the sine function differ from the cosine function?";
+        question[3][3][1][1] = "Sine is y-coordinate, cosine is x-coordinate";
+        question[3][3][1][2] = "Sine is y-coordinate, cosine is x-coordinate";
+        question[3][3][1][3] = "Cosine is y-coordinate";
+        question[3][3][1][4] = "Both are the same";
+        question[3][3][1][5] = "Sine is x-coordinate";
+        question[3][3][1][6] = "Unit circle defines them.";
+        question[3][3][2][0] = "What is the difference between a derivative and an integral?";
+        question[3][3][2][1] = "Derivative finds slope, integral finds area";
+        question[3][3][2][2] = "Derivative finds slope, integral finds area";
+        question[3][3][2][3] = "Integral finds slope";
+        question[3][3][2][4] = "Both are the same";
+        question[3][3][2][5] = "Derivative finds area";
+        question[3][3][2][6] = "They are inverse operations.";
+        question[3][3][3][0] = "How does compound interest differ from simple interest?";
+        question[3][3][3][1] = "Compound earns interest on interest, simple does not";
+        question[3][3][3][2] = "Compound earns interest on interest, simple does not";
+        question[3][3][3][3] = "Simple earns interest on interest";
+        question[3][3][3][4] = "Both are the same";
+        question[3][3][3][5] = "Compound is linear";
+        question[3][3][3][6] = "Compounding grows faster.";
+        question[3][3][4][0] = "What distinguishes a regular polygon from an irregular polygon?";
+        question[3][3][4][1] = "Regular has equal sides and angles, irregular does not";
+        question[3][3][4][2] = "Regular has equal sides and angles, irregular does not";
+        question[3][3][4][3] = "Irregular has equal sides";
+        question[3][3][4][4] = "Both are the same";
+        question[3][3][4][5] = "Regular has unequal sides";
+        question[3][3][4][6] = "Symmetry defines regular.";
+        question[3][3][5][0] = "How does a vector differ from a scalar?";
+        question[3][3][5][1] = "Vector has direction, scalar has only magnitude";
+        question[3][3][5][2] = "Vector has direction, scalar has only magnitude";
+        question[3][3][5][3] = "Scalar has direction";
+        question[3][3][5][4] = "Both are the same";
+        question[3][3][5][5] = "Vector has only magnitude";
+        question[3][3][5][6] = "Direction is key for vectors.";
+
+        // Mathematics - Taxonomy Level 5: Evaluating (Hard)
+        question[3][4][0][0] = "Which is the most reliable method to solve a system of linear equations?";
+        question[3][4][0][1] = "Gaussian elimination";
+        question[3][4][0][2] = "Gaussian elimination";
+        question[3][4][0][3] = "Guess and check";
+        question[3][4][0][4] = "Graphing only";
+        question[3][4][0][5] = "No method";
+        question[3][4][0][6] = "It systematically reduces equations.";
+        question[3][4][1][0] = "Which is the best way to approximate the area under a curve?";
+        question[3][4][1][1] = "Use numerical integration";
+        question[3][4][1][2] = "Use numerical integration";
+        question[3][4][1][3] = "Measure one point";
+        question[3][4][1][4] = "Guess the area";
+        question[3][4][1][5] = "Use derivatives";
+        question[3][4][1][6] = "Trapezoidal rule is effective.";
+        question[3][4][2][0] = "Which is the most efficient way to find a circle’s area?";
+        question[3][4][2][1] = "Use πr²";
+        question[3][4][2][2] = "Use πr²";
+        question[3][4][2][3] = "Count squares";
+        question[3][4][2][4] = "Measure diameter";
+        question[3][4][2][5] = "Use perimeter";
+        question[3][4][2][6] = "Formula is precise.";
+        question[3][4][3][0] = "Which is the best method to verify trigonometric identities?";
+        question[3][4][3][1] = "Simplify using known identities";
+        question[3][4][3][2] = "Simplify using known identities";
+        question[3][4][3][3] = "Guess values";
+        question[3][4][3][4] = "Use graphs only";
+        question[3][4][3][5] = "No method";
+        question[3][4][3][6] = "Algebraic manipulation works.";
+        question[3][4][4][0] = "Which is the most effective way to calculate compound interest?";
+        question[3][4][4][1] = "Use A = P(1 + r/n)^(nt)";
+        question[3][4][4][2] = "Use A = P(1 + r/n)^(nt)";
+        question[3][4][4][3] = "Use simple interest";
+        question[3][4][4][4] = "Guess the amount";
+        question[3][4][4][5] = "Add interest manually";
+        question[3][4][4][6] = "Formula accounts for compounding.";
+        question[3][4][5][0] = "Which is the best way to model exponential growth?";
+        question[3][4][5][1] = "Use y = a * e^(kt)";
+        question[3][4][5][2] = "Use y = a * e^(kt)";
+        question[3][4][5][3] = "Use linear equation";
+        question[3][4][5][4] = "Use quadratic equation";
+        question[3][4][5][5] = "No model";
+        question[3][4][5][6] = "Exponential fits rapid growth.";
+
+        // Mathematics - Taxonomy Level 6: Creating (Hard)
+        question[3][5][0][0] = "Design a model to teach vector addition.";
+        question[3][5][0][1] = "Use arrows and parallelogram rule";
+        question[3][5][0][2] = "Use arrows and parallelogram rule";
+        question[3][5][0][3] = "List numbers only";
+        question[3][5][0][4] = "Use one arrow";
+        question[3][5][0][5] = "Avoid visuals";
+        question[3][5][0][6] = "Visuals show direction and magnitude.";
+        question[3][5][1][0] = "Create a program to solve quadratic equations.";
+        question[3][5][1][1] = "Use quadratic formula in code";
+        question[3][5][1][2] = "Use quadratic formula in code";
+        question[3][5][1][3] = "Guess roots";
+        question[3][5][1][4] = "Use linear code";
+        question[3][5][1][5] = "Avoid formulas";
+        question[3][5][1][6] = "Code automates solutions.";
+        question[3][5][2][0] = "Plan a lesson on derivatives.";
+        question[3][5][2][1] = "Use graphs and real-world examples";
+        question[3][5][2][2] = "Use graphs and real-world examples";
+        question[3][5][2][3] = "List rules only";
+        question[3][5][2][4] = "Avoid examples";
+        question[3][5][2][5] = "Use integrals";
+        question[3][5][2][6] = "Context clarifies concepts.";
+        question[3][5][3][0] = "Design a game to practice trigonometry.";
+        question[3][5][3][1] = "Solve angles with visual triangles";
+        question[3][5][3][2] = "Solve angles with visual triangles";
+        question[3][5][3][3] = "List numbers only";
+        question[3][5][3][4] = "Use circles";
+        question[3][5][3][5] = "Avoid angles";
+        question[3][5][3][6] = "Games reinforce ratios.";
+        question[3][5][4][0] = "Create a method to approximate integrals.";
+        question[3][5][4][1] = "Use Riemann sums with rectangles";
+        question[3][5][4][2] = "Use Riemann sums with rectangles";
+        question[3][5][4][3] = "Guess areas";
+        question[3][5][4][4] = "Use derivatives";
+        question[3][5][4][5] = "Count points";
+        question[3][5][4][6] = "Sums estimate areas.";
+        question[3][5][5][0] = "Propose a system to model population growth.";
+        question[3][5][5][1] = "Use exponential equations and data";
+        question[3][5][5][2] = "Use exponential equations and data";
+        question[3][5][5][3] = "Use linear equations";
+        question[3][5][5][4] = "List numbers";
+        question[3][5][5][5] = "Avoid math";
+        question[3][5][5][6] = "Exponentials fit growth patterns.";
+    }
+
+};
+
+class Randomizer
+{
+private:
+
+    int rand = 3;
+    int number;
+    int count = 0;
+    time_t Time = time(0);
+    void randomizer(int rand)
+    {
+        number = ((Time * rand) / 36248) % 6;
+        number = abs(number);
+    }
+protected:
+
+    int random_types[3];
+    int random_questions[3];
+public:
+
+    void get_random_types()
+    {
+
+        while (count < SIZE)
+        {
+            rand *= 28;
+            // Calling the randomizer functin.
+            randomizer(rand);
+            
+            // Check for duplicates
+            bool exist = false;
+
+            for (int i = 0; i < count; i++)
+            {
+                if (random_types[i] == number)
+                {
+                    exist = true;
+                    break;
+                }
+            }
+            if (!exist)
+            {
+                random_types[count] = number;
+                count++;
+            }
+        }
+    }
+
+    void get_randdom_question()
+    {
+        // Rest the count to 0.
+        count = 0;
+
+        while (count < SIZE)
+        {
+            rand *= 27;
+            // Calling the randomizer functin.
+            randomizer(rand);
+
+            // Check for duplicates
+            bool exist = false;
+
+            for (int i = 0; i < count; i++)
+            {
+                if (random_questions[i] == number)
+                {
+                    exist = true;
+                    break;
+                }
+            }
+            if (!exist)
+            {
+                random_questions[count] = number;
+                count++;
+            }
+        }
+    }
+};
+
+class Display_Questions : public Questions, public Randomizer
+{
+private:
+    bool easy_question = false;
+    bool medium_question = false;
+    bool hard_question = false;
+    const int MAX_QUESTION = 9;
+    int index_of_question = 0, index_of_type = 0;
+    int current_question;
+    int current_type;
+    int selected_level;
+    int question_no = 1;
+public:
+
+    void set_level()
+    {
+        if (current_level == 0)
+            easy_question = true;
+        else if (current_level == 1)
+            medium_question = true;
+        else if (current_level == 2)
+            hard_question = true;
+    }
+
+    void display_question()
+    {
+        cout << "Displaying questions for level: " << level_names[current_level] 
+            << " and topic: " << topic_names[current_topic] << endl;
+        cout << "Question " << question_no << " of " << MAX_QUESTION << ": \n";
+        cout << question[current_topic][current_type][current_question][0] << endl;
+        for (int i = 0; i < 4; i++) // Always 4 options
+        {
+            cout << char('A' + i) << ") " << question[current_topic][current_type][current_question][i + 2] << endl;
+        }
+}
+
+    // This function can be used to get questions based on the current level and topic.
+    void get_questions()
+    {
+        // First get the type, then questions.
+        current_type = random_types[index_of_type];
+        current_question = random_questions[index_of_question];
+        
+        //  Display Question.
+        display_question();
+    }
+
+    void ready_next_question()
+    {
+        index_of_question++;
+        // Generate another Random number for more questions and topic.
+        if (index_of_question == 3)
+        {
+            get_randdom_question();
+            index_of_type++;
+            index_of_question = 0; // Reset question index for the next type
+        }
+        // Increment the current question index
+        question_no++;
+    }
+
+    // Getter function for current questions, and types.
+    int get_current_question() const
+    {
+        return current_question;
+    }
+    int get_current_type() const
+    {
+        return current_type;
+    }
+    int get_question_no() const
+    {
+        return question_no;
+    }
+};
+
+class Miscellaneous_Functions : public Questions
+{
+private:
+    int current_type, current_Level, user_option;
+    int current_question, current_topic, marks;
+    int marks_part_1 = 0, marks_part_2 = 0, marks_part_3 = 0;
+    int type_1, type_2, type_3;
+    const int MAX_PARTS = 3;
+    bool is_true_answer = false;
+public:
+    void initallizing_values(int option, int type, int level, int question, int topic)
+    {
+        user_option = option + 1; 
+        current_type = type;
+        current_question = question;
+        current_topic = topic;
+        current_Level = level;
+        
+    }
+
+    bool is_valid_input(string input, char range)
+    {
+        if (!isdigit(input[0]) || input.length() != 1 || input[0] < '1' || input[0] > range)
+            {
+                cout << "Invalid input! Please enter a number between 1 and " << range << ".\n";
+                return false;
+            }
+        return true;
+    }
+
+    bool is_valid_option(string choice, int &option)
+    {
+        // Handle A–D input.
+        if (choice.length() == 1 && toupper(choice[0]) >= 'A' && toupper(choice[0]) <= 'D')
+        {
+            option = toupper(choice[0]) - 'A' + 1; // Convert A–D to 1–4
+            return true;
+        }
+        // Handdle 1-4 input.
+        else if (choice[0] >= '1' && choice[0] <= '4' && choice.length() == 1)
+        {
+            option = choice[0] - '0';
+            return true;
+        }
+        return false;
+    }
+
+    void check_answer()
+    {
+        // Initallizing the question for verifiction.
+        if (question[current_topic][current_type][current_question][user_option] 
+            == question[current_topic][current_type][current_question][1])
+        {
+            cout << "Correct answer! Not bad.\n";
+            is_true_answer = true;
+        }
+
+        else
+        {
+            cout << "Oh. That's Wrong answer! \nThe correct answer is: " 
+                 << question[current_topic][current_type][current_question][1] << endl;
+        }
+        cout << "Explaination: " 
+             << question[current_topic][current_type][current_question][6] << endl;
+    }
+
+    void calculate_marks(int question_No, int current_Topic)
+    {
+        //  Calculate marks.
+        if (question_No <= 4)
+        {
+            type_1 = current_Topic;
+            if (is_true_answer)
+            {
+                marks_part_1++;
+            }
+        }
+        else if (question_No <= 7)
+        {
+            type_2 = current_Topic;
+            if (is_true_answer)
+            {
+                marks_part_2++;
+            }
+        }
+        else if (question_No <= 10)
+        {
+            type_3 = current_Topic;
+            if (is_true_answer)
+            {
+                marks_part_3++;
+            }
+        }
+            
+        // Reset the true option.
+        is_true_answer = false;
+
+        if (question_No == 10)
+        {
+            cout << "Alright now you can see your result!!\n";
+            cout << "--------------------------------------\n";
+            cout << "           RESULT\n";
+            cout << "--------------------------------------\n";
+            cout << "Dificulty: " << level_names[current_Level] << endl;
+            cout << "Topic: " << topic_names[current_Topic] << endl;
+            cout << "--------------------------------------\n";
+            cout << "Taxanomy type: " << type_names[type_1] << endl;
+            cout << "You answered correctly " << marks_part_1 << " questions out of 3.\n";
+            cout << "-------------------------------------\n";
+            cout << "Taxanomy type: " << type_names[type_2] << endl;
+            cout << "You answered correctly " << marks_part_2 << " questions out of 3.\n";
+            cout << "-------------------------------------\n";
+            cout << "Taxanomy type: " << type_names[type_3] << endl;
+            cout << "You answered correctly " << marks_part_3 << " questions out of 3.\n";
+            cout << "-------------------------------------\n";
+            cout << "-------------------------------------\n";
+
+            cout << "Total marks: " << (marks_part_1 + marks_part_2 + marks_part_3) << " out of 9.\n";
+            cout << "-------------------------------------\n";
+            cout << "-------------------------------------\n";
+        }
+    }
+};
+
+int main()
+{
+    int level, topic, question, option,  type, question_no = 0;
+    char range;
+    bool is_valid;
+    string input, choice;
+
+    // Initalizing the other functions.
+    Miscellaneous_Functions miscellaneous;
+
+    while (true)
+    {
+        // Display the menu.
+        cout << "    Welcome to Bloom's Taxonomy Quiz    \n";
+        cout << "Enter the level Level:\n";
+        cout << "1. Easy\n 2. Medium\n 3. Hard\n 4. Exit\n";
+        cout << "Enter your choice (1-4): ";
+        cin >> input;
+
+        // Check if the input is a valid number.
+        range = '4'; // As range is 1-4.
+        if (!(miscellaneous.is_valid_input(input, range)))  continue;
+        // Exit condition.
+        else if (input[0] == '4')
+        {
+            cout << "Exiting the quiz. Thank you for playing!\n";
+            break; // Exit the loop
+        }
+        else
+        {
+            level = (input[0] - '1'); // Convert char to int
+        }
+
+        // Display level of courses.
+        cout << "Now slect the topic...\n";
+        cout << "1. Science\n2. History\n3. Geography\n4. Mathematics\n5. Exit\n";
+        cout << "Enter your choice (1-5): ";
+        cin >> input;
+
+        // Validate topic choice.
+        range = '5';
+        if (!(miscellaneous.is_valid_input(input, range))) continue;
+        else if (input[0] == '5')
+        {
+            cout << "So you are afriad!! I thought so...\n";
+            break; // Exit the loop
+        }
+        else
+        {
+            topic = (input[0] - '0' - 1); // Convert char to int
+            break;                        // Exit the loop after valid input
+        }
+    }
+
+    // Initalizing the quiz based on level and topic.
+    Questions quiz;
+
+    // Initallizing the random number for type and questions.
+    Randomizer randomizer;
+    Display_Questions display_Questions;
+    display_Questions.get_random_types();
+
+    // Selecting the random questions.
+    display_Questions.get_randdom_question();
+
+    // Selecting the level of questions.
+    display_Questions.get_info(level, topic);
+    display_Questions.set_level();
+
+    // Updating the info of level.
+    miscellaneous.selecting_level();
+    display_Questions.selecting_level();
+
+    // Starting the quiz..
+    while(true)
+    {
+        while(true)
+        {
+            // Show questions.
+            display_Questions.get_questions();
+
+            // Get user option info.
+            cout << "Acceptable entry: (A-D, a-d, 1-4)\n";
+            cout << "Choose wisely: ";
+            cin >> choice;
+
+            // Checking the valid input.
+            if (miscellaneous.is_valid_option(choice, option)) 
+                break;
+            else 
+            {
+                cout << "Can you see? I gave you wide range of entery!!!\n";
+                continue;
+            }
+        }
+
+        // Ready next qeustion.
+        display_Questions.ready_next_question();
+
+        // Getting Random question and type, and current number question.
+        question = display_Questions.get_current_question();
+        type = display_Questions.get_current_type();
+        question_no = display_Questions.get_question_no();
+
+        // Display Quetions and options.
+        miscellaneous.initallizing_values(option, type, level, question, topic);
+
+        //  Check answer.
+        miscellaneous.check_answer();
+
+        // Calculate the result.
+        miscellaneous.calculate_marks(question_no, type);
+
+        //  Condition to stop quiz at question 9.
+        if (question_no == 10)
+        {
+            cout << "So tell me what's your next plan??\n";
+            cout << "=> Press 1 to Play agian\n=> Press any key to exit\n";
+            cin >> choice;
+            if (choice == "1")
+                continue;
+            else
+                break;
+        }
+    }
+
+
+    return 0;
+}

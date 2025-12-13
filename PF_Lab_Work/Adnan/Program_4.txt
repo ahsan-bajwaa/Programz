@@ -1,0 +1,31 @@
+	// Adnan
+	// 019
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N, M, x;
+    cout << "Enter the range (N to M): ";
+    cin >> N >> M;
+    cout << "Enter the digit to search for: ";
+    cin >> x;
+
+    int count = 0;
+
+    for(int num = N; num <= M; num++){
+        int temp = num;
+        
+        while(temp > 0){
+            if(temp % 10 == x){ 
+                count++;
+            }
+            temp /= 10;
+        }
+    }
+
+    cout << "The digit " << x << " appears " << count << " times in the range " << N << " to " << M << "." << endl;
+    
+    return 0;
+}

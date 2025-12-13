@@ -1,0 +1,185 @@
+Program: 1
+
+#include <iostream>
+using namespace std;
+
+void printTable(int number){
+    for(int i = 1; i <= 10; i++){
+        cout << number << " x " << i << " = " << number * i << endl;
+    }
+}
+
+int main(){
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+    printTable(number);
+    return 0;
+}
+
+Program: 2
+#include <iostream>
+using namespace std;
+
+
+bool isEven(int number){
+    return (number & 1) == 0;
+}
+
+int main(){
+    int number;
+    cout << "Enter number: ";
+    cin >> number;
+
+    if(isEven(number)){
+        cout << "It is even number.";
+    }
+	else{
+        cout << "It is odd number.";
+    }
+    return 0;
+}
+
+Program: 3
+#include <iostream>
+using namespace std;
+
+int findMax(int a, int b){
+    if(a > b)
+        return a;
+    else
+        return b;
+}
+
+int main(){
+    int num1, num2;
+    cout << "Entr number: ";
+    cin >> num1 >> num2;
+    cout << findMax(num1, num2) << " is greater" << endl;
+    return 0;
+}
+
+Program: 4
+#include <iostream>
+using namespace std;
+
+bool isPrime(int number){
+    if(number <= 1){
+        return false;
+    }
+    for(int i = 2; i * i <= number; i++){
+        if(number % i == 0){
+            return false;
+        }
+    }
+    return true;
+}
+
+int main(){
+    int num;
+
+    cout << "Enter number: ";
+    cin >> num;
+
+    if(isPrime(num)){
+        cout << num << " is prime." << endl;
+    }
+	else{
+        cout << num << " is not prime." << endl;
+    }
+    return 0;
+}
+
+Program: 5
+#include <iostream>
+using namespace std;
+
+bool isPalindrome(int number){
+    int original = number, reversed = 0, remainder;
+    
+	while(number > 0){
+        remainder = number % 10;
+        reversed = reversed * 10 + remainder;
+        number /= 10;
+    }
+    return original == reversed;
+}
+
+int main(){
+    int num;
+    cout << "Enter number: ";
+    cin >> num;
+
+    if(isPalindrome(num)){
+        cout << num << " is palindrome.";
+    }
+	else{
+        cout << num << " is not palindrome.";
+    }
+    return 0;
+}
+
+Program: 6
+#include <iostream>
+using namespace std;
+
+void calculatePower(int base, int exponent){
+    int result = 1;
+    
+    for(int i = 1; i <= exponent; i++){
+        result *= base;
+    }
+    cout << base << " raised of power " << exponent << " is = " << result << endl;
+}
+
+int main(){
+    int base, exponent;
+    cout << "Enter base: ";
+    cin >> base;
+    cout << "Enter exponent: ";
+    cin >> exponent;
+    
+    calculatePower(base, exponent);
+    return 0;
+}
+
+Program: 7
+#include <iostream>
+using namespace std;
+
+void displayAscii(char ch){
+    cout << "ASCII value of '" << ch << "' is = " << int(ch) << endl;
+}
+
+int main(){
+    char ch;
+    cout << "Enter a character: ";
+    cin >> ch;
+    
+    displayAscii(ch);
+    return 0;
+}
+
+Program: 8
+#include <iostream>
+using namespace std;
+
+void printFactors(int num) {
+    cout << "Factors of " << num << " are: ";
+    
+    for(int i = 1; i <= num; i++) {
+        if(num % i == 0){
+            cout << i << " ";
+        }
+    }
+    cout << endl;
+}
+
+int main() {
+    int num;
+    cout << "Enter number: ";
+    cin >> num;
+    
+    printFactors(num);
+    return 0;
+}
