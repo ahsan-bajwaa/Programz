@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#include <queue>
+#include <stack>
 using namespace std;
 
 class Node
@@ -145,6 +148,116 @@ public:
         if (node == nullptr)
             return 0;
         return 1 + countNodes(node->getLeft()) + countNodes(node->getRight());
+    }
+
+         // Count internal nodes...
+    int countInternalNodes(Node *node)
+    {
+        // 1. Base Case: If the current node is null (end of a branch), return 0.
+        if (node == 0)
+        {
+            return 0;
+        }
+
+        // 2. Recursive Step: Count nodes in the left and right subtrees.
+        int count = countInternalNodes(node->getLeft()) + countInternalNodes(node->getRight());
+
+        // 3. Check for Internal Node (The condition for counting)
+        // A node is an internal node if it has at least one child.
+        // Note: This check includes the absolute root temporarily.
+        if (node->getLeft() != 0 || node->getRight() != 0)
+        {
+            // If the node has at least one child, it contributes 1 to the count.
+            count += 1;
+        }
+
+        // 4. Return the total count for this subtree.
+        return count;
+    }
+
+    // BST search elements...
+    Node* searchBST(Node *node, int target)
+    {
+        // 1. Base Case 1: Node is null (reached the end of a branch)
+        // If the tree is empty or we've reached a leaf's child without finding the value, it's not present.
+        if (node == 0)
+        {
+            return 0; // Not found
+        }
+
+        // 2. Base Case 2: Target found
+        // If the current node's value matches the target, we found it.
+        if (target == node->getValue())
+        {
+            return node; // Found! Return the pointer to this node.
+        }
+
+        // 3. Recursive Step: Decide whether to search left or right
+
+        // If the target value is smaller than the current node's value,
+        // we must go to the LEFT subtree (due to BST property).
+        if (target < node->getValue())
+        {
+            return searchBST(node->getLeft(), target);
+        }
+        // If the target value is larger than the current node's value,
+        // we must go to the RIGHT subtree (due to BST property).
+        else // (target > node->getValue())
+        {
+            return searchBST(node->getRight(), target);
+        }
+    }
+
+    // BFS......
+    void BFS_using_queue(Node *node)
+    {
+        // Handle the case of an empty tree
+        if (node == 0)
+        {
+            return;
+        }
+
+        queue<Node*> q;
+        q.push(node);   // root
+
+        while (!q.empty())
+        {
+            Node* current = q.front();
+            q.pop();
+
+            cout << current->getValue() << " ";
+
+            if (current->getLeft() != 0)
+                q.push(current->getLeft());
+
+            if (current->getRight() != 0)
+                q.push(current->getRight());
+        }
+    }
+
+    // DFS....
+    void DFS_using_Stack(Node* root)
+    {
+        if (root == 0)
+            return;
+
+        stack<Node*> st;
+        st.push(root);
+
+        while (!st.empty())
+        {
+            Node* current = st.top();
+            st.pop();
+
+            cout << current->getValue() << " ";
+
+            // Push right first so left is processed first
+            if (current->getRight() != 0)
+                st.push(current->getRight());
+
+            if (current->getLeft() != 0)
+                st.push(current->getLeft());
+        }
     }
 
     // Display tree in tree-like structure
