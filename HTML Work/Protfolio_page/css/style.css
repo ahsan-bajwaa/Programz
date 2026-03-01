@@ -1,0 +1,38 @@
+/* Custom CSS for Portfolio */
+
+/* Using a simple Google Font style vibe */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Task 3: Custom Styling for Sections */
+header {
+    background: linear-gradient(45deg, #1a2a6c, #b21f1f); /* Simple gradient for a "pro-student" look */
+}
+
+section {
+    padding: 60px 0;
+}
+
+/* Adding a hover effect to cards to show "Advanced CSS" skills */
+.card {
+    transition: transform 0.3s;
+    border: none;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border: 1px solid #007bff;
+}
+
+/* Simple Table Styling */
+table {
+    margin-top: 20px;
+}
+
+/* Contact form custom colors */
+#contact {
+    background-color: #212529 !important;
+}
