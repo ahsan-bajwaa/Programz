@@ -1,18 +1,13 @@
-# substitution_frequency.py
-# Simple frequency analysis + interactive substitution for monoalphabetic cipher
-
 ciphertext = "Iq ifcc vqqr fb rdq vfllcq na rdq cfjwhwz hr bnnb hcc hwhhbsqvqbre hwq vhlq"
 
-# ───────────────────────────────────────────────
 # Part 1: Count frequency of each letter
-# ───────────────────────────────────────────────
 
 freq = {}
 total_letters = 0
 
 for char in ciphertext:
     if char.isalpha():
-        char = char.upper()           # make everything uppercase
+        char = char.upper()   
         total_letters += 1
         if char in freq:
             freq[char] += 1
@@ -30,9 +25,7 @@ for letter, count in sorted_freq:
     percent = (count / total_letters) * 100
     print(f"{letter:6} | {count:5} | {percent:6.2f}%")
 
-# ───────────────────────────────────────────────
 # Standard English frequencies (approximate %)
-# ───────────────────────────────────────────────
 
 english_freq = {
     'E': 12.7, 'T': 9.1, 'A': 8.2, 'O': 7.5, 'I': 7.0,
@@ -46,9 +39,7 @@ print("\nMost common English letters (approx %):")
 print("E T A O I N S H R D L C U M W F G Y P B ...")
 print("≈12.7 9.1 8.2 7.5 7.0 6.7 6.3 6.1 6.0 4.3 ...\n")
 
-# ───────────────────────────────────────────────
 # Interactive substitution
-# ───────────────────────────────────────────────
 
 # This will store our guessed mapping: cipher letter → plain letter
 mapping = {}
