@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CSAT — Cyber Security Assessment Tool</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+<style>
+:root {
+    --cyan:    #00f5d4;
+    --cyan-dim: #00b89f;
+    --bg:      #070d14;
+    --surface: #0d1825;
+    --surface2:#111f30;
+    --border:  #1a3048;
+    --text:    #cdd9e5;
+    --muted:   #5a7a96;
+    --danger:  #ff4d6d;
+    --warn:    #f4a261;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* ── GRID OVERLAY ── */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+    linear-gradient(rgba(0,245,212,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,212,.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── NOISE TEXTURE ── */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: .4;
+}
+
+section, nav, footer { position: relative; z-index: 1; }
+
+/* ── NAVBAR ── */
+.navbar {
+    background: rgba(7,13,20,.85) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: .9rem 0;
+}
+
+.navbar-brand {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.25rem;
+    color: var(--cyan) !important;
+    letter-spacing: .08em;
+}
+
+.navbar-brand span { color: var(--text); }
+
+.nav-link {
+    color: var(--muted) !important;
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: color .2s;
+}
+
+.nav-link:hover { color: var(--cyan) !important; }
+
+.btn-nav {
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .45rem 1.2rem;
+    border-radius: 4px;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    background: transparent;
+    transition: background .2s, color .2s;
+}
+
+.btn-nav:hover {
+    background: var(--cyan);
+    color: var(--bg);
+}
+
+/* ── HERO ── */
+#hero {
+min-height: 100vh;
+display: flex;
+align-items: center;
+padding: 7rem 0 5rem;
+overflow: hidden;
+}
+
+.hero-eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .8rem;
+    letter-spacing: .2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
+
+.hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--cyan);
+}
+
+.hero-title {
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.hero-title .accent { color: var(--cyan); }
+
+.hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+}
+
+.btn-primary-csat {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--cyan);
+    color: var(--bg);
+    font-weight: 800;
+    font-size: .9rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: .85rem 2rem;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity .2s, transform .2s;
+}
+
+.btn-primary-csat:hover { opacity: .85; transform: translateY(-2px); color: var(--bg); }
+
+.btn-ghost-csat {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: transparent;
+    color: var(--text);
+    font-weight: 700;
+    font-size: .9rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: .85rem 2rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-color .2s, color .2s;
+}
+
+.btn-ghost-csat:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* ── HERO TERMINAL ── */
+.terminal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .82rem;
+}
+
+.terminal-bar {
+    background: var(--surface2);
+    padding: .6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #febc2e; }
+.dot-g { background: #28c840; }
+
+.terminal-title {
+    font-size: .72rem;
+    color: var(--muted);
+    margin-left: .5rem;
+    letter-spacing: .05em;
+}
+
+.terminal-body { padding: 1.25rem 1.5rem; line-height: 2; }
+
+.t-prompt { color: var(--cyan); }
+.t-cmd    { color: #fff; }
+.t-out    { color: var(--muted); }
+.t-ok     { color: #28c840; }
+.t-warn   { color: var(--warn); }
+.t-err    { color: var(--danger); }
+.t-hi     { color: var(--cyan); }
+
+.cursor {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: var(--cyan);
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ── STATS STRIP ── */
+.stats-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0;
+}
+
+.stat-item { text-align: center; padding: .5rem 1rem; }
+
+.stat-num {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--cyan);
+    display: block;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.stat-label {
+    font-size: .75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 700;
+}
+
+/* ── SECTION TITLES ── */
+.section-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: .75rem;
+    letter-spacing: .2em;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: .75rem;
+}
+
+.section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+}
+
+.section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 540px;
+    font-weight: 400;
+}
+
+/* ── FEATURE CARDS ── */
+.feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    height: 100%;
+    transition: border-color .25s, transform .25s;
+}
+
+.feature-card:hover {
+    border-color: var(--cyan-dim);
+    transform: translateY(-4px);
+}
+
+.feature-icon {
+    width: 48px; height: 48px;
+    border-radius: 8px;
+    background: rgba(0,245,212,.08);
+    border: 1px solid rgba(0,245,212,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--cyan);
+    margin-bottom: 1.25rem;
+}
+
+.feature-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: .6rem;
+}
+
+.feature-desc {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 400;
+}
+
+/* ── API BADGES ── */
+.api-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+}
+
+.api-badge {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: .6rem 1rem;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    transition: border-color .2s;
+}
+
+.api-badge:hover { border-color: var(--cyan-dim); }
+
+.api-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 6px var(--cyan);
+}
+
+/* ── RISK SCORE VISUAL ── */
+.score-ring-wrap {
+    position: relative;
+    width: 180px; height: 180px;
+    margin: 0 auto 1.5rem;
+}
+
+.score-ring-wrap svg { width: 100%; height: 100%; }
+
+.score-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--warn);
+    line-height: 1;
+}
+
+.score-label {
+    font-size: .65rem;
+    letter-spacing: .12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* ── SEVERITY TABLE ── */
+.sev-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .75rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: .88rem;
+}
+
+.sev-badge {
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .25rem .65rem;
+    border-radius: 4px;
+    min-width: 70px;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.sev-critical { background: rgba(255,77,109,.15); color: var(--danger); }
+.sev-high     { background: rgba(244,162,97,.15);  color: var(--warn); }
+.sev-medium   { background: rgba(254,188,46,.12);  color: #febc2e; }
+.sev-low      { background: rgba(40,200,64,.12);   color: #28c840; }
+
+.sev-bar-wrap { flex: 1; background: var(--surface2); border-radius: 2px; height: 4px; overflow: hidden; }
+.sev-bar { height: 100%; border-radius: 2px; }
+
+/* ── WORKFLOW STEPS ── */
+.step-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: border-color .2s;
+}
+
+.step-card:hover { border-color: var(--cyan-dim); }
+
+.step-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--cyan);
+    opacity: .35;
+    min-width: 2rem;
+    line-height: 1.3;
+}
+
+.step-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: .35rem;
+}
+
+.step-desc {
+    font-size: .85rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+/* ── CTA SECTION ── */
+#cta {
+padding: 6rem 0;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+#cta::before {
+content: '';
+position: absolute;
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+width: 600px; height: 600px;
+background: radial-gradient(ellipse, rgba(0,245,212,.07) 0%, transparent 70%);
+pointer-events: none;
+}
+
+/* ── FOOTER ── */
+footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    font-size: .8rem;
+    color: var(--muted);
+}
+
+.footer-brand {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--cyan);
+    font-size: .95rem;
+}
+
+/* ── DIVIDER ── */
+.section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+}
+
+/* ── DISCLAIMER BANNER ── */
+.disclaimer {
+    background: rgba(255,77,109,.06);
+    border: 1px solid rgba(255,77,109,.25);
+    border-radius: 8px;
+    padding: .85rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: .85rem;
+    font-size: .82rem;
+    color: #e8a0ac;
+    line-height: 1.65;
+}
+
+.disclaimer i { color: var(--danger); margin-top: .1rem; flex-shrink: 0; }
+
+/* ── GLOW BLOB ── */
+.glow-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+<div class="container">
+<a class="navbar-brand" href="#">CSAT<span>.</span></a>
+<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+<i class="bi bi-list" style="color:var(--cyan);font-size:1.4rem;"></i>
+</button>
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto gap-1 align-items-lg-center mb-2 mb-lg-0">
+<li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+<li class="nav-item"><a class="nav-link" href="#how">How It Works</a></li>
+<li class="nav-item"><a class="nav-link" href="#apis">APIs</a></li>
+</ul>
+<div class="d-flex gap-2 ms-lg-3 mt-2 mt-lg-0">
+<a href="login.php" class="btn-nav text-decoration-none">Login</a>
+<a href="register.php" class="btn-primary-csat" style="padding:.45rem 1.2rem;font-size:.8rem;border-radius:4px;">Get Started</a>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+<!-- glow blobs -->
+<div class="glow-blob" style="width:500px;height:500px;background:rgba(0,245,212,.05);top:-100px;right:-150px;"></div>
+<div class="glow-blob" style="width:300px;height:300px;background:rgba(255,77,109,.04);bottom:50px;left:-100px;"></div>
+
+<div class="container">
+<div class="row align-items-center gy-5">
+<div class="col-lg-6">
+<p class="hero-eyebrow">Security Assessment Platform</p>
+<h1 class="hero-title">
+Know Your<br>
+<span class="accent">Attack Surface.</span><br>
+Before They Do.
+</h1>
+<p class="hero-sub">
+CSAT automates vulnerability checks against live threat intelligence APIs,
+calculates a real-time risk score, and logs every finding to your SIEM —
+all without touching a terminal.
+</p>
+<div class="d-flex flex-wrap gap-3">
+<a href="register.php" class="btn-primary-csat">
+<i class="bi bi-shield-check"></i> Start a Free Scan
+</a>
+<a href="#how" class="btn-ghost-csat">
+<i class="bi bi-play-circle"></i> See How It Works
+</a>
+</div>
+</div>
+
+<div class="col-lg-6">
+<div class="terminal">
+<div class="terminal-bar">
+<span class="dot dot-r"></span>
+<span class="dot dot-y"></span>
+<span class="dot dot-g"></span>
+<span class="terminal-title">csat — scan_process.php</span>
+</div>
+<div class="terminal-body">
+<div><span class="t-prompt">$</span> <span class="t-cmd">csat scan --target example.com</span></div>
+<div class="t-out">Initializing scan engine v2.4.1...</div>
+<div class="t-out">Target: <span class="t-hi">example.com</span> [Domain]</div>
+<div class="t-out">─────────────────────────────────────</div>
+<div><span class="t-ok">✓</span> <span class="t-out">VirusTotal        </span><span class="t-ok">CLEAN</span></div>
+<div><span class="t-ok">✓</span> <span class="t-out">AbuseIPDB         </span><span class="t-ok">0% confidence</span></div>
+<div><span class="t-warn">!</span> <span class="t-out">Shodan InternetDB  </span><span class="t-warn">3 open ports</span></div>
+<div><span class="t-warn">!</span> <span class="t-out">NVD / CVE          </span><span class="t-warn">CVE-2023-4966</span></div>
+<div><span class="t-ok">✓</span> <span class="t-out">URLhaus            </span><span class="t-ok">NOT LISTED</span></div>
+<div><span class="t-ok">✓</span> <span class="t-out">Google Safe Browse </span><span class="t-ok">SAFE</span></div>
+<div class="t-out">─────────────────────────────────────</div>
+<div class="t-out">Risk Score: <span class="t-warn" style="font-size:1rem;font-weight:700;">47 / 100</span> — MEDIUM</div>
+<div class="t-out">Log forwarded to SIEM. Report ready.</div>
+<div><span class="t-prompt">$</span> <span class="cursor"></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+<div class="container">
+<div class="row text-center gy-3">
+<div class="col-6 col-md-3 stat-item">
+<span class="stat-num">6+</span>
+<span class="stat-label">Threat APIs</span>
+</div>
+<div class="col-6 col-md-3 stat-item">
+<span class="stat-num">0–100</span>
+<span class="stat-label">Risk Score</span>
+</div>
+<div class="col-6 col-md-3 stat-item">
+<span class="stat-num">OWASP</span>
+<span class="stat-label">Aligned Checks</span>
+</div>
+<div class="col-6 col-md-3 stat-item">
+<span class="stat-num">SIEM</span>
+<span class="stat-label">Log Integration</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- FEATURES -->
+<section id="features" style="padding:6rem 0;">
+<div class="container">
+<div class="row mb-5">
+<div class="col-lg-6">
+<p class="section-label">What You Get</p>
+<h2 class="section-title">Everything You Need to Audit Your Posture</h2>
+</div>
+<div class="col-lg-5 offset-lg-1 d-flex align-items-end">
+<p class="section-sub">From IP reputation to CVE lookups — CSAT pulls live threat intel and packages it into a clear, actionable report.</p>
+</div>
+</div>
+
+<div class="row g-4">
+<div class="col-md-6 col-lg-4">
+<div class="feature-card">
+<div class="feature-icon"><i class="bi bi-crosshair2"></i></div>
+<div class="feature-title">Real-Time Risk Scoring</div>
+<p class="feature-desc">Aggregates findings from all APIs into a 0–100 risk score with severity classification: Low, Medium, High, Critical.</p>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="feature-card">
+<div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+<div class="feature-title">Interactive Dashboard</div>
+<p class="feature-desc">Chart.js-powered visualizations: scan history trends, severity breakdowns, and posture over time — all in one view.</p>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="feature-card">
+<div class="feature-icon"><i class="bi bi-file-earmark-pdf"></i></div>
+<div class="feature-title">PDF Report Export</div>
+<p class="feature-desc">Generate and download detailed PDF reports per scan. Share findings with your team or submit as evidence.</p>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="feature-card">
+<div class="feature-icon"><i class="bi bi-activity"></i></div>
+<div class="feature-title">SIEM Log Forwarding</div>
+<p class="feature-desc">Every scan action writes to the shared <code style="color:var(--cyan);background:rgba(0,245,212,.08);padding:1px 5px;border-radius:3px;">siem_logs</code> table in real time for centralized monitoring.</p>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="feature-card">
+<div class="feature-icon"><i class="bi bi-person-badge"></i></div>
+<div class="feature-title">Role-Based Access</div>
+<p class="feature-desc">User and Admin roles. Admins get oversight of all scans, user management, and a full audit log panel.</p>
+</div>
+</div>
+<div class="col-md-6 col-lg-4">
+<div class="feature-card">
+<div class="feature-icon"><i class="bi bi-shield-lock"></i></div>
+<div class="feature-title">Secure by Design</div>
+<p class="feature-desc">PDO prepared statements, bcrypt password hashing, session regeneration, and input sanitization baked in from day one.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- HOW IT WORKS -->
+<section id="how" style="padding:6rem 0;">
+<div class="container">
+<div class="row gy-5 align-items-center">
+
+<div class="col-lg-5">
+<p class="section-label">The Process</p>
+<h2 class="section-title">Scan to Report in Minutes</h2>
+<p class="section-sub mb-4">Submit your target once. CSAT handles the rest — API calls, scoring, logging, and report generation happen automatically.</p>
+
+<div class="disclaimer">
+<i class="bi bi-exclamation-triangle-fill"></i>
+<span>Only scan domains, IPs, and URLs you own or have explicit written authorization to test. Unauthorized scanning may be illegal under applicable law.</span>
+</div>
+</div>
+
+<div class="col-lg-6 offset-lg-1">
+<div class="step-card">
+<div class="step-num">01</div>
+<div>
+<div class="step-title">Register & Log In</div>
+<p class="step-desc">Create your account with email and password (bcrypt hashed). Role assigned on registration.</p>
+</div>
+</div>
+<div class="step-card">
+<div class="step-num">02</div>
+<div>
+<div class="step-title">Submit a Target</div>
+<p class="step-desc">Enter a domain, IP, or URL. Server-side validation ensures the format is correct before any API call is made.</p>
+</div>
+</div>
+<div class="step-card">
+<div class="step-num">03</div>
+<div>
+<div class="step-title">APIs Run in Background</div>
+<p class="step-desc">PHP cURL triggers VirusTotal, AbuseIPDB, Shodan, NVD, URLhaus, and Google Safe Browsing. Results stored in MySQL.</p>
+</div>
+</div>
+<div class="step-card">
+<div class="step-num">04</div>
+<div>
+<div class="step-title">View Results & Download Report</div>
+<p class="step-desc">Dashboard shows your risk score, severity breakdown, and scan history. Download a PDF report anytime.</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- RISK SCORE DEMO -->
+<section style="padding:6rem 0;">
+<div class="container">
+<div class="row gy-5 align-items-center">
+
+<div class="col-lg-5 text-center">
+<!-- SVG Ring -->
+<div class="score-ring-wrap">
+<svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="90" cy="90" r="75" stroke="#1a3048" stroke-width="14"/>
+<circle cx="90" cy="90" r="75" stroke="#f4a261" stroke-width="14"
+stroke-linecap="round"
+stroke-dasharray="471"
+stroke-dashoffset="247"
+transform="rotate(-90 90 90)"/>
+</svg>
+<div class="score-center">
+<span class="score-num">47</span>
+<span class="score-label">Risk Score</span>
+</div>
+</div>
+
+<div style="display:inline-block;background:rgba(244,162,97,.1);border:1px solid rgba(244,162,97,.3);color:var(--warn);font-family:'Share Tech Mono',monospace;font-size:.75rem;letter-spacing:.12em;padding:.35rem 1rem;border-radius:4px;text-transform:uppercase;">
+MEDIUM RISK
+</div>
+</div>
+
+<div class="col-lg-6 offset-lg-1">
+<p class="section-label">Risk Intelligence</p>
+<h2 class="section-title">Severity Breakdown at a Glance</h2>
+<p class="section-sub mb-4">Every finding is tagged by severity. The risk score is a weighted aggregate — critical CVEs weigh more than open ports.</p>
+
+<div>
+<div class="sev-row">
+<span class="sev-badge sev-critical">Critical</span>
+<div class="sev-bar-wrap"><div class="sev-bar" style="width:10%;background:var(--danger);"></div></div>
+<span style="font-family:'Share Tech Mono',monospace;font-size:.82rem;color:var(--muted);min-width:2rem;">1</span>
+</div>
+<div class="sev-row">
+<span class="sev-badge sev-high">High</span>
+<div class="sev-bar-wrap"><div class="sev-bar" style="width:30%;background:var(--warn);"></div></div>
+<span style="font-family:'Share Tech Mono',monospace;font-size:.82rem;color:var(--muted);min-width:2rem;">3</span>
+</div>
+<div class="sev-row">
+<span class="sev-badge sev-medium">Medium</span>
+<div class="sev-bar-wrap"><div class="sev-bar" style="width:50%;background:#febc2e;"></div></div>
+<span style="font-family:'Share Tech Mono',monospace;font-size:.82rem;color:var(--muted);min-width:2rem;">5</span>
+</div>
+<div class="sev-row" style="border:none;">
+<span class="sev-badge sev-low">Low</span>
+<div class="sev-bar-wrap"><div class="sev-bar" style="width:20%;background:#28c840;"></div></div>
+<span style="font-family:'Share Tech Mono',monospace;font-size:.82rem;color:var(--muted);min-width:2rem;">2</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- API INTEGRATIONS -->
+<section id="apis" style="padding:6rem 0;">
+<div class="container">
+<div class="row mb-5">
+<div class="col-lg-7">
+<p class="section-label">Threat Intelligence Sources</p>
+<h2 class="section-title">Powered by Real APIs</h2>
+<p class="section-sub">No fake data. CSAT queries live threat intelligence sources to give you current, accurate findings.</p>
+</div>
+</div>
+
+<div class="api-grid">
+<div class="api-badge"><span class="api-dot"></span>VirusTotal</div>
+<div class="api-badge"><span class="api-dot"></span>AbuseIPDB</div>
+<div class="api-badge"><span class="api-dot"></span>Shodan InternetDB</div>
+<div class="api-badge"><span class="api-dot"></span>NVD / NIST CVE</div>
+<div class="api-badge"><span class="api-dot"></span>URLhaus</div>
+<div class="api-badge"><span class="api-dot"></span>Google Safe Browsing</div>
+<div class="api-badge" style="opacity:.45;cursor:default;">
+<span style="width:7px;height:7px;border-radius:50%;background:var(--muted);display:inline-block;"></span>
+HIBP (Optional)
+</div>
+</div>
+</div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- CTA -->
+<section id="cta">
+<div class="container">
+<p class="section-label" style="text-align:center;justify-content:center;display:flex;align-items:center;gap:.5rem;">
+<span style="display:inline-block;width:24px;height:1px;background:var(--cyan);"></span>
+Ready to Start
+<span style="display:inline-block;width:24px;height:1px;background:var(--cyan);"></span>
+</p>
+<h2 class="section-title" style="text-align:center;max-width:560px;margin:0 auto 1rem;">
+Run Your First Scan in Under 2 Minutes
+</h2>
+<p style="text-align:center;color:var(--muted);max-width:460px;margin:0 auto 2.5rem;font-size:.95rem;line-height:1.8;">
+Create an account, submit a target you own, and get a full risk report — for free.
+</p>
+<div class="d-flex justify-content-center gap-3 flex-wrap">
+<a href="register.php" class="btn-primary-csat">
+<i class="bi bi-person-plus"></i> Create Account
+</a>
+<a href="login.php" class="btn-ghost-csat">
+<i class="bi bi-box-arrow-in-right"></i> Sign In
+</a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="row align-items-center gy-3">
+<div class="col-md-4">
+<span class="footer-brand">CSAT.</span>
+<span style="margin-left:.75rem;">Cyber Security Assessment Tool</span>
+</div>
+<div class="col-md-4 text-md-center">
+<span style="font-size:.75rem;">Educational project — not for commercial use</span>
+</div>
+<div class="col-md-4 text-md-end">
+<span>Only scan targets you own or have authorization to test.</span>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
