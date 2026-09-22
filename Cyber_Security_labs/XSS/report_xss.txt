@@ -1,0 +1,114 @@
+# What is XSS (cross-site scripting)
+
+XSS is basically when an attacker manages to sneak their own JavaScript into a website, and the website ends up running it inside some other user's browser. The attacker isn't running the script on their own machine or on the server directly — the vulnerable site itself becomes the delivery method. That's the part that confused me at first, I kept thinking "how does attacker's JS run on victim's PC" but no, it runs *inside the browser session of whoever visits the page*, using the trust/permissions that site already has (cookies, session, DOM access etc).
+
+There's 3 main types: reflected, stored, and DOM-based.
+
+## 1. Reflected XSS
+
+This one happens when the payload comes straight from the current request (like a URL param) and gets echoed back in the response immediately. Nothing gets saved anywhere, it's just request in → response out.
+
+Because of that, it usually needs some social engineering — you gotta get the victim to click a link with your payload baked into it, since the payload lives in the URL itself, not on the server.
+
+Example: a normal search feature like
+
+```
+https://insecure-website.com/search?term=gift
+```
+
+If the site isn't sanitizing `term` before putting it into the page, you could throw a script in instead of a normal search word, and it just gets dropped straight into the HTML:
+
+```html
+<p>You searched for: <script>/* Bad stuff here... */</script></p>
+```
+
+Browser sees the script tag, runs it. That's it, that's reflected XSS.
+
+## 2. Stored XSS
+
+Also called persistent XSS (and sometimes people call it second-order too, though I need to double check if those are exactly the same thing or if second-order is more specific — worth looking into later).
+
+Difference from reflected: here the malicious input actually gets *saved* by the app somewhere (database, file, whatever), and then it gets pulled back out and shown to other users later. Classic example is a comment section — attacker posts a "comment" that's actually a script tag, site stores it, and now every single person who loads that page and sees the comment gets hit with the script running in their browser. No need to trick anyone into clicking a special link, they just have to visit the page normally.
+
+This is honestly worse than reflected in a lot of cases because it doesn't need social engineering — the payload is just sitting there waiting for anyone to view it.
+
+## 3. DOM-based XSS
+
+This is the one that took me longest to actually get. Unlike reflected/stored, the payload here doesn't necessarily even touch the server. The whole thing happens client-side — it's the site's own JavaScript that takes some attacker-controlled data and shoves it somewhere dangerous without checking it first.
+
+Two words that helped it click for me: **source** and **sink**.
+
+- Source = where the attacker-controlled data comes from (stuff like `window.location`, `window.location.search`, `window.location.hash`, `document.referrer`)
+- Sink = where that data ends up getting used in a dangerous way (`innerHTML`, `document.write()`, `eval()`, etc)
+
+If attacker-controlled data goes from a source to a sink without getting sanitized in between, that's DOM XSS.
+
+Simple example:
+
+```js
+document.write('... <script>alert(document.domain)</script> ...');
+element.innerHTML = '... <img src=1 onerror=alert(document.domain)> ...';
+```
+
+Another one, this time abusing `window.location` for a redirect link:
+
+```js
+$(function() {
+    $('#backLink').attr("href", (new URLSearchParams(window.location.search)).get('returnUrl'));
+});
+```
+
+If `returnUrl` isn't restricted to actual internal paths, you can just throw a `javascript:` URL in there:
+
+```
+?returnUrl=javascript:alert(document.domain)
+```
+
+And when someone clicks that link, boom — it runs. This one's a good reminder that XSS testing isn't just about looking for `<script>` tags, attributes like `href` can be an attack vector too.
+
+### jQuery `$()` selector example
+
+This one's from a PortSwigger lab and it's kind of sneaky:
+
+```js
+$(window).on('hashchange', function() {
+    var element = $(location.hash);
+    element[0].scrollIntoView();
+});
+```
+
+`location.hash` grabs whatever's after the `#` in the URL and feeds it straight into jQuery's selector function. If that data isn't handled safely it can get interpreted as HTML instead of a plain string.
+
+Real vulnerable code from the lab:
+
+```js
+$(window).on('hashchange', function(){
+    var post = $('section.blog-list h2:contains(' + decodeURIComponent(window.location.hash.slice(1)) + ')');
+    if (post) post.get(0).scrollIntoView();
+});
+```
+
+To actually trigger it, I hosted this on the exploit server:
+
+```html
+<iframe src="https://YOUR-LAB-ID.web-security-academy.net/#" onload="this.src+='<img src=x onerror=print()>'"></iframe>
+```
+
+When the victim opens this, the iframe loads the vulnerable lab, the hash changes, the vulnerable jQuery code runs, and the injected `<img>` tag fails to load and fires `onerror`, which runs `print()`. That confirmed the exploit worked.
+
+### AngularJS example
+
+Learned this one can be a whole different flavor of DOM XSS. If a page has the `ng-app` attribute, AngularJS starts processing expressions inside `{{ }}` on that page. So instead of needing `<script>` tags or event handlers, you can just throw an Angular expression into an input field:
+
+```
+{{$on.constructor('alert(1)')()}}
+```
+
+If the site's Angular setup evaluates that, it runs `alert(1)`.
+
+Note to self: `ng-app` being present doesn't automatically mean the site's vulnerable — depends on the Angular version and whether user input actually reaches somewhere it gets evaluated as an expression. Don't assume, test it.
+
+## Stuff I got wrong / should remember
+
+- I used to think XSS = "attacker's JS steals your cookies," full stop. Not always true — `HttpOnly` cookies can't be read via `document.cookie` even if XSS is working. So XSS being possible doesn't automatically mean cookie theft is possible.
+- When testing an input field, don't just spam payloads blindly. Actually check: where does my input go, is it reflected or stored, where does it land in the page (inside a tag, an attribute, a JS variable), and does it actually reach a sink.
