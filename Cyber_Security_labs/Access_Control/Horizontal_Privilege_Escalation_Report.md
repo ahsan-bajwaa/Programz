@@ -188,3 +188,5 @@ The website relies on the `Referer` header to decide if the request is allowed. 
 Don't rely on the Referer header, because the user controls it. Check the user's role on the server side for every admin action.
 
 ---
+
+It is a last report of Access control..
